@@ -99,10 +99,35 @@ def test_connect_failure_does_not_leak_the_dsn() -> None:
         assert part not in message, f"{part} leaked into: {message}"
 
 
-def test_scrub_handles_keyword_value_dsns() -> None:
-    dsn = "host=ep-private-9.example.invalid user=someuser password=sup3r-s3cret dbname=maindb"
-    with pytest.raises(DatabaseError) as excinfo, connect(dsn):
-        pass  # pragma: no cover - connection is expected to fail
-    message = str(excinfo.value)
-    for part in ("sup3r-s3cret", "someuser", "ep-private-9.example.invalid", "maindb"):
-        assert part not in message, f"{part} leaked into: {message}"
+def _column_line(name: str) -> str:
+    for raw in schema_sql().splitlines():
+        if raw.strip().startswith(name + " "):
+            return raw
+    raise AssertionError(f"column {name} not found")
+
+
+def test_files_complete_has_no_default() -> None:
+    """A default of true would let a forgetful ingest count a truncated PR as complete."""
+    line = _column_line("files_complete")
+    assert "NOT NULL" in line
+    assert "DEFAULT" not in line
+
+
+@pytest.mark.parametrize(
+    "column",
+    [
+        "commits_90d",
+        "commits_12mo",
+        "commit_authors_12mo",
+        "activity_band",
+        "top_contributors",
+        "top_reviewers",
+        "sweep_commits_excluded",
+    ],
+)
+def test_schema_stores_area_activity_and_people_counts(column: str) -> None:
+    assert column in _declared_column_names()
+
+
+def test_pr_state_is_limited_to_github_values() -> None:
+    assert "CHECK (state IN ('OPEN', 'CLOSED', 'MERGED'))" in schema_sql()

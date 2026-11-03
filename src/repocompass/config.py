@@ -8,9 +8,9 @@ wrong and never quote its value back.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import ClassVar, Final
+from typing import Final
 
 __all__ = ["ConfigError", "Settings", "load_env_file", "load_settings"]
 
@@ -40,10 +40,10 @@ class ConfigError(ValueError):
 
 @dataclass(frozen=True)
 class Settings:
-    """Resolved configuration. Secret fields are redacted in repr and str."""
+    """Resolved configuration. Secret fields are left out of repr and str."""
 
-    github_token: str
-    database_url: str
+    github_token: str = field(repr=False)
+    database_url: str = field(repr=False)
 
     # Metric parameters. Defaults come from docs/BRIEF.md.
     window_days: int = 365
@@ -57,18 +57,20 @@ class Settings:
     area_max_depth: int = 4
     wilson_z: float = 1.959963985
 
+    # Area activity. "Recent" is the brief's 90-day activity window. A sweep commit
+    # (formatting, licence headers, mass renames) touches more than `sweep_area_share`
+    # of all areas AND at least `sweep_min_areas` areas. It is ignored, because it says
+    # nothing about where work is happening. The minimum keeps ordinary "code + tests"
+    # commits in small repositories from counting as sweeps.
+    activity_recent_days: int = 90
+    sweep_area_share: float = 0.50
+    sweep_min_areas: int = 5
+
     excluded_dirs: tuple[str, ...] = DEFAULT_EXCLUDED_DIRS
     bot_logins: tuple[str, ...] = DEFAULT_BOT_LOGINS
 
-    # ClassVar, not Final: a dataclass would otherwise turn this into a field
-    _SECRET_FIELDS: ClassVar[frozenset[str]] = frozenset({"github_token", "database_url"})
-
-    def __repr__(self) -> str:
-        parts = []
-        for f in fields(self):
-            value = "<redacted>" if f.name in self._SECRET_FIELDS else repr(getattr(self, f.name))
-            parts.append(f"{f.name}={value}")
-        return f"Settings({', '.join(parts)})"
+    # Where blobless clones are kept, relative to the working directory.
+    clone_dir: str = "data/repos"
 
     def is_bot_login(self, login: str | None) -> bool:
         """A missing login means a deleted or unknown actor: exclude rather than guess."""
@@ -170,6 +172,10 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         formal_review_coverage_threshold=_share(env, "FORMAL_REVIEW_COVERAGE_THRESHOLD", 0.50),
         area_threshold_share=_share(env, "AREA_THRESHOLD_SHARE", 0.25),
         area_max_depth=_int(env, "AREA_MAX_DEPTH", 4),
+        activity_recent_days=_int(env, "ACTIVITY_RECENT_DAYS", 90),
+        sweep_area_share=_share(env, "SWEEP_AREA_SHARE", 0.50),
+        sweep_min_areas=_int(env, "SWEEP_MIN_AREAS", 5, minimum=2),
         excluded_dirs=_tuple(env, "EXCLUDED_DIRS", DEFAULT_EXCLUDED_DIRS),
         bot_logins=_tuple(env, "BOT_LOGINS", DEFAULT_BOT_LOGINS),
+        clone_dir=(env.get(PREFIX + "CLONE_DIR") or "").strip() or "data/repos",
     )

@@ -1,0 +1,41 @@
+﻿# python -m repocompass ingest-git, run 2026-11-03T14:04:35.0842986+05:30 on this machine; all values measured. Clones were already present (warm), except where clone_or_fetch shows a fresh clone.
+
+## encode/starlette
+repository        Kludex/starlette (requested encode/starlette)
+snapshot          2026-11-03T08:34:37+00:00
+files considered  151
+area depths       one level everywhere
+areas             6  (active 5, steady 1, dormant 0)
+commits           261 in window; 41 bot, 0 sweep, 208 counted toward an area
+seconds           resolve 0.7, clone_or_fetch 0.8, tree_and_areas 0.1, git_log 0.0
+exit=0
+
+## optuna/optuna
+repository        optuna/optuna (requested optuna/optuna)
+snapshot          2026-11-03T08:34:39+00:00
+files considered  484
+area depths       {'optuna': 2, 'tests': 2}
+areas             31  (active 22, steady 7, dormant 2)
+commits           1199 in window; 10 bot, 0 sweep, 1141 counted toward an area
+seconds           resolve 0.8, clone_or_fetch 0.9, tree_and_areas 0.0, git_log 0.1
+exit=0
+
+## kubernetes/kubernetes
+repository        kubernetes/kubernetes (requested kubernetes/kubernetes)
+snapshot          2026-11-03T08:34:41+00:00
+files considered  26119
+area depths       {'staging': 4}
+areas             49  (active 46, steady 2, dormant 1)
+commits           5815 in window; 0 bot, 64 sweep, 5631 counted toward an area
+seconds           resolve 0.7, clone_or_fetch 0.9, tree_and_areas 0.4, git_log 0.8
+exit=0
+
+## encode/httpx
+repository        encode/httpx (requested encode/httpx)
+snapshot          2026-11-03T08:34:45+00:00
+files considered  125
+area depths       {'tests': 2, 'docs': 2}
+areas             12  (active 0, steady 3, dormant 9)
+commits           3 in window; 0 bot, 0 sweep, 3 counted toward an area
+seconds           resolve 0.8, clone_or_fetch 0.8, tree_and_areas 0.0, git_log 0.0
+exit=0

@@ -1,6 +1,6 @@
 # ADR-0006: Fit area depth per repository, and exclude vendored trees and root files
 
-Status: accepted, 2026-11-03
+Status: accepted, 2026-11-03; amended in M2 (root files are left out of area activity too)
 
 Chose an adaptive rule — group files by top directory; if one group holds more than a quarter of the
 files, split that group one level deeper; repeat up to four levels — over the brief's original fixed
@@ -18,7 +18,8 @@ a configurable list) are dropped before the rule is fitted — kubernetes' `vend
 third-party `CODEOWNERS` files that would have attributed other projects' maintainers to it. And **root
 files are excluded from banded areas**: `(root file)` otherwise qualified on two of three reference
 repositories (n=14 and n=12), but `README.md` and `pyproject.toml` are not a place to start. They are
-still counted in activity, just never offered as an area.
+left out of area activity too: a commit that changes only root files counts toward no area, and a
+commit that changes root files and an area counts once, for that area.
 
 Trade-off: the rule is per-repository, so the report must print which depth it used.
 

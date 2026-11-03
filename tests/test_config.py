@@ -41,7 +41,8 @@ def test_secrets_never_appear_in_repr_or_str(render) -> None:
     rendered = render(settings)
     assert "token-value-must-not-leak" not in rendered
     assert "password-must-not-leak" not in rendered
-    assert "redacted" in rendered
+    assert "github_token" not in rendered
+    assert "database_url" not in rendered
 
 
 def test_error_message_never_echoes_a_secret() -> None:
@@ -66,9 +67,20 @@ def test_metric_defaults_match_the_brief() -> None:
     assert s.min_sample == 10
     assert s.stale_open_days == 90
     assert s.author_concentration_threshold == pytest.approx(0.30)
+    assert s.formal_review_coverage_threshold == pytest.approx(0.50)
     assert s.area_threshold_share == pytest.approx(0.25)
     assert s.area_max_depth == 4
     assert s.wilson_z == pytest.approx(1.959963985, rel=1e-9)
+    assert s.activity_recent_days == 90
+    assert s.sweep_area_share == pytest.approx(0.50)
+    assert s.sweep_min_areas == 5
+    assert s.clone_dir == "data/repos"
+
+
+def test_sweep_minimum_below_two_is_rejected() -> None:
+    """A minimum of one would make single-area commits sweeps in a one-area repository."""
+    with pytest.raises(ConfigError, match="SWEEP_MIN_AREAS"):
+        load_settings({**ENV, "REPOCOMPASS_SWEEP_MIN_AREAS": "1"})
 
 
 def test_excluded_dirs_and_bots_have_sensible_defaults() -> None:

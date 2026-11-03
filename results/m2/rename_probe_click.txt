@@ -1,0 +1,9 @@
+# rename-detection probe on a fresh blobless clone of pallets/click; run 2026-11-03T16:02:34+05:30 on this machine; all values measured
+git 2.49.0.windows.1; diff.renames not set (git default: on)
+window: commits since 2025-11-03T10:32:34.428737+00:00
+clone_seconds 1.4
+after clone: count: 0, in-pack: 10203, size-pack: 2519
+git_log --no-renames: seconds 0.0, commits 241
+after --no-renames log: count: 0, in-pack: 10203, size-pack: 2519
+git_log with rename detection: seconds 5.1, commits 241
+after rename-detection log: count: 0, in-pack: 10228, size-pack: 2588

@@ -1,0 +1,7 @@
+﻿# fresh blobless clone of kubernetes/kubernetes, then the stage-2 git log; run 2026-11-03T14:03:22.5485383+05:30 on this machine; all values measured
+clone_seconds 71.7
+after clone: in-pack: 1244174, size-pack: 255834
+git_log_no_renames_seconds 0.6 commits 0
+after log: in-pack: 1244174, size-pack: 255834
+# CORRECTION (2026-11-03): "commits 0" above is wrong. The probe's counting step was broken (a PowerShell 5.1 escape), not git. The timing and object counts are unaffected.
+# The real count is 5815 commits, from the ingest run about a minute later over the same twelve-month window (ingest_git_runs.txt, kubernetes/kubernetes section).

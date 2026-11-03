@@ -9,9 +9,12 @@ CREATE TABLE IF NOT EXISTS repos (
     snapshot_at         timestamptz,
     window_start        timestamptz,
     window_end          timestamptz,
-    -- the area rule fitted to this repo's own file tree, and what was left out
+    -- the area rule fitted to this repo's own file tree, and what was left out:
+    -- {"threshold_share": .., "max_depth": .., "depths": {"<top dir>": levels}}
     area_depths         jsonb       NOT NULL DEFAULT '{}'::jsonb,
     excluded_dirs       jsonb       NOT NULL DEFAULT '[]'::jsonb,
+    -- commits ignored for activity because they touched more than the sweep share of areas
+    sweep_commits_excluded integer,
     -- sampling record: a report must be able to state exactly what it saw
     total_prs_in_window integer,
     sampled_prs         integer,
@@ -37,15 +40,19 @@ CREATE TABLE IF NOT EXISTS prs (
     created_at                timestamptz NOT NULL,
     merged_at                 timestamptz,
     closed_at                 timestamptz,
+    -- GitHub's PullRequestState values
     state                     text     NOT NULL,
     is_merged                 boolean  NOT NULL DEFAULT false,
     changed_files             integer,
-    -- false when the file list could not be paginated in full; such PRs are excluded
-    files_complete            boolean  NOT NULL DEFAULT true,
+    -- false when the file list could not be paginated in full; such PRs are excluded.
+    -- No default on purpose: ingest must say whether it fetched every file.
+    files_complete            boolean  NOT NULL,
     is_newcomer               boolean  NOT NULL DEFAULT false,
     first_formal_review_at    timestamptz,
     first_human_response_at   timestamptz,
-    PRIMARY KEY (repo_id, number)
+    PRIMARY KEY (repo_id, number),
+    CONSTRAINT prs_state_check
+        CHECK (state IN ('OPEN', 'CLOSED', 'MERGED'))
 );
 
 CREATE INDEX IF NOT EXISTS prs_repo_created_idx ON prs (repo_id, created_at);
@@ -83,9 +90,15 @@ CREATE TABLE IF NOT EXISTS area_stats (
     stale_open_newcomer_prs integer NOT NULL DEFAULT 0,
     median_hours_first_formal_review  double precision,
     median_hours_first_human_response double precision,
+    -- activity from the clone: non-merge, non-bot, non-sweep commits
     commits_90d             integer NOT NULL DEFAULT 0,
     commits_12mo            integer NOT NULL DEFAULT 0,
+    commit_authors_12mo     integer NOT NULL DEFAULT 0,
+    -- 'active' | 'steady' | 'dormant'
     activity_band           text,
+    -- [{"login": .., "count": ..}] from PR data: merged PRs authored, reviews submitted
+    top_contributors        jsonb   NOT NULL DEFAULT '[]'::jsonb,
+    top_reviewers           jsonb   NOT NULL DEFAULT '[]'::jsonb,
     computed_at             timestamptz NOT NULL DEFAULT now(),
     PRIMARY KEY (repo_id, area)
 );

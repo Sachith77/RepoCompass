@@ -43,10 +43,29 @@ repository otherwise reports zero PRs and looks successful. Phase 0 hit this on
 
 **Stage 2 — areas and activity, from the clone only.** Fit the area rule to the file tree, then read
 commit history for area activity and contributor counts. No API calls at all, so this is the
-progressive first result. Fast for small and medium repositories (`git log --name-only` measured at
-0.09 s and 3.2 s) but **224 s on kubernetes**, which is the slowest local step in the system. The
-areas map is therefore "early" rather than "instant" on huge repositories, and the job's progress
-field must say which stage it is in rather than promise a time.
+progressive first result. Phase 0 measured `git log --name-only` at 0.09 s, 3.2 s and **224 s on
+kubernetes**, most likely (estimated, not re-measured on kubernetes) because of git's rename
+detection, which compares file contents and so makes a blobless clone download blobs on demand. On a
+fresh blobless clone of `pallets/click` it did exactly that: 25 objects downloaded and under 0.1 s →
+5.1 s (measured, `results/m2/rename_probe_click.txt`). With `--no-renames` (measured in
+`results/m2/`), the same twelve months of kubernetes history reads in **0.6 s** on a fresh clone, and
+no objects are downloaded. A rename then counts as a delete plus an add. The slow part of stage 2
+on huge repositories is the clone itself (71.7 s for kubernetes), so the job's progress field still
+says which stage it is in rather than promising a time.
+
+Activity counts only non-merge, non-bot commits from the last 12 months by committer date, and a
+commit counts once per area it touches. Root files and excluded directories (top-level names only)
+count toward no area. **Sweep commits** — formatting, licence headers or mass renames — are ignored,
+because they say nothing about where work happens. A sweep touches more than half of all areas *and*
+at least five areas (both configurable); the minimum stops an ordinary "code + tests" commit in a
+two- or three-area repository from counting as one. The number ignored is stored on the repo and
+explained on the method page. The band uses only the brief's two windows, so it adds no thresholds:
+**active** has a commit in the last 90 days, **steady** has commits in the last 12 months
+but none in 90 days, **dormant** has none in 12 months. This stage stores counts only: commits and
+distinct commit authors per area. Authors are identified by email to be counted and are never stored;
+no mailmap is applied, so one person with two emails counts twice.
+Named contributors and reviewers come from PR data in stage 4 (merged PRs authored and reviews
+submitted, counts only), because git names do not map reliably to GitHub logins.
 
 **Stage 3 — PR ingest.** Page `repository.pullRequests` newest-first at 50 per page with
 `files(first: 100)` inline. Sampling is up to 250 PRs per calendar month across the 12-month window
@@ -77,12 +96,21 @@ Five tables, no ORM.
 - `prs` — one row per sampled PR: number, author login, `author_is_bot`, `author_association` (stored for
   the method page, never used to decide), created/merged/closed times, state, `changed_files`,
   `files_complete`, `is_newcomer`, `first_formal_review_at`, `first_human_response_at`.
-- `pr_areas` — `(pr_id, area, file_count)`. A PR counts toward the area holding most of its changed files;
-  ties count for each tied area, so this is many-to-many by design.
+- `pr_areas` — `(repo_id, pr_number, area, file_count)`, keyed on `(repo_id, pr_number, area)`. A PR
+  counts toward the area holding most of its changed files; ties count for each tied area, so this is
+  many-to-many by design.
 - `area_stats` — the computed output per area: mature newcomer PR count, merged count, merge rate, Wilson
   bounds, band, distinct newcomer authors, top author's share and the concentration flag, stale-open
-  count, median hours to first formal review and first human response, commit counts, activity band.
+  count, median hours to first formal review and first human response, commit counts, distinct commit
+  authors, activity band, and the top contributors and reviewers as small `[{login, count}]` JSON lists,
+  which keeps people counts inside the five tables.
 - `jobs` — state, current stage, progress, a checkpoint blob, attempt count, last error.
+
+Development runs against a local PostgreSQL 18 server; any Postgres reachable through `DATABASE_URL`
+works, and Neon additionally needs `sslmode=require`. `init-db` uses `CREATE ... IF NOT EXISTS`, so it
+is safe to re-run but does not alter an existing table. When the schema changes in v0, the tables are
+dropped and `init-db` is run again: every row is derived from public data and is rebuilt by
+re-analysing, which v0 does in full anyway (ADR-0007).
 
 Both response timestamps are stored on every PR, because formal-review coverage ranged from 16.8% to
 73.5% across the three reference repositories and kubernetes answers through comments roughly three
@@ -138,13 +166,15 @@ Nobody is called a maintainer or owner anywhere in v0, because v0 ships no owner
 
 ## 8. Open risks
 
-- **The ranking's predictive value is unproven.** Everything above describes a snapshot. Whether a band
+- **The bands' predictive value is unproven.** Everything above describes a snapshot. Whether a band
   of "above repo average" before a cutoff predicts anything after it is the M6 validation, and it has
   not been run. With intervals this wide a null result is realistic and will be reported as such.
 - **Sampling changes what the window means.** Monthly caps keep the window honest but make per-month
   counts load-bearing on the report.
-- **Huge repositories are dominated by two stages** — 224 s of `git log` and 313 s of files pagination.
-  Both are parallelisable later; neither is a correctness problem now.
+- **Huge repositories are dominated by two stages**: the clone (71.7 s for kubernetes) and 313 s of
+  files pagination. The Phase 0 cold totals above include 224 s of `git log`, estimated to be mostly
+  blob fetching for rename detection, which `--no-renames` removes. The M6 performance run will
+  re-measure the totals.
 - **The first-timer lookback cannot see pre-GitHub or non-PR contributions**, so someone who contributed
   only by direct push counts as a newcomer. Stated on the method page.
 

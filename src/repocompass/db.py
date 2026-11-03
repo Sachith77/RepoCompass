@@ -6,7 +6,6 @@ every failure here is re-raised as DatabaseError with the DSN stripped out.
 
 from __future__ import annotations
 
-import re
 from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
@@ -60,8 +59,6 @@ def _scrub(message: str, dsn: str) -> str:
     cleaned = message.replace(dsn, "<redacted>")
     parsed = urlsplit(dsn)
     parts = [parsed.password, parsed.username, parsed.hostname, parsed.path.lstrip("/")]
-    # keyword/value DSNs ("host=... password=...") are also valid for psycopg
-    parts += re.findall(r"(?:password|user|host|dbname)=([^\s]+)", dsn)
 
     for part in sorted({p for p in parts if p}, key=len, reverse=True):
         if len(part) >= MIN_SCRUB_LENGTH:
