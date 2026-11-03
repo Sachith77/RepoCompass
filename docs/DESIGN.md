@@ -68,24 +68,25 @@ Named contributors and reviewers come from PR data in stage 4 (merged PRs author
 submitted, counts only), because git names do not map reliably to GitHub logins.
 
 **Stage 3 — PR ingest.** Page `repository.pullRequests` newest-first at 50 per page with
-`files(first: 100)` inline. Sampling is up to 250 PRs per calendar month across the 12-month window
-(ADR-0004). Points cost 1–2 per page, so the file list is fetched inline rather than in a second pass
-— a two-pass design would add complexity to save roughly one point per page. Any PR with more than 100
+`files(first: 100)` inline. Bot PRs are counted and dropped first, then up to 250 human PRs per
+calendar month are kept (ADR-0004); paging is newest-first, so a capped month keeps its newest 250.
+Pages cost 1–2 points, so files are fetched inline. Each kept PR is reduced to per-area file counts,
+response times and reviewers — no paths are kept. Any PR with more than 100
 changed files needs its own follow-up requests; on kubernetes that was 83 PRs and 322 extra requests,
 costing 313 s, the largest single stage in the whole analysis. A PR whose file list cannot be completed
-is marked and excluded rather than silently truncated.
+— including one longer than GitHub's 3,000-file listing — is marked and excluded, never truncated.
 
 **Stage 4 — first-timer lookback and metrics.** For each distinct non-bot author, one `search` query
 returns their earliest merged PR in the repository; a PR is a newcomer PR when no merged PR by that
 author was created before it (ADR-0002). Twenty author searches are batched into one request using
 GraphQL aliases, which took `optuna/optuna` from 148 requests to 8. Metrics are then pure functions
-over stored rows.
+over the PR records. Only then are all of the repository's rows replaced, in one transaction
+(ADR-0008); until that point the job checkpoint holds everything, including the areas map.
 
 Measured cold totals, including clone and git history: **81 s** small, **56 s** medium, **986 s**
 (16.4 min) huge. Total API cost for all three repositories: **478 of 5,000** hourly points. The rate
-limit is not a constraint; wall-clock is. Note that the small repository is slower than the medium one,
-because cost tracks PR count and author diversity rather than repository size — `Kludex/starlette` has
-254 distinct authors to optuna's 148.
+limit is not a constraint; wall-clock is. The small repository is slower than the medium one because
+cost tracks PR count and author diversity, not size (254 distinct authors to optuna's 148).
 
 ## 4. Data model
 
@@ -93,7 +94,7 @@ Five tables, no ORM.
 
 - `repos` — requested slug, canonical slug, default branch, the fitted area rule, the excluded-directory
   list, snapshot time, and the sampling record (total PRs, sampled PRs, per-month counts, whether capped).
-- `prs` — one row per sampled PR: number, author login, `author_is_bot`, `author_association` (stored for
+- `prs` — one row per sampled human PR: number, author login, `author_association` (stored for
   the method page, never used to decide), created/merged/closed times, state, `changed_files`,
   `files_complete`, `is_newcomer`, `first_formal_review_at`, `first_human_response_at`.
 - `pr_areas` — `(repo_id, pr_number, area, file_count)`, keyed on `(repo_id, pr_number, area)`. A PR
@@ -112,10 +113,9 @@ is safe to re-run but does not alter an existing table. When the schema changes 
 dropped and `init-db` is run again: every row is derived from public data and is rebuilt by
 re-analysing, which v0 does in full anyway (ADR-0007).
 
-Both response timestamps are stored on every PR, because formal-review coverage ranged from 16.8% to
-73.5% across the three reference repositories and kubernetes answers through comments roughly three
-times faster than through submitted reviews. The report leads with formal review and falls back to
-human response when a repository's formal-review coverage is below a configurable share.
+Both response timestamps are stored, because formal-review coverage ranged from 16.8% to 73.5% across
+the reference repositories. The report leads with formal review and falls back to human response when
+a repository's coverage is below a configurable share.
 
 ## 5. The metric, precisely
 
@@ -129,13 +129,15 @@ human response when a repository's formal-review coverage is below a configurabl
   or overlapping.
 - **Distinct newcomer authors** per area, shown beside the sample size: 12 PRs from 3 people is not 12
   PRs from 12, and the Wilson interval cannot tell the difference.
-- **Author concentration flag** when one author holds more than 30% of an area's mature newcomer PRs.
-  At n=12 that is four PRs from one person, so the flag fires often at these sample sizes — which is
-  the point: it says the merge rate is describing an individual's experience, not the area's.
-- **Stale open**: newcomer PRs still open after 90 days. They are deliberately outside the merge rate,
-  which counts only merged and closed-unmerged PRs. Without this count, an area that never acts on
-  newcomer PRs is indistinguishable from one with no backlog — the worst case for a newcomer looks
-  identical to the best. Reported per area and explained on the method page.
+- **Author concentration flag** when one author holds more than 30% of an area's mature newcomer PRs:
+  the merge rate then describes one person's experience more than the area's.
+- **Stale open**: newcomer PRs still open more than 90 days. They are deliberately outside the merge
+  rate, which counts only merged and closed-unmerged PRs. Without this count, an area that never acts
+  on newcomer PRs is indistinguishable from one with no backlog.
+- **Response**: the median time to a response, over newcomer PRs that got one (with that count), and
+  the share of mature newcomer PRs with no human response within 30 days. The median alone hides PRs
+  nobody answered; the share alone hides how slow answers are. Only the first 20 reviews and 30
+  comments per PR are read; a PR whose slice holds no human answer but has more is marked unknown.
 
 On the reference set this yielded 4, 7 and 9 qualifying areas. Bands separate the extremes cleanly
 (`optuna/visualization` 0.357–0.802 against `optuna/study` 0.062–0.335) and correctly refuse to
@@ -143,18 +145,17 @@ separate neighbours.
 
 ## 6. Failures
 
-The worker assumes every long run will be interrupted, because the first long Phase 0 run was. GitHub
-closed the connection mid-pagination and the measurement script lost two already-completed repositories
-because it only saved at the end.
+Every long run is assumed to be interrupted: the first long Phase 0 run lost two finished repositories
+when GitHub closed the connection, because the script saved only at the end.
 
-- Retry the **whole transport exception group** with exponential backoff. `RemoteDisconnected`
-  subclasses `ConnectionResetError` and `HTTPException` but **not** `urllib.error.URLError`, so a
-  handler catching only `URLError` lets it through — which is exactly what happened.
+- Retry the **whole transport exception group** (`httpx.TransportError`, which includes a server
+  closing the connection) plus 502/503/504 and secondary rate limits, with exponential backoff. The
+  Phase 0 script caught only `URLError`, which `RemoteDisconnected` is not — exactly what failed.
 - Checkpoint after every page and every stage, into `jobs.checkpoint`, so a resumed job continues
-  instead of restarting. A 16-minute job that restarts from zero on a dropped connection is not viable.
+  instead of restarting.
 - Track `rateLimit` on every response and stop cleanly before exhaustion rather than failing mid-write.
-- A job that fails permanently leaves its partial results and records `last_error`; the report then
-  renders what exists with an explicit incomplete note.
+- A failed job keeps its checkpoint and records `last_error`. The repository's previous complete report,
+  if any, is untouched, because rows are only replaced when a run finishes (ADR-0008).
 
 ## 7. Deliberately not here
 

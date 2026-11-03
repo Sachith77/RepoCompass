@@ -72,3 +72,34 @@ def test_missing_config_exits_with_code_2(
         main(["check"])
     assert excinfo.value.code == 2
     assert "GITHUB_TOKEN" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize(
+    ("args", "code"),
+    [(["analyze"], 2), (["analyze", "a/b", "c/d"], 2), (["resume"], 2), (["resume", "abc"], 2)],
+)
+def test_analyze_and_resume_check_their_arguments(
+    args: list[str], code: int, capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert main(args) == code
+    assert "usage" in capsys.readouterr().err
+
+
+def test_analyze_rejects_a_bad_slug_before_creating_a_job(
+    fake_env: None, capsys: pytest.CaptureFixture[str]
+) -> None:
+    # the fake database cannot be reached, so reaching it would print "database"
+    assert main(["analyze", "../not-a-repo"]) == 1
+    out = capsys.readouterr()
+    assert "owner/repo" in out.err
+    assert "could not connect" not in out.err
+    _assert_no_secret(out.out + out.err)
+
+
+def test_resume_failure_prints_no_secret(
+    fake_env: None, capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert main(["resume", "1"]) == 1
+    out = capsys.readouterr()
+    assert "cannot resume" in out.err
+    _assert_no_secret(out.out + out.err)

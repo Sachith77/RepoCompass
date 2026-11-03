@@ -51,6 +51,8 @@ class Settings:
     monthly_sample_cap: int = 250
     min_sample: int = 10
     stale_open_days: int = 90
+    # a mature newcomer PR with no human response within this many days counts as unanswered
+    no_response_days: int = 30
     author_concentration_threshold: float = 0.30
     formal_review_coverage_threshold: float = 0.50
     area_threshold_share: float = 0.25
@@ -160,14 +162,21 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         # deliberately does not echo the value
         raise ConfigError("DATABASE_URL must be a postgresql:// connection string")
 
+    maturity_days = _int(env, "MATURITY_DAYS", 30)
+    no_response_days = _int(env, "NO_RESPONSE_DAYS", 30)
+    if no_response_days > maturity_days:
+        # a mature PR must have had the whole no-response window to get an answer
+        raise ConfigError(f"{PREFIX}NO_RESPONSE_DAYS must not be larger than {PREFIX}MATURITY_DAYS")
+
     return Settings(
         github_token=github_token,
         database_url=database_url,
         window_days=_int(env, "WINDOW_DAYS", 365),
-        maturity_days=_int(env, "MATURITY_DAYS", 30),
+        maturity_days=maturity_days,
         monthly_sample_cap=_int(env, "MONTHLY_SAMPLE_CAP", 250),
         min_sample=_int(env, "MIN_SAMPLE", 10),
         stale_open_days=_int(env, "STALE_OPEN_DAYS", 90),
+        no_response_days=no_response_days,
         author_concentration_threshold=_share(env, "AUTHOR_CONCENTRATION_THRESHOLD", 0.30),
         formal_review_coverage_threshold=_share(env, "FORMAL_REVIEW_COVERAGE_THRESHOLD", 0.50),
         area_threshold_share=_share(env, "AREA_THRESHOLD_SHARE", 0.25),

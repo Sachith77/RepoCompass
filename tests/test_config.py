@@ -66,6 +66,7 @@ def test_metric_defaults_match_the_brief() -> None:
     assert s.monthly_sample_cap == 250
     assert s.min_sample == 10
     assert s.stale_open_days == 90
+    assert s.no_response_days == 30
     assert s.author_concentration_threshold == pytest.approx(0.30)
     assert s.formal_review_coverage_threshold == pytest.approx(0.50)
     assert s.area_threshold_share == pytest.approx(0.25)
@@ -75,6 +76,11 @@ def test_metric_defaults_match_the_brief() -> None:
     assert s.sweep_area_share == pytest.approx(0.50)
     assert s.sweep_min_areas == 5
     assert s.clone_dir == "data/repos"
+
+
+def test_no_response_window_longer_than_maturity_is_rejected() -> None:
+    with pytest.raises(ConfigError, match="NO_RESPONSE_DAYS"):
+        load_settings({**ENV, "REPOCOMPASS_NO_RESPONSE_DAYS": "60"})
 
 
 def test_sweep_minimum_below_two_is_rejected() -> None:

@@ -16,10 +16,17 @@ CREATE TABLE IF NOT EXISTS repos (
     -- commits ignored for activity because they touched more than the sweep share of areas
     sweep_commits_excluded integer,
     -- sampling record: a report must be able to state exactly what it saw
+    -- human-authored PRs only; PRs by bots, deleted accounts and other non-users are
+    -- counted separately (bot_prs_in_window) and dropped before sampling
     total_prs_in_window integer,
+    bot_prs_in_window   integer,
     sampled_prs         integer,
+    -- {"YYYY-MM": {"total", "bots", "sampled", "first", "last"}}
     prs_per_month       jsonb       NOT NULL DEFAULT '{}'::jsonb,
     is_sampled          boolean     NOT NULL DEFAULT false,
+    -- the creation times of the oldest and newest sampled PR: the dates actually covered
+    sample_first_created timestamptz,
+    sample_last_created  timestamptz,
     -- repo-wide mature newcomer merge rate: the comparison point for every band
     repo_merge_rate     double precision,
     repo_mature_newcomer_prs integer,
@@ -33,8 +40,8 @@ CREATE INDEX IF NOT EXISTS repos_requested_slug_idx ON repos (requested_slug);
 CREATE TABLE IF NOT EXISTS prs (
     repo_id                   bigint   NOT NULL REFERENCES repos (id) ON DELETE CASCADE,
     number                    integer  NOT NULL,
-    author_login              text,
-    author_is_bot             boolean  NOT NULL DEFAULT false,
+    -- only human-authored PRs are stored
+    author_login              text     NOT NULL,
     -- stored for the method page's comparison only; never used to decide newcomer status
     author_association        text,
     created_at                timestamptz NOT NULL,
@@ -50,6 +57,8 @@ CREATE TABLE IF NOT EXISTS prs (
     is_newcomer               boolean  NOT NULL DEFAULT false,
     first_formal_review_at    timestamptz,
     first_human_response_at   timestamptz,
+    -- false when the fetched reviews/comments were cut short before any human answer
+    response_times_complete   boolean  NOT NULL,
     PRIMARY KEY (repo_id, number),
     CONSTRAINT prs_state_check
         CHECK (state IN ('OPEN', 'CLOSED', 'MERGED'))
@@ -88,8 +97,14 @@ CREATE TABLE IF NOT EXISTS area_stats (
     author_concentration_flag boolean NOT NULL DEFAULT false,
     -- newcomer PRs still open past the configured age; deliberately outside merge_rate
     stale_open_newcomer_prs integer NOT NULL DEFAULT 0,
+    -- medians over newcomer PRs that got a response, with how many PRs each covers
     median_hours_first_formal_review  double precision,
+    formal_review_prs       integer NOT NULL DEFAULT 0,
     median_hours_first_human_response double precision,
+    human_response_prs      integer NOT NULL DEFAULT 0,
+    -- share of mature newcomer PRs with no human response within the configured days
+    no_response_share       double precision,
+    no_response_base_prs    integer NOT NULL DEFAULT 0,
     -- activity from the clone: non-merge, non-bot, non-sweep commits
     commits_90d             integer NOT NULL DEFAULT 0,
     commits_12mo            integer NOT NULL DEFAULT 0,

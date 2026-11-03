@@ -1,30 +1,29 @@
 """Pipeline stage 2: areas and activity from the clone only.
 
 Resolve the canonical name, clone or fetch, fit the area rule to the current tree,
-read twelve months of commits, and store one area_stats row per area. Apart from
-the single name lookup there are no API calls, so this is the first result a
-report can show.
+read twelve months of commits, and summarise activity per area. Apart from the
+single name lookup there are no API calls.
 
-v0 re-analyses in full (ADR-0007): a run replaces the repository's area rows.
+This stage writes nothing to the database. An analysis stores the git stage and the
+PR stage together, in one transaction (ADR-0008); the `ingest-git` command only
+prints this stage's result, for development.
 """
 
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from typing import Any
 
-from psycopg.types.json import Jsonb
-
-from repocompass.activity import ActivitySummary, summarise_activity
+from repocompass.activity import ActivitySummary, AreaActivity, summarise_activity
 from repocompass.areas import area_names, drop_excluded, fit_area_depths
 from repocompass.config import Settings
-from repocompass.db import connect
 from repocompass.gitclone import clone_or_update, clone_path, list_files, read_commits
-from repocompass.github import RepoInfo, parse_repo_slug, resolve_repository
+from repocompass.github import GitHubClient, RepoInfo, parse_repo_slug, resolve_repository
 
-__all__ = ["GitIngestResult", "ingest_git"]
+__all__ = ["GitIngestResult", "git_from_json", "git_stage", "git_to_json"]
 
 
 @dataclass(frozen=True)
@@ -37,74 +36,13 @@ class GitIngestResult:
     seconds: dict[str, float]
 
 
-UPSERT_REPO = """
-INSERT INTO repos (requested_slug, canonical_slug, default_branch, snapshot_at,
-                   window_start, window_end, area_depths, excluded_dirs,
-                   sweep_commits_excluded)
-VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-ON CONFLICT (canonical_slug) DO UPDATE SET
-    requested_slug = EXCLUDED.requested_slug,
-    default_branch = EXCLUDED.default_branch,
-    snapshot_at = EXCLUDED.snapshot_at,
-    window_start = EXCLUDED.window_start,
-    window_end = EXCLUDED.window_end,
-    area_depths = EXCLUDED.area_depths,
-    excluded_dirs = EXCLUDED.excluded_dirs,
-    sweep_commits_excluded = EXCLUDED.sweep_commits_excluded,
-    updated_at = now()
-RETURNING id
-"""
-
-INSERT_AREA = """
-INSERT INTO area_stats (repo_id, area, commits_90d, commits_12mo, commit_authors_12mo,
-                        activity_band)
-VALUES (%s, %s, %s, %s, %s, %s)
-"""
-
-
-def _save(settings: Settings, result: GitIngestResult) -> None:
-    rule = {
-        "threshold_share": settings.area_threshold_share,
-        "max_depth": settings.area_max_depth,
-        "depths": result.depths,
-    }
-    window_start = result.snapshot - timedelta(days=settings.window_days)
-    with connect(settings.database_url) as conn, conn.cursor() as cur:
-        cur.execute(
-            UPSERT_REPO,
-            (
-                result.repo.requested_slug,
-                result.repo.canonical_slug,
-                result.repo.default_branch,
-                result.snapshot,
-                window_start,
-                result.snapshot,
-                Jsonb(rule),
-                Jsonb(list(settings.excluded_dirs)),
-                result.activity.sweep_commits,
-            ),
-        )
-        row = cur.fetchone()
-        if row is None:  # pragma: no cover - RETURNING always yields a row
-            raise RuntimeError("repos upsert returned no id")
-        repo_id = row[0]
-        cur.execute("DELETE FROM area_stats WHERE repo_id = %s", (repo_id,))
-        cur.executemany(
-            INSERT_AREA,
-            [
-                (repo_id, a.area, a.commits_recent, a.commits_window, a.authors_window, a.band)
-                for a in result.activity.areas
-            ],
-        )
-
-
-def ingest_git(settings: Settings, repo_text: str, *, save: bool = True) -> GitIngestResult:
-    """Run stage 2 for one repository and, unless `save` is False, store the result."""
+def git_stage(settings: Settings, client: GitHubClient, repo_text: str) -> GitIngestResult:
+    """Run stage 2 for one repository. The snapshot time is taken here."""
     seconds: dict[str, float] = {}
     owner, name = parse_repo_slug(repo_text)
 
     start = time.perf_counter()
-    repo = resolve_repository(settings.github_token, owner, name)
+    repo = resolve_repository(client, owner, name)
     seconds["resolve"] = time.perf_counter() - start
 
     dest = clone_path(Path(settings.clone_dir), repo.canonical_slug)
@@ -112,7 +50,7 @@ def ingest_git(settings: Settings, repo_text: str, *, save: bool = True) -> GitI
     clone_or_update(f"https://github.com/{repo.canonical_slug}.git", dest)
     seconds["clone_or_fetch"] = time.perf_counter() - start
 
-    snapshot = datetime.now(UTC)
+    snapshot = datetime.now(UTC).replace(microsecond=0)
     rev = f"origin/{repo.default_branch}"
 
     start = time.perf_counter()
@@ -125,15 +63,31 @@ def ingest_git(settings: Settings, repo_text: str, *, save: bool = True) -> GitI
     commits = read_commits(dest, rev, snapshot - timedelta(days=settings.window_days))
     seconds["git_log"] = time.perf_counter() - start
 
-    activity = summarise_activity(commits, areas, depths, settings, snapshot)
-    result = GitIngestResult(
+    return GitIngestResult(
         repo=repo,
         snapshot=snapshot,
         files_considered=len(files),
         depths=depths,
-        activity=activity,
+        activity=summarise_activity(commits, areas, depths, settings, snapshot),
         seconds=seconds,
     )
-    if save:
-        _save(settings, result)
-    return result
+
+
+def git_to_json(result: GitIngestResult) -> dict[str, Any]:
+    """The stage result as plain JSON, for the job checkpoint."""
+    out = asdict(result)
+    out["snapshot"] = result.snapshot.isoformat()
+    return out
+
+
+def git_from_json(data: dict[str, Any]) -> GitIngestResult:
+    activity = dict(data["activity"])
+    activity["areas"] = tuple(AreaActivity(**a) for a in activity["areas"])
+    return GitIngestResult(
+        repo=RepoInfo(**data["repo"]),
+        snapshot=datetime.fromisoformat(data["snapshot"]),
+        files_considered=data["files_considered"],
+        depths=dict(data["depths"]),
+        activity=ActivitySummary(**activity),
+        seconds=dict(data["seconds"]),
+    )

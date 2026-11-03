@@ -16,6 +16,9 @@ spread across the window.
 Requirement this creates: total PRs, sampled PRs and per-month counts are recorded per report, and the
 report is labelled "sampled" whenever any month was capped.
 
+Amended in M3: bot and other non-user PRs are counted and dropped before the cap, so they never
+use up a month's 250.
+
 Trade-off: more bookkeeping than one number, and a busy month is still under-sampled — just not
 invisibly.
 

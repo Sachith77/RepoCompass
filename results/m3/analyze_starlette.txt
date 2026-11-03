@@ -1,0 +1,29 @@
+﻿# python -m repocompass analyze encode/starlette, started 2026-11-03T20:25:09.7002196+05:30 on this machine against local PostgreSQL 18 and the live GitHub API; all values measured
+job 1 started for encode/starlette
+job 1 done
+repository        Kludex/starlette (requested encode/starlette)
+snapshot          2026-11-03T14:55:11+00:00
+files considered  151
+area depths       one level everywhere
+areas             6  (active 5, steady 1, dormant 0)
+commits           261 in window; 41 bot, 0 sweep, 208 counted toward an area
+seconds           resolve 0.6, clone_or_fetch 1.0, tree_and_areas 0.1, git_log 0.1
+PRs in window     511 human (50 bot PRs dropped first); kept 511; complete
+dates covered     2025-11-05T03:11:41+00:00 to 2026-11-03T07:50:34+00:00
+response times    unknown for 1 PRs (no human answer in the fetched slice)
+file lists        0 PRs could not be fetched in full and are excluded
+repo rate         0.227 over 207 mature newcomer PRs
+bands             above repo average 1, no clear difference 2, not enough data 3
+  docs                                     n=44   rate 0.455 [0.317, 0.599]  above repo average; 40 authors, 0 stale open
+                                           median hours to review 89.9 (n=18), to human response 87.2 (n=32); no response in 30 days 41% (n=44)
+  starlette                                n=157  rate 0.178 [0.126, 0.246]  no clear difference; 132 authors, 4 stale open
+                                           median hours to review 99.7 (n=42), to human response 132.2 (n=86); no response in 30 days 61% (n=157)
+  tests                                    n=142  rate 0.169 [0.116, 0.239]  no clear difference; 121 authors, 1 stale open
+                                           median hours to review 148.9 (n=39), to human response 146.4 (n=82); no response in 30 days 60% (n=142)
+stage seconds     git_stage 1.6, pr_pages 76.2, lookback 44.2
+API               37 requests, 49 points
+
+wall_seconds 123
+job 1 done; checkpoint stored size 33730 bytes (Postgres, compressed), JSON text 238579 bytes
+rows prs 511, pr_areas 818, area_stats 6, repos 1
+
