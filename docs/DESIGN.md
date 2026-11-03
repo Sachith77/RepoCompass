@@ -26,13 +26,19 @@ adjacent intervals overlap almost entirely at the sample sizes available (ADR-00
 ```
 
 Five pieces, one process each: the FastAPI service, one worker, Postgres, the git CLI, and the Next.js
-pages. The API never calls GitHub; it only reads and writes Postgres and enqueues jobs. All network
-work happens in the worker. That split is what makes the queue decision (ADR-0005) cheap to explain:
-the API stays fast and stateless, and every slow or failure-prone thing lives in one place.
+pages. The API (FastAPI under uvicorn, bound to 127.0.0.1) never calls GitHub; it only reads Postgres
+and enqueues jobs, so every slow or failure-prone thing lives in the worker (ADR-0005). `POST
+/analyze` returns the stored report if there is one; otherwise it queues a job — never two for one
+requested name (an advisory lock on the name) — and re-queues a failed job whose snapshot is under 24
+hours old so it resumes from its checkpoint. The worker claims the oldest queued job with `FOR UPDATE
+SKIP LOCKED`. At start and whenever idle it re-queues running jobs with no checkpoint for 10 minutes:
+a live job checkpoints every few seconds, minutes at most, so such a job was abandoned. `resume`
+refuses a job that is running.
 
 ## 3. Pipeline
 
-The worker runs four stages in order, writing results as it goes so the report fills in progressively.
+The worker runs four stages in order, checkpointing as it goes. `GET /jobs/{id}` shows the areas map
+as soon as stage 2 is done; the full report appears when the final transaction commits.
 
 **Stage 1 — resolve and clone.** Resolve the repository's canonical `nameWithOwner` *before* anything
 else, and store both the requested and canonical slug. This is not a nicety: GitHub's search index is
@@ -49,9 +55,8 @@ detection, which compares file contents and so makes a blobless clone download b
 fresh blobless clone of `pallets/click` it did exactly that: 25 objects downloaded and under 0.1 s →
 5.1 s (measured, `results/m2/rename_probe_click.txt`). With `--no-renames` (measured in
 `results/m2/`), the same twelve months of kubernetes history reads in **0.6 s** on a fresh clone, and
-no objects are downloaded. A rename then counts as a delete plus an add. The slow part of stage 2
-on huge repositories is the clone itself (71.7 s for kubernetes), so the job's progress field still
-says which stage it is in rather than promising a time.
+no objects are downloaded. A rename then counts as a delete plus an add. On huge repositories
+the slow part of stage 2 is the clone itself (71.7 s for kubernetes).
 
 Activity counts only non-merge, non-bot commits from the last 12 months by committer date, and a
 commit counts once per area it touches. Root files and excluded directories (top-level names only)
@@ -83,10 +88,10 @@ GraphQL aliases, which took `optuna/optuna` from 148 requests to 8. Metrics are 
 over the PR records. Only then are all of the repository's rows replaced, in one transaction
 (ADR-0008); until that point the job checkpoint holds everything, including the areas map.
 
-Measured cold totals, including clone and git history: **81 s** small, **56 s** medium, **986 s**
-(16.4 min) huge. Total API cost for all three repositories: **478 of 5,000** hourly points. The rate
-limit is not a constraint; wall-clock is. The small repository is slower than the medium one because
-cost tracks PR count and author diversity, not size (254 distinct authors to optuna's 148).
+Measured in M4 through the API and worker, clones already on disk (`results/m4/run1/`): the areas map
+within 6 s, full analysis **120 s** small, **96 s** medium, **2,080 s** (34.7 min) huge, using 49, 31
+and 606 of 5,000 hourly points. Wall-clock is the constraint: kubernetes pages all 6,619 human PRs
+(1,895 s) to count every month.
 
 ## 4. Data model
 
@@ -107,11 +112,9 @@ Five tables, no ORM.
   which keeps people counts inside the five tables.
 - `jobs` — state, current stage, progress, a checkpoint blob, attempt count, last error.
 
-Development runs against a local PostgreSQL 18 server; any Postgres reachable through `DATABASE_URL`
-works, and Neon additionally needs `sslmode=require`. `init-db` uses `CREATE ... IF NOT EXISTS`, so it
-is safe to re-run but does not alter an existing table. When the schema changes in v0, the tables are
-dropped and `init-db` is run again: every row is derived from public data and is rebuilt by
-re-analysing, which v0 does in full anyway (ADR-0007).
+Development runs against a local PostgreSQL 18 server (Neon also works, with `sslmode=require`).
+`init-db` is safe to re-run but does not alter an existing table, so when the schema changes in v0 the
+tables are dropped and re-created: every row is derived from public data and rebuilt by re-analysing.
 
 Both response timestamps are stored, because formal-review coverage ranged from 16.8% to 73.5% across
 the reference repositories. The report leads with formal review and falls back to human response when
@@ -155,28 +158,26 @@ when GitHub closed the connection, because the script saved only at the end.
   instead of restarting.
 - Track `rateLimit` on every response and stop cleanly before exhaustion rather than failing mid-write.
 - A failed job keeps its checkpoint and records `last_error`. The repository's previous complete report,
-  if any, is untouched, because rows are only replaced when a run finishes (ADR-0008).
+  if any, is untouched, because rows are only replaced when a run finishes (ADR-0008). If the database
+  fails between saving and marking the job done, the job is re-run later; the save is idempotent.
 
 ## 7. Deliberately not here
 
-No Celery, Redis, ORM, microservices, LLM or embeddings. No API hosting in v0 — "paste any URL" is
-local-only, since Phase 0 found Spaces now needs a paid plan and Actions cannot serve HTTP. Starter
-issues and ownership are both cut from v0 and live in stretch, because the open starter-issue backlog
-was empty on two of three reference repositories and CODEOWNERS covered zero contribution areas.
-Nobody is called a maintainer or owner anywhere in v0, because v0 ships no ownership data.
+No Celery, Redis, ORM, microservices, LLM or embeddings. No API hosting in v0: "paste any URL" is
+local-only (Spaces now needs a paid plan). Starter issues and ownership are stretch items: the open
+starter-issue backlog was empty on two of three reference repositories and CODEOWNERS covered zero
+areas. Nobody is called a maintainer or owner, because v0 ships no ownership data.
 
 ## 8. Open risks
 
-- **The bands' predictive value is unproven.** Everything above describes a snapshot. Whether a band
-  of "above repo average" before a cutoff predicts anything after it is the M6 validation, and it has
-  not been run. With intervals this wide a null result is realistic and will be reported as such.
-- **Sampling changes what the window means.** Monthly caps keep the window honest but make per-month
-  counts load-bearing on the report.
-- **Huge repositories are dominated by two stages**: the clone (71.7 s for kubernetes) and 313 s of
-  files pagination. The Phase 0 cold totals above include 224 s of `git log`, estimated to be mostly
-  blob fetching for rename detection, which `--no-renames` removes. The M6 performance run will
-  re-measure the totals.
-- **The first-timer lookback cannot see pre-GitHub or non-PR contributions**, so someone who contributed
-  only by direct push counts as a newcomer. Stated on the method page.
+- **The bands' predictive value is unproven** until the M6 cutoff validation. With intervals this wide
+  a null result is realistic and will be reported as such.
+- **Sampling**: a capped month keeps its newest 250 PRs, so per-month counts matter on the report.
+- **Worker memory is unmeasured.** A run was stopped by the machine running low on memory.
+  TODO: measure the worker's peak memory on kubernetes before relying on it.
+- **Huge repositories are slow**: 34.7 min for kubernetes, almost all PR pages, plus 71.7 s for a cold
+  clone. M6 re-measures cold totals.
+- **The first-timer lookback sees only PRs**: someone who contributed by direct push counts as a
+  newcomer (ADR-0002).
 
 Decisions are recorded individually in `docs/decisions/`.

@@ -1,0 +1,53 @@
+﻿# NOTE: run 1, made before the M4 review fixes. The analysis code was the same as the final code; the report layer and queue were not (these report JSON files lack the stored parameters, excluded-PR counts and concentration sentences). Kept as a measured timing run.
+# full analyses through API + queue + worker, run 2026-11-03T21:38:42+05:30 on this machine (local PostgreSQL 18, live GitHub API; clones already on disk, so clone time is a fetch); all values measured. Timings from the job starting to run; polled every 2 s, so each time is accurate to about 2 s.
+
+## https://github.com/encode/starlette (job 7): done
+waited in queue          2 s
+time to first result     2 s (areas map, 6 areas)
+time to full analysis    120 s
+stage seconds            lookback 45.8, pr_pages 71.8, git_stage 2.7
+API                      37 requests, 49 points
+sample                   511 human PRs, 50 bot/non-user dropped, 511 kept, sampled=False, covered 2025-11-05T08:41:41+05:30 to 2026-11-03T13:20:34+05:30
+repo rate                0.227 over 207 mature newcomer PRs; formal review coverage 0.165; leads with human response
+  above repo average   docs                                     n=44   rate 0.455 [0.317, 0.599]
+  no clear difference  starlette                                n=157  rate 0.178 [0.126, 0.246]
+  no clear difference  tests                                    n=142  rate 0.169 [0.116, 0.239]
+not enough data          3 areas
+
+## https://github.com/optuna/optuna (job 8): done
+waited in queue          123 s
+time to first result     2 s (areas map, 31 areas)
+time to full analysis    96 s
+stage seconds            lookback 24.5, pr_pages 69.0, git_stage 1.8
+API                      20 requests, 31 points
+sample                   517 human PRs, 9 bot/non-user dropped, 517 kept, sampled=False, covered 2025-11-05T02:31:55+05:30 to 2026-11-02T22:23:33+05:30
+repo rate                0.461 over 141 mature newcomer PRs; formal review coverage 0.758; leads with formal review
+  no clear difference  optuna/pruners                           n=13   rate 0.538 [0.291, 0.768]
+  no clear difference  optuna/samplers                          n=20   rate 0.550 [0.342, 0.742]
+  no clear difference  optuna/storages                          n=12   rate 0.417 [0.193, 0.680]
+  no clear difference  optuna/trial                             n=15   rate 0.333 [0.152, 0.583]
+  no clear difference  optuna/visualization                     n=15   rate 0.600 [0.357, 0.802]
+  no clear difference  tests/study_tests                        n=13   rate 0.308 [0.127, 0.576]
+  below repo average   optuna/study                             n=28   rate 0.143 [0.057, 0.315]
+not enough data          24 areas
+
+## https://github.com/kubernetes/kubernetes (job 9): done
+waited in queue          219 s
+time to first result     6 s (areas map, 49 areas)
+time to full analysis    2080 s
+stage seconds            lookback 177.1, pr_pages 1895.2, git_stage 5.3
+API                      473 requests, 606 points
+sample                   6619 human PRs, 3 bot/non-user dropped, 3082 kept, sampled=True, covered 2025-11-06T13:27:34+05:30 to 2026-11-03T20:19:50+05:30
+repo rate                0.336 over 532 mature newcomer PRs; formal review coverage 0.569; leads with formal review
+  above repo average   staging/src/k8s.io/apiserver             n=22   rate 0.545 [0.347, 0.731]
+  no clear difference  cmd                                      n=15   rate 0.533 [0.301, 0.752]
+  no clear difference  hack                                     n=13   rate 0.462 [0.232, 0.709]
+  no clear difference  pkg                                      n=219  rate 0.306 [0.249, 0.370]
+  no clear difference  staging/src/k8s.io/api                   n=23   rate 0.478 [0.292, 0.670]
+  no clear difference  staging/src/k8s.io/client-go             n=21   rate 0.333 [0.172, 0.546]
+  no clear difference  staging/src/k8s.io/dynamic-resource-allocation n=12   rate 0.583 [0.320, 0.807]
+  no clear difference  staging/src/k8s.io/kubectl               n=48   rate 0.396 [0.270, 0.537]
+  no clear difference  test                                     n=62   rate 0.387 [0.276, 0.512]
+  below repo average   staging/src/k8s.io/apimachinery          n=22   rate 0.091 [0.025, 0.278]
+not enough data          39 areas
+

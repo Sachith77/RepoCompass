@@ -5,6 +5,8 @@ Usage:
     python -m repocompass check                 report configuration without printing secrets
     python -m repocompass analyze OWNER/REPO    run a full analysis as a new job and store it
     python -m repocompass resume JOB_ID         continue a failed or interrupted job
+    python -m repocompass worker [--once]       run queued jobs (--once: until the queue is empty)
+    python -m repocompass serve [--port N]      run the API on 127.0.0.1 (default port 8000)
     python -m repocompass ingest-git OWNER/REPO developer command: print the git stage only
 """
 
@@ -15,17 +17,15 @@ import sys
 from collections import Counter
 from collections.abc import Callable
 
-from repocompass.analysis import AnalysisResult, run_analysis, save_analysis
+from repocompass.analysis import AnalysisResult
 from repocompass.config import ConfigError, Settings, load_settings
 from repocompass.db import DatabaseError, apply_schema, schema_table_names
 from repocompass.gitclone import GitError
 from repocompass.github import GitHubClient, GitHubError, parse_repo_slug
 from repocompass.ingest_git import GitIngestResult, git_stage
-from repocompass.jobs import create_job, finish_job, load_job, save_job_checkpoint
+from repocompass.jobs import create_job, finish_job, load_job
 from repocompass.metrics import NOT_ENOUGH_DATA
-
-# Failures an analysis reports as a message; their text never holds a secret.
-EXPECTED_ERRORS = (GitHubError, GitError, DatabaseError, LookupError)
+from repocompass.worker import JobFailed, run_job, work
 
 
 def _load() -> Settings:
@@ -155,37 +155,20 @@ def _print_analysis(result: AnalysisResult, settings: Settings) -> None:
 
 
 def _run_job(settings: Settings, job_id: int, slug: str, checkpoint: dict) -> int:
-    def save(stage: str, progress: int, state: dict) -> None:
-        save_job_checkpoint(settings.database_url, job_id, stage, progress, state)
-
     try:
-        with GitHubClient(settings.github_token) as client:
-            result = run_analysis(
-                settings, slug, client, checkpoint=checkpoint, save_checkpoint=save
-            )
-        repo_id = save_analysis(settings, result)
-    except EXPECTED_ERRORS as exc:
-        _fail(settings, job_id, str(exc))
+        result = run_job(settings, job_id, slug, checkpoint)
+    except JobFailed as exc:
         print(f"job {job_id} failed: {exc}", file=sys.stderr)
         print(f"resume with: python -m repocompass resume {job_id}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:
-        _fail(settings, job_id, "interrupted")
+        with contextlib.suppress(DatabaseError):
+            finish_job(settings.database_url, job_id, error="interrupted")
         print(f"job {job_id} interrupted; resume with: python -m repocompass resume {job_id}")
         return 130
-    except Exception as exc:  # an unexpected bug: record only its type, never its text
-        _fail(settings, job_id, f"unexpected {type(exc).__name__}")
-        raise
-    finish_job(settings.database_url, job_id, repo_id=repo_id)
     print(f"job {job_id} done")
     _print_analysis(result, settings)
     return 0
-
-
-def _fail(settings: Settings, job_id: int, error: str) -> None:
-    # if the database is down too, the original failure is still what gets reported
-    with contextlib.suppress(DatabaseError):
-        finish_job(settings.database_url, job_id, error=error)
 
 
 def cmd_analyze(args: list[str]) -> int:
@@ -194,13 +177,14 @@ def cmd_analyze(args: list[str]) -> int:
         return 2
     settings = _load()
     try:
-        parse_repo_slug(args[0])
-        job_id = create_job(settings.database_url, args[0].strip())
+        owner, name = parse_repo_slug(args[0])
+        slug = f"{owner}/{name}"  # the same form the API queues, so both find each other
+        job_id = create_job(settings.database_url, slug)
     except (GitHubError, DatabaseError) as exc:
         print(f"analysis not started: {exc}", file=sys.stderr)
         return 1
-    print(f"job {job_id} started for {args[0].strip()}")
-    return _run_job(settings, job_id, args[0], {})
+    print(f"job {job_id} started for {slug}")
+    return _run_job(settings, job_id, slug, {})
 
 
 def cmd_resume(args: list[str]) -> int:
@@ -218,11 +202,45 @@ def cmd_resume(args: list[str]) -> int:
     return _run_job(settings, job_id, slug, checkpoint)
 
 
+def cmd_worker(args: list[str]) -> int:
+    if args not in ([], ["--once"]):
+        print("usage: python -m repocompass worker [--once]", file=sys.stderr)
+        return 2
+    settings = _load()
+    print("worker started" + (" (until the queue is empty)" if args else "; Ctrl+C to stop"))
+    try:
+        processed = work(settings, once=bool(args))
+    except DatabaseError as exc:
+        print(f"worker stopped: {exc}", file=sys.stderr)
+        return 1
+    except KeyboardInterrupt:
+        print("worker stopped")
+        return 0
+    print(f"queue empty; {processed} job(s) processed")
+    return 0
+
+
+def cmd_serve(args: list[str]) -> int:
+    if len(args) not in (0, 2) or (args and (args[0] != "--port" or not args[1].isdigit())):
+        print("usage: python -m repocompass serve [--port N]", file=sys.stderr)
+        return 2
+    settings = _load()
+    import uvicorn
+
+    from repocompass.api import create_app
+
+    # local only (no API hosting in v0): bind to this machine, not the network
+    uvicorn.run(create_app(settings), host="127.0.0.1", port=int(args[1]) if args else 8000)
+    return 0
+
+
 COMMANDS: dict[str, Callable[[list[str]], int]] = {
     "check": cmd_check,
     "init-db": cmd_init_db,
     "analyze": cmd_analyze,
     "resume": cmd_resume,
+    "worker": cmd_worker,
+    "serve": cmd_serve,
     "ingest-git": cmd_ingest_git,
 }
 

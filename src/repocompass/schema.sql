@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS repos (
     -- {"threshold_share": .., "max_depth": .., "depths": {"<top dir>": levels}}
     area_depths         jsonb       NOT NULL DEFAULT '{}'::jsonb,
     excluded_dirs       jsonb       NOT NULL DEFAULT '[]'::jsonb,
+    -- the metric parameters this analysis used, so the report never shows today's settings
+    parameters          jsonb       NOT NULL DEFAULT '{}'::jsonb,
     -- commits ignored for activity because they touched more than the sweep share of areas
     sweep_commits_excluded integer,
     -- sampling record: a report must be able to state exactly what it saw

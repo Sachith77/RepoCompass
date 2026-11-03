@@ -1,0 +1,482 @@
+{
+  "repo": {
+    "requested_slug": "encode/starlette",
+    "canonical_slug": "Kludex/starlette",
+    "url": "https://github.com/Kludex/starlette",
+    "default_branch": "main",
+    "snapshot_at": "2026-11-03 21:40:38+05:30"
+  },
+  "where_to_start": {
+    "heading": "Based on historical contribution patterns, these areas may be better starting points.",
+    "repo_rate": 0.22705314009661837,
+    "repo_mature_newcomer_prs": 207,
+    "formal_review_coverage": 0.19480519480519481,
+    "lead_response_measure": "human response",
+    "bands": [
+      {
+        "band": "above repo average",
+        "areas": [
+          {
+            "area": "docs",
+            "band": "above repo average",
+            "merge_rate": 0.45454545454545453,
+            "mature_newcomer_prs": 44,
+            "merged_prs": 20,
+            "wilson_interval": [
+              0.3170523413933015,
+              0.5993381680424386
+            ],
+            "distinct_newcomer_authors": 40,
+            "top_author_pr_share": 0.06818181818181818,
+            "author_concentration_flag": false,
+            "concentration_note": null,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 89.9336111111111,
+            "formal_review_prs": 18,
+            "median_hours_first_human_response": 87.22888888888889,
+            "human_response_prs": 32,
+            "no_response_share": 0.4090909090909091,
+            "no_response_base_prs": 44,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 3713,
+                "url": "https://github.com/Kludex/starlette/pull/3713"
+              },
+              {
+                "number": 3654,
+                "url": "https://github.com/Kludex/starlette/pull/3654"
+              },
+              {
+                "number": 3585,
+                "url": "https://github.com/Kludex/starlette/pull/3585"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "band": "no clear difference",
+        "areas": [
+          {
+            "area": "starlette",
+            "band": "no clear difference",
+            "merge_rate": 0.17834394904458598,
+            "mature_newcomer_prs": 157,
+            "merged_prs": 28,
+            "wilson_interval": [
+              0.12637017190566452,
+              0.24568227813171967
+            ],
+            "distinct_newcomer_authors": 132,
+            "top_author_pr_share": 0.025477707006369428,
+            "author_concentration_flag": false,
+            "concentration_note": null,
+            "stale_open_newcomer_prs": 4,
+            "median_hours_first_formal_review": 99.67180555555555,
+            "formal_review_prs": 42,
+            "median_hours_first_human_response": 132.16291666666666,
+            "human_response_prs": 86,
+            "no_response_share": 0.6050955414012739,
+            "no_response_base_prs": 157,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 3599,
+                "url": "https://github.com/Kludex/starlette/pull/3599"
+              },
+              {
+                "number": 3619,
+                "url": "https://github.com/Kludex/starlette/pull/3619"
+              },
+              {
+                "number": 3665,
+                "url": "https://github.com/Kludex/starlette/pull/3665"
+              }
+            ]
+          },
+          {
+            "area": "tests",
+            "band": "no clear difference",
+            "merge_rate": 0.16901408450704225,
+            "mature_newcomer_prs": 142,
+            "merged_prs": 24,
+            "wilson_interval": [
+              0.11628787580360232,
+              0.23917660762283582
+            ],
+            "distinct_newcomer_authors": 121,
+            "top_author_pr_share": 0.02112676056338028,
+            "author_concentration_flag": false,
+            "concentration_note": null,
+            "stale_open_newcomer_prs": 1,
+            "median_hours_first_formal_review": 148.90694444444443,
+            "formal_review_prs": 39,
+            "median_hours_first_human_response": 146.39680555555555,
+            "human_response_prs": 82,
+            "no_response_share": 0.5985915492957746,
+            "no_response_base_prs": 142,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 3599,
+                "url": "https://github.com/Kludex/starlette/pull/3599"
+              },
+              {
+                "number": 3619,
+                "url": "https://github.com/Kludex/starlette/pull/3619"
+              },
+              {
+                "number": 3205,
+                "url": "https://github.com/Kludex/starlette/pull/3205"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "not_enough_data": [
+      {
+        "area": ".github",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "benchmarks",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "scripts",
+        "mature_newcomer_prs": 1
+      }
+    ]
+  },
+  "areas_map": [
+    {
+      "area": ".github",
+      "commits_90d": 13,
+      "commits_12mo": 23,
+      "commit_authors_12mo": 1,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 13,
+          "login": "Kludex"
+        }
+      ],
+      "top_reviewers": []
+    },
+    {
+      "area": "benchmarks",
+      "commits_90d": 8,
+      "commits_12mo": 13,
+      "commit_authors_12mo": 1,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 13,
+          "login": "Kludex"
+        }
+      ],
+      "top_reviewers": []
+    },
+    {
+      "area": "docs",
+      "commits_90d": 45,
+      "commits_12mo": 87,
+      "commit_authors_12mo": 24,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 51,
+          "login": "Kludex"
+        },
+        {
+          "count": 8,
+          "login": "Rohan5commit"
+        },
+        {
+          "count": 2,
+          "login": "simpleqt"
+        },
+        {
+          "count": 1,
+          "login": "Ab-Romia"
+        },
+        {
+          "count": 1,
+          "login": "EmmanuelNiyonshuti"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 26,
+          "login": "Kludex"
+        },
+        {
+          "count": 3,
+          "login": "Shriprasad-P"
+        },
+        {
+          "count": 2,
+          "login": "lovelydinosaur"
+        },
+        {
+          "count": 1,
+          "login": "Mukller"
+        },
+        {
+          "count": 1,
+          "login": "Samielakkad"
+        }
+      ]
+    },
+    {
+      "area": "scripts",
+      "commits_90d": 0,
+      "commits_12mo": 3,
+      "commit_authors_12mo": 1,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "Kludex"
+        }
+      ],
+      "top_reviewers": []
+    },
+    {
+      "area": "starlette",
+      "commits_90d": 79,
+      "commits_12mo": 136,
+      "commit_authors_12mo": 39,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 87,
+          "login": "Kludex"
+        },
+        {
+          "count": 2,
+          "login": "Rodrigo-Palma"
+        },
+        {
+          "count": 2,
+          "login": "lowgame"
+        },
+        {
+          "count": 1,
+          "login": "ATOM00blue"
+        },
+        {
+          "count": 1,
+          "login": "AmnonTamsut"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 43,
+          "login": "Kludex"
+        },
+        {
+          "count": 7,
+          "login": "Mukller"
+        },
+        {
+          "count": 7,
+          "login": "chrikrah"
+        },
+        {
+          "count": 7,
+          "login": "themavik"
+        },
+        {
+          "count": 3,
+          "login": "Samielakkad"
+        }
+      ]
+    },
+    {
+      "area": "tests",
+      "commits_90d": 63,
+      "commits_12mo": 97,
+      "commit_authors_12mo": 33,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 51,
+          "login": "Kludex"
+        },
+        {
+          "count": 2,
+          "login": "Rodrigo-Palma"
+        },
+        {
+          "count": 2,
+          "login": "lowgame"
+        },
+        {
+          "count": 1,
+          "login": "ATOM00blue"
+        },
+        {
+          "count": 1,
+          "login": "AmnonTamsut"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 32,
+          "login": "Kludex"
+        },
+        {
+          "count": 8,
+          "login": "Mukller"
+        },
+        {
+          "count": 7,
+          "login": "chrikrah"
+        },
+        {
+          "count": 7,
+          "login": "themavik"
+        },
+        {
+          "count": 3,
+          "login": "Samielakkad"
+        }
+      ]
+    }
+  ],
+  "sample": {
+    "window_start": "2025-11-03 21:40:38+05:30",
+    "window_end": "2026-11-03 21:40:38+05:30",
+    "total_prs": 511,
+    "bot_or_non_user_prs_dropped": 50,
+    "sampled_prs": 511,
+    "is_sampled": false,
+    "covered_from": "2025-11-05 08:41:41+05:30",
+    "covered_to": "2026-11-03 13:20:34+05:30",
+    "prs_with_incomplete_files": 0,
+    "prs_with_unknown_response_times": 1,
+    "per_month": {
+      "2025-11": {
+        "bots": 0,
+        "last": "2025-11-26T05:04:31+00:00",
+        "first": "2025-11-05T03:11:41+00:00",
+        "total": 4,
+        "sampled": 4
+      },
+      "2025-12": {
+        "bots": 1,
+        "last": "2025-12-29T17:38:17+00:00",
+        "first": "2025-12-13T00:56:15+00:00",
+        "total": 8,
+        "sampled": 8
+      },
+      "2026-01": {
+        "bots": 3,
+        "last": "2026-01-25T20:44:42+00:00",
+        "first": "2026-01-01T15:34:26+00:00",
+        "total": 19,
+        "sampled": 19
+      },
+      "2026-02": {
+        "bots": 3,
+        "last": "2026-02-28T20:22:22+00:00",
+        "first": "2026-02-01T14:53:31+00:00",
+        "total": 34,
+        "sampled": 34
+      },
+      "2026-03": {
+        "bots": 6,
+        "last": "2026-03-28T16:06:20+00:00",
+        "first": "2026-03-01T15:57:34+00:00",
+        "total": 29,
+        "sampled": 29
+      },
+      "2026-04": {
+        "bots": 9,
+        "last": "2026-04-27T02:45:04+00:00",
+        "first": "2026-04-01T19:05:51+00:00",
+        "total": 29,
+        "sampled": 29
+      },
+      "2026-05": {
+        "bots": 7,
+        "last": "2026-05-31T11:21:00+00:00",
+        "first": "2026-05-11T15:41:00+00:00",
+        "total": 37,
+        "sampled": 37
+      },
+      "2026-06": {
+        "bots": 4,
+        "last": "2026-06-30T23:16:02+00:00",
+        "first": "2026-06-01T13:45:19+00:00",
+        "total": 30,
+        "sampled": 30
+      },
+      "2026-07": {
+        "bots": 3,
+        "last": "2026-07-30T00:43:19+00:00",
+        "first": "2026-07-01T20:35:13+00:00",
+        "total": 24,
+        "sampled": 24
+      },
+      "2026-08": {
+        "bots": 4,
+        "last": "2026-08-30T12:44:35+00:00",
+        "first": "2026-08-01T07:47:07+00:00",
+        "total": 75,
+        "sampled": 75
+      },
+      "2026-09": {
+        "bots": 4,
+        "last": "2026-09-30T18:12:26+00:00",
+        "first": "2026-09-02T08:49:27+00:00",
+        "total": 86,
+        "sampled": 86
+      },
+      "2026-10": {
+        "bots": 4,
+        "last": "2026-10-31T06:08:16+00:00",
+        "first": "2026-10-01T10:35:25+00:00",
+        "total": 128,
+        "sampled": 128
+      },
+      "2026-11": {
+        "bots": 2,
+        "last": "2026-11-03T07:50:34+00:00",
+        "first": "2026-11-01T13:11:39+00:00",
+        "total": 8,
+        "sampled": 8
+      }
+    },
+    "note": "Every human-authored PR created in the window was kept, covering 2025-11-05 08:41:41+05:30 to 2026-11-03 13:20:34+05:30. 0 PRs whose changed files could not all be fetched are left out of every area figure, and 1 PRs with unknown response times are left out of the response figures."
+  },
+  "method": {
+    "area_rule": {
+      "depths": {},
+      "max_depth": 4,
+      "threshold_share": 0.25
+    },
+    "excluded_dirs": [
+      "vendor",
+      "third_party",
+      "node_modules",
+      "LICENSES",
+      "CHANGELOG"
+    ],
+    "sweep_commits_excluded": 0,
+    "parameters": {
+      "wilson_z": 1.959963985,
+      "min_sample": 10,
+      "window_days": 365,
+      "maturity_days": 30,
+      "stale_open_days": 90,
+      "sweep_min_areas": 5,
+      "no_response_days": 30,
+      "sweep_area_share": 0.5,
+      "monthly_sample_cap": 250,
+      "activity_recent_days": 90,
+      "author_concentration_threshold": 0.3,
+      "formal_review_coverage_threshold": 0.5
+    }
+  }
+}

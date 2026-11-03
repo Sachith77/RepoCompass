@@ -102,7 +102,8 @@ Store only what the metrics need; never store file contents.
 - Performance: time to first result and full analysis, plus API points used, for a small, medium and huge repo.
 
 ## Stack and limits
-Python 3.14, FastAPI, psycopg 3, httpx, Postgres, git CLI, scipy. pytest, ruff. Next.js for the web pages.
+Python 3.14, FastAPI, uvicorn (approved in M4 to serve the API), psycopg 3, httpx, Postgres, git CLI,
+scipy. pytest, ruff. Next.js for the web pages.
 No Celery, Redis, Kafka, LangChain, ORM, microservices, LLM or embeddings in v0.
 Public repos only, one shared read-only token, free tiers only. No API hosting in v0; "paste any URL" is
 local-only.

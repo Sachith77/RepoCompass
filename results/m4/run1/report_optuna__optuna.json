@@ -1,0 +1,1794 @@
+{
+  "repo": {
+    "requested_slug": "optuna/optuna",
+    "canonical_slug": "optuna/optuna",
+    "url": "https://github.com/optuna/optuna",
+    "default_branch": "master",
+    "snapshot_at": "2026-11-03T21:02:27+05:30"
+  },
+  "where_to_start": {
+    "heading": "Based on historical contribution patterns, these areas may be better starting points.",
+    "repo_rate": 0.46099290780141844,
+    "repo_mature_newcomer_prs": 141,
+    "formal_review_coverage": 0.758220502901354,
+    "lead_response_measure": "formal review",
+    "bands": [
+      {
+        "band": "no clear difference",
+        "areas": [
+          {
+            "area": "optuna/pruners",
+            "band": "no clear difference",
+            "merge_rate": 0.5384615384615384,
+            "mature_newcomer_prs": 13,
+            "merged_prs": 7,
+            "wilson_interval": [
+              0.2914379570986657,
+              0.7679393219446548
+            ],
+            "distinct_newcomer_authors": 9,
+            "top_author_pr_share": 0.38461538461538464,
+            "author_concentration_flag": true,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 17.919027777777778,
+            "formal_review_prs": 8,
+            "median_hours_first_human_response": 17.380555555555556,
+            "human_response_prs": 11,
+            "no_response_share": 0.38461538461538464,
+            "no_response_base_prs": 13,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6893,
+                "url": "https://github.com/optuna/optuna/pull/6893"
+              },
+              {
+                "number": 6873,
+                "url": "https://github.com/optuna/optuna/pull/6873"
+              },
+              {
+                "number": 6733,
+                "url": "https://github.com/optuna/optuna/pull/6733"
+              }
+            ]
+          },
+          {
+            "area": "optuna/samplers",
+            "band": "no clear difference",
+            "merge_rate": 0.55,
+            "mature_newcomer_prs": 20,
+            "merged_prs": 11,
+            "wilson_interval": [
+              0.34208534240776256,
+              0.7418021417806118
+            ],
+            "distinct_newcomer_authors": 17,
+            "top_author_pr_share": 0.1,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 19.92222222222222,
+            "formal_review_prs": 13,
+            "median_hours_first_human_response": 18.705,
+            "human_response_prs": 20,
+            "no_response_share": 0.05,
+            "no_response_base_prs": 20,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6698,
+                "url": "https://github.com/optuna/optuna/pull/6698"
+              },
+              {
+                "number": 6627,
+                "url": "https://github.com/optuna/optuna/pull/6627"
+              },
+              {
+                "number": 6628,
+                "url": "https://github.com/optuna/optuna/pull/6628"
+              }
+            ]
+          },
+          {
+            "area": "optuna/storages",
+            "band": "no clear difference",
+            "merge_rate": 0.4166666666666667,
+            "mature_newcomer_prs": 12,
+            "merged_prs": 5,
+            "wilson_interval": [
+              0.19326031362233714,
+              0.6804886875012386
+            ],
+            "distinct_newcomer_authors": 11,
+            "top_author_pr_share": 0.16666666666666666,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 19.38861111111111,
+            "formal_review_prs": 6,
+            "median_hours_first_human_response": 24.573194444444447,
+            "human_response_prs": 12,
+            "no_response_share": 0.16666666666666666,
+            "no_response_base_prs": 12,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6818,
+                "url": "https://github.com/optuna/optuna/pull/6818"
+              },
+              {
+                "number": 6609,
+                "url": "https://github.com/optuna/optuna/pull/6609"
+              },
+              {
+                "number": 6435,
+                "url": "https://github.com/optuna/optuna/pull/6435"
+              }
+            ]
+          },
+          {
+            "area": "optuna/trial",
+            "band": "no clear difference",
+            "merge_rate": 0.3333333333333333,
+            "mature_newcomer_prs": 15,
+            "merged_prs": 5,
+            "wilson_interval": [
+              0.15176324436857305,
+              0.5828645226687702
+            ],
+            "distinct_newcomer_authors": 11,
+            "top_author_pr_share": 0.26666666666666666,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 10.10138888888889,
+            "formal_review_prs": 5,
+            "median_hours_first_human_response": 32.79277777777778,
+            "human_response_prs": 11,
+            "no_response_share": 0.26666666666666666,
+            "no_response_base_prs": 15,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6747,
+                "url": "https://github.com/optuna/optuna/pull/6747"
+              },
+              {
+                "number": 6507,
+                "url": "https://github.com/optuna/optuna/pull/6507"
+              },
+              {
+                "number": 6494,
+                "url": "https://github.com/optuna/optuna/pull/6494"
+              }
+            ]
+          },
+          {
+            "area": "optuna/visualization",
+            "band": "no clear difference",
+            "merge_rate": 0.6,
+            "mature_newcomer_prs": 15,
+            "merged_prs": 9,
+            "wilson_interval": [
+              0.3574683011567763,
+              0.8017550386208177
+            ],
+            "distinct_newcomer_authors": 14,
+            "top_author_pr_share": 0.13333333333333333,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 46.98583333333333,
+            "formal_review_prs": 16,
+            "median_hours_first_human_response": 24.315,
+            "human_response_prs": 17,
+            "no_response_share": 0.13333333333333333,
+            "no_response_base_prs": 15,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6934,
+                "url": "https://github.com/optuna/optuna/pull/6934"
+              },
+              {
+                "number": 6925,
+                "url": "https://github.com/optuna/optuna/pull/6925"
+              },
+              {
+                "number": 6882,
+                "url": "https://github.com/optuna/optuna/pull/6882"
+              }
+            ]
+          },
+          {
+            "area": "tests/study_tests",
+            "band": "no clear difference",
+            "merge_rate": 0.3076923076923077,
+            "mature_newcomer_prs": 13,
+            "merged_prs": 4,
+            "wilson_interval": [
+              0.1268070365307339,
+              0.5763065682526639
+            ],
+            "distinct_newcomer_authors": 11,
+            "top_author_pr_share": 0.15384615384615385,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 15.930833333333334,
+            "formal_review_prs": 7,
+            "median_hours_first_human_response": 19.42861111111111,
+            "human_response_prs": 15,
+            "no_response_share": 0.3076923076923077,
+            "no_response_base_prs": 13,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6889,
+                "url": "https://github.com/optuna/optuna/pull/6889"
+              },
+              {
+                "number": 6842,
+                "url": "https://github.com/optuna/optuna/pull/6842"
+              },
+              {
+                "number": 6803,
+                "url": "https://github.com/optuna/optuna/pull/6803"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "band": "below repo average",
+        "areas": [
+          {
+            "area": "optuna/study",
+            "band": "below repo average",
+            "merge_rate": 0.14285714285714285,
+            "mature_newcomer_prs": 28,
+            "merged_prs": 4,
+            "wilson_interval": [
+              0.056990053185695,
+              0.3148980216826174
+            ],
+            "distinct_newcomer_authors": 20,
+            "top_author_pr_share": 0.10714285714285714,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 15.930833333333334,
+            "formal_review_prs": 9,
+            "median_hours_first_human_response": 19.321944444444444,
+            "human_response_prs": 22,
+            "no_response_share": 0.4642857142857143,
+            "no_response_base_prs": 28,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 6889,
+                "url": "https://github.com/optuna/optuna/pull/6889"
+              },
+              {
+                "number": 6842,
+                "url": "https://github.com/optuna/optuna/pull/6842"
+              },
+              {
+                "number": 6803,
+                "url": "https://github.com/optuna/optuna/pull/6803"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "not_enough_data": [
+      {
+        "area": ".github",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "docs",
+        "mature_newcomer_prs": 4
+      },
+      {
+        "area": "optuna",
+        "mature_newcomer_prs": 5
+      },
+      {
+        "area": "optuna/_gp",
+        "mature_newcomer_prs": 6
+      },
+      {
+        "area": "optuna/_hypervolume",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "optuna/artifacts",
+        "mature_newcomer_prs": 4
+      },
+      {
+        "area": "optuna/importance",
+        "mature_newcomer_prs": 9
+      },
+      {
+        "area": "optuna/integration",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "optuna/search_space",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "optuna/terminator",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "optuna/testing",
+        "mature_newcomer_prs": 2
+      },
+      {
+        "area": "tests",
+        "mature_newcomer_prs": 2
+      },
+      {
+        "area": "tests/artifacts_tests",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "tests/gp_tests",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "tests/hypervolume_tests",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "tests/importance_tests",
+        "mature_newcomer_prs": 2
+      },
+      {
+        "area": "tests/pruners_tests",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "tests/samplers_tests",
+        "mature_newcomer_prs": 8
+      },
+      {
+        "area": "tests/search_space_tests",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "tests/storages_tests",
+        "mature_newcomer_prs": 2
+      },
+      {
+        "area": "tests/terminator_tests",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "tests/trial_tests",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "tests/visualization_tests",
+        "mature_newcomer_prs": 4
+      },
+      {
+        "area": "tutorial",
+        "mature_newcomer_prs": 4
+      }
+    ]
+  },
+  "areas_map": [
+    {
+      "area": ".github",
+      "commits_90d": 11,
+      "commits_12mo": 32,
+      "commit_authors_12mo": 5,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 12,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "gen740"
+        },
+        {
+          "count": 2,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 1,
+          "login": "taran-dev4u"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 15,
+          "login": "y0z"
+        },
+        {
+          "count": 13,
+          "login": "not522"
+        },
+        {
+          "count": 8,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "sawa3030"
+        },
+        {
+          "count": 1,
+          "login": "gen740"
+        }
+      ]
+    },
+    {
+      "area": "docs",
+      "commits_90d": 10,
+      "commits_12mo": 47,
+      "commit_authors_12mo": 11,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 5,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 2,
+          "login": "bodapatisaikrishna"
+        },
+        {
+          "count": 2,
+          "login": "varundevr"
+        },
+        {
+          "count": 2,
+          "login": "y0z"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 12,
+          "login": "c-bata"
+        },
+        {
+          "count": 11,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 10,
+          "login": "y0z"
+        },
+        {
+          "count": 5,
+          "login": "not522"
+        },
+        {
+          "count": 4,
+          "login": "kAIto47802"
+        }
+      ]
+    },
+    {
+      "area": "optuna",
+      "commits_90d": 6,
+      "commits_12mo": 32,
+      "commit_authors_12mo": 17,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 5,
+          "login": "y0z"
+        },
+        {
+          "count": 3,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "edwiniac"
+        },
+        {
+          "count": 3,
+          "login": "yen-0"
+        },
+        {
+          "count": 2,
+          "login": "gen740"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 18,
+          "login": "c-bata"
+        },
+        {
+          "count": 10,
+          "login": "not522"
+        },
+        {
+          "count": 8,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "sawa3030"
+        },
+        {
+          "count": 1,
+          "login": "Alnusjaponica"
+        }
+      ]
+    },
+    {
+      "area": "optuna/_gp",
+      "commits_90d": 32,
+      "commits_12mo": 150,
+      "commit_authors_12mo": 14,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 8,
+          "login": "sawa3030"
+        },
+        {
+          "count": 6,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 2,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "y0z"
+        },
+        {
+          "count": 1,
+          "login": "Quant-Quasar"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 71,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 36,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 8,
+          "login": "not522"
+        },
+        {
+          "count": 8,
+          "login": "sawa3030"
+        },
+        {
+          "count": 6,
+          "login": "c-bata"
+        }
+      ]
+    },
+    {
+      "area": "optuna/_hypervolume",
+      "commits_90d": 0,
+      "commits_12mo": 0,
+      "commit_authors_12mo": 0,
+      "activity_band": "dormant",
+      "top_contributors": [],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "nabenabe0928"
+        }
+      ]
+    },
+    {
+      "area": "optuna/artifacts",
+      "commits_90d": 5,
+      "commits_12mo": 11,
+      "commit_authors_12mo": 7,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "CLCK0622"
+        },
+        {
+          "count": 1,
+          "login": "EmanueleCornaggia"
+        },
+        {
+          "count": 1,
+          "login": "INo-xious"
+        },
+        {
+          "count": 1,
+          "login": "RinZ27"
+        },
+        {
+          "count": 1,
+          "login": "maupatel"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 3,
+          "login": "not522"
+        },
+        {
+          "count": 3,
+          "login": "yen-0"
+        },
+        {
+          "count": 2,
+          "login": "gen740"
+        }
+      ]
+    },
+    {
+      "area": "optuna/importance",
+      "commits_90d": 1,
+      "commits_12mo": 167,
+      "commit_authors_12mo": 9,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 9,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 2,
+          "login": "saivedant169"
+        },
+        {
+          "count": 1,
+          "login": "Aliipou"
+        },
+        {
+          "count": 1,
+          "login": "VihaanMotwani"
+        },
+        {
+          "count": 1,
+          "login": "c-bata"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 39,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 31,
+          "login": "y0z"
+        },
+        {
+          "count": 10,
+          "login": "c-bata"
+        },
+        {
+          "count": 7,
+          "login": "sawa3030"
+        },
+        {
+          "count": 2,
+          "login": "not522"
+        }
+      ]
+    },
+    {
+      "area": "optuna/integration",
+      "commits_90d": 0,
+      "commits_12mo": 9,
+      "commit_authors_12mo": 5,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "edwiniac"
+        },
+        {
+          "count": 1,
+          "login": "nabenabe0928"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "gen740"
+        },
+        {
+          "count": 3,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "c-bata"
+        },
+        {
+          "count": 2,
+          "login": "not522"
+        }
+      ]
+    },
+    {
+      "area": "optuna/pruners",
+      "commits_90d": 3,
+      "commits_12mo": 31,
+      "commit_authors_12mo": 16,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "yasumorishima"
+        },
+        {
+          "count": 2,
+          "login": "nightcityblade"
+        },
+        {
+          "count": 2,
+          "login": "saivedant169"
+        },
+        {
+          "count": 1,
+          "login": "825pranav"
+        },
+        {
+          "count": 1,
+          "login": "Ganesh1729-ui"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 13,
+          "login": "not522"
+        },
+        {
+          "count": 7,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "gen740"
+        }
+      ]
+    },
+    {
+      "area": "optuna/samplers",
+      "commits_90d": 43,
+      "commits_12mo": 297,
+      "commit_authors_12mo": 34,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 20,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 11,
+          "login": "saivedant169"
+        },
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 6,
+          "login": "not522"
+        },
+        {
+          "count": 4,
+          "login": "Aliipou"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 51,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 46,
+          "login": "y0z"
+        },
+        {
+          "count": 45,
+          "login": "not522"
+        },
+        {
+          "count": 38,
+          "login": "c-bata"
+        },
+        {
+          "count": 14,
+          "login": "kAIto47802"
+        }
+      ]
+    },
+    {
+      "area": "optuna/search_space",
+      "commits_90d": 0,
+      "commits_12mo": 2,
+      "commit_authors_12mo": 2,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "Aliipou"
+        },
+        {
+          "count": 1,
+          "login": "dhruvildarji"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "c-bata"
+        }
+      ]
+    },
+    {
+      "area": "optuna/storages",
+      "commits_90d": 4,
+      "commits_12mo": 42,
+      "commit_authors_12mo": 12,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 4,
+          "login": "c-bata"
+        },
+        {
+          "count": 2,
+          "login": "edwiniac"
+        },
+        {
+          "count": 2,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 2,
+          "login": "sawa3030"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 15,
+          "login": "not522"
+        },
+        {
+          "count": 12,
+          "login": "c-bata"
+        },
+        {
+          "count": 7,
+          "login": "y0z"
+        },
+        {
+          "count": 3,
+          "login": "sawa3030"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        }
+      ]
+    },
+    {
+      "area": "optuna/study",
+      "commits_90d": 5,
+      "commits_12mo": 38,
+      "commit_authors_12mo": 16,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "Sip4818"
+        },
+        {
+          "count": 2,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "t7r0n"
+        },
+        {
+          "count": 1,
+          "login": "AshutoshDevpura"
+        },
+        {
+          "count": 1,
+          "login": "EmanueleCornaggia"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 14,
+          "login": "c-bata"
+        },
+        {
+          "count": 7,
+          "login": "not522"
+        },
+        {
+          "count": 7,
+          "login": "y0z"
+        },
+        {
+          "count": 5,
+          "login": "gen740"
+        },
+        {
+          "count": 5,
+          "login": "yen-0"
+        }
+      ]
+    },
+    {
+      "area": "optuna/terminator",
+      "commits_90d": 0,
+      "commits_12mo": 12,
+      "commit_authors_12mo": 5,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 5,
+          "login": "Sip4818"
+        },
+        {
+          "count": 2,
+          "login": "t7r0n"
+        },
+        {
+          "count": 1,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "sawa3030"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "not522"
+        },
+        {
+          "count": 1,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    },
+    {
+      "area": "optuna/testing",
+      "commits_90d": 3,
+      "commits_12mo": 36,
+      "commit_authors_12mo": 11,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 7,
+          "login": "t7r0n"
+        },
+        {
+          "count": 2,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "edwiniac"
+        },
+        {
+          "count": 1,
+          "login": "not522"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 13,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "not522"
+        },
+        {
+          "count": 3,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 2,
+          "login": "sawa3030"
+        }
+      ]
+    },
+    {
+      "area": "optuna/trial",
+      "commits_90d": 3,
+      "commits_12mo": 29,
+      "commit_authors_12mo": 11,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "sateeshkumarb"
+        },
+        {
+          "count": 1,
+          "login": "Bhavyag1337"
+        },
+        {
+          "count": 1,
+          "login": "VedantMadane"
+        },
+        {
+          "count": 1,
+          "login": "buddy0452004"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 9,
+          "login": "c-bata"
+        },
+        {
+          "count": 8,
+          "login": "y0z"
+        },
+        {
+          "count": 4,
+          "login": "not522"
+        }
+      ]
+    },
+    {
+      "area": "optuna/visualization",
+      "commits_90d": 7,
+      "commits_12mo": 82,
+      "commit_authors_12mo": 25,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 13,
+          "login": "saivedant169"
+        },
+        {
+          "count": 10,
+          "login": "nightcityblade"
+        },
+        {
+          "count": 4,
+          "login": "c-bata"
+        },
+        {
+          "count": 2,
+          "login": "edwiniac"
+        },
+        {
+          "count": 2,
+          "login": "satyarth7srivastava"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 39,
+          "login": "not522"
+        },
+        {
+          "count": 17,
+          "login": "y0z"
+        },
+        {
+          "count": 10,
+          "login": "c-bata"
+        },
+        {
+          "count": 10,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 5,
+          "login": "gen740"
+        }
+      ]
+    },
+    {
+      "area": "tests",
+      "commits_90d": 2,
+      "commits_12mo": 17,
+      "commit_authors_12mo": 10,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "t7r0n"
+        },
+        {
+          "count": 2,
+          "login": "y0z"
+        },
+        {
+          "count": 1,
+          "login": "acabellom"
+        },
+        {
+          "count": 1,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "kAIto47802"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "sawa3030"
+        }
+      ]
+    },
+    {
+      "area": "tests/artifacts_tests",
+      "commits_90d": 2,
+      "commits_12mo": 5,
+      "commit_authors_12mo": 5,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "EmanueleCornaggia"
+        },
+        {
+          "count": 1,
+          "login": "INo-xious"
+        },
+        {
+          "count": 1,
+          "login": "RinZ27"
+        },
+        {
+          "count": 1,
+          "login": "yen-0"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 5,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "not522"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    },
+    {
+      "area": "tests/gp_tests",
+      "commits_90d": 12,
+      "commits_12mo": 31,
+      "commit_authors_12mo": 6,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 2,
+          "login": "sawa3030"
+        },
+        {
+          "count": 1,
+          "login": "not522"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 29,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 7,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 4,
+          "login": "sawa3030"
+        },
+        {
+          "count": 1,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    },
+    {
+      "area": "tests/hypervolume_tests",
+      "commits_90d": 0,
+      "commits_12mo": 0,
+      "commit_authors_12mo": 0,
+      "activity_band": "dormant",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "tests/importance_tests",
+      "commits_90d": 0,
+      "commits_12mo": 55,
+      "commit_authors_12mo": 6,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 5,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 2,
+          "login": "y0z"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 16,
+          "login": "y0z"
+        },
+        {
+          "count": 13,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 11,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 9,
+          "login": "c-bata"
+        },
+        {
+          "count": 5,
+          "login": "sawa3030"
+        }
+      ]
+    },
+    {
+      "area": "tests/pruners_tests",
+      "commits_90d": 5,
+      "commits_12mo": 8,
+      "commit_authors_12mo": 4,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "825pranav"
+        },
+        {
+          "count": 1,
+          "login": "Banjiola"
+        },
+        {
+          "count": 1,
+          "login": "Ganesh1729-ui"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    },
+    {
+      "area": "tests/samplers_tests",
+      "commits_90d": 19,
+      "commits_12mo": 112,
+      "commit_authors_12mo": 15,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 7,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 5,
+          "login": "not522"
+        },
+        {
+          "count": 4,
+          "login": "y0z"
+        },
+        {
+          "count": 3,
+          "login": "yen-0"
+        },
+        {
+          "count": 2,
+          "login": "c-bata"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 23,
+          "login": "c-bata"
+        },
+        {
+          "count": 20,
+          "login": "y0z"
+        },
+        {
+          "count": 19,
+          "login": "not522"
+        },
+        {
+          "count": 18,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 11,
+          "login": "gen740"
+        }
+      ]
+    },
+    {
+      "area": "tests/search_space_tests",
+      "commits_90d": 0,
+      "commits_12mo": 1,
+      "commit_authors_12mo": 1,
+      "activity_band": "steady",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "tests/storages_tests",
+      "commits_90d": 9,
+      "commits_12mo": 58,
+      "commit_authors_12mo": 6,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "kAIto47802"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        },
+        {
+          "count": 1,
+          "login": "gen740"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 7,
+          "login": "sawa3030"
+        },
+        {
+          "count": 4,
+          "login": "not522"
+        },
+        {
+          "count": 3,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "y0z"
+        },
+        {
+          "count": 2,
+          "login": "fusawa-yugo"
+        }
+      ]
+    },
+    {
+      "area": "tests/study_tests",
+      "commits_90d": 5,
+      "commits_12mo": 18,
+      "commit_authors_12mo": 11,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "EmanueleCornaggia"
+        },
+        {
+          "count": 1,
+          "login": "aalquwayfili"
+        },
+        {
+          "count": 1,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "ishitta-iyer"
+        },
+        {
+          "count": 1,
+          "login": "nepersoned"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "gen740"
+        },
+        {
+          "count": 3,
+          "login": "not522"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        },
+        {
+          "count": 1,
+          "login": "nabenabe0928"
+        }
+      ]
+    },
+    {
+      "area": "tests/terminator_tests",
+      "commits_90d": 0,
+      "commits_12mo": 2,
+      "commit_authors_12mo": 1,
+      "activity_band": "steady",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "tests/trial_tests",
+      "commits_90d": 1,
+      "commits_12mo": 11,
+      "commit_authors_12mo": 4,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "not522"
+        },
+        {
+          "count": 1,
+          "login": "t7r0n"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "c-bata"
+        },
+        {
+          "count": 1,
+          "login": "not522"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    },
+    {
+      "area": "tests/visualization_tests",
+      "commits_90d": 9,
+      "commits_12mo": 34,
+      "commit_authors_12mo": 13,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "c-bata"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        },
+        {
+          "count": 1,
+          "login": "KRMed"
+        },
+        {
+          "count": 1,
+          "login": "Sip4818"
+        },
+        {
+          "count": 1,
+          "login": "jiayusu"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 4,
+          "login": "not522"
+        },
+        {
+          "count": 4,
+          "login": "y0z"
+        },
+        {
+          "count": 3,
+          "login": "gen740"
+        },
+        {
+          "count": 2,
+          "login": "yen-0"
+        }
+      ]
+    },
+    {
+      "area": "tutorial",
+      "commits_90d": 0,
+      "commits_12mo": 21,
+      "commit_authors_12mo": 12,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "nabenabe0928"
+        },
+        {
+          "count": 1,
+          "login": "RektPunk"
+        },
+        {
+          "count": 1,
+          "login": "Ryo2611"
+        },
+        {
+          "count": 1,
+          "login": "acabellom"
+        },
+        {
+          "count": 1,
+          "login": "maheer14"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 6,
+          "login": "c-bata"
+        },
+        {
+          "count": 3,
+          "login": "gen740"
+        },
+        {
+          "count": 1,
+          "login": "not522"
+        },
+        {
+          "count": 1,
+          "login": "y0z"
+        }
+      ]
+    }
+  ],
+  "sample": {
+    "window_start": "2025-11-03T21:02:27+05:30",
+    "window_end": "2026-11-03T21:02:27+05:30",
+    "total_prs": 517,
+    "bot_or_non_user_prs_dropped": 9,
+    "sampled_prs": 517,
+    "is_sampled": false,
+    "covered_from": "2025-11-05T02:31:55+05:30",
+    "covered_to": "2026-11-02T22:23:33+05:30",
+    "per_month": {
+      "2025-11": {
+        "bots": 0,
+        "last": "2025-11-30T09:25:00+00:00",
+        "first": "2025-11-04T21:01:55+00:00",
+        "total": 34,
+        "sampled": 34
+      },
+      "2025-12": {
+        "bots": 0,
+        "last": "2025-12-29T12:36:04+00:00",
+        "first": "2025-12-01T03:59:01+00:00",
+        "total": 36,
+        "sampled": 36
+      },
+      "2026-01": {
+        "bots": 0,
+        "last": "2026-01-27T14:58:13+00:00",
+        "first": "2026-01-09T17:02:54+00:00",
+        "total": 15,
+        "sampled": 15
+      },
+      "2026-02": {
+        "bots": 0,
+        "last": "2026-02-27T17:44:18+00:00",
+        "first": "2026-02-04T01:30:52+00:00",
+        "total": 55,
+        "sampled": 55
+      },
+      "2026-03": {
+        "bots": 0,
+        "last": "2026-03-31T14:57:47+00:00",
+        "first": "2026-03-01T04:50:44+00:00",
+        "total": 116,
+        "sampled": 116
+      },
+      "2026-04": {
+        "bots": 0,
+        "last": "2026-04-30T16:27:57+00:00",
+        "first": "2026-04-01T02:04:16+00:00",
+        "total": 28,
+        "sampled": 28
+      },
+      "2026-05": {
+        "bots": 0,
+        "last": "2026-05-31T13:18:32+00:00",
+        "first": "2026-05-01T02:45:11+00:00",
+        "total": 43,
+        "sampled": 43
+      },
+      "2026-06": {
+        "bots": 0,
+        "last": "2026-06-29T02:18:46+00:00",
+        "first": "2026-06-01T06:40:23+00:00",
+        "total": 25,
+        "sampled": 25
+      },
+      "2026-07": {
+        "bots": 0,
+        "last": "2026-07-31T16:39:59+00:00",
+        "first": "2026-07-01T05:49:17+00:00",
+        "total": 44,
+        "sampled": 44
+      },
+      "2026-08": {
+        "bots": 0,
+        "last": "2026-08-30T18:02:14+00:00",
+        "first": "2026-08-03T05:47:46+00:00",
+        "total": 42,
+        "sampled": 42
+      },
+      "2026-09": {
+        "bots": 3,
+        "last": "2026-09-30T06:32:04+00:00",
+        "first": "2026-09-03T19:45:22+00:00",
+        "total": 29,
+        "sampled": 29
+      },
+      "2026-10": {
+        "bots": 6,
+        "last": "2026-10-31T22:06:54+00:00",
+        "first": "2026-10-01T04:08:48+00:00",
+        "total": 46,
+        "sampled": 46
+      },
+      "2026-11": {
+        "bots": 0,
+        "last": "2026-11-02T16:53:33+00:00",
+        "first": "2026-11-01T18:04:44+00:00",
+        "total": 4,
+        "sampled": 4
+      }
+    },
+    "note": "Every human-authored PR created in the window was included."
+  },
+  "method": {
+    "area_rule": {
+      "depths": {
+        "tests": 2,
+        "optuna": 2
+      },
+      "max_depth": 4,
+      "threshold_share": 0.25
+    },
+    "excluded_dirs": [
+      "vendor",
+      "third_party",
+      "node_modules",
+      "LICENSES",
+      "CHANGELOG"
+    ],
+    "sweep_commits_excluded": 0,
+    "maturity_days": 30,
+    "min_sample": 10,
+    "stale_open_days": 90,
+    "no_response_days": 30,
+    "author_concentration_threshold": 0.3
+  }
+}

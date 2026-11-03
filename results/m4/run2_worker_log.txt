@@ -1,0 +1,8 @@
+﻿# run 2 (final code), worker log copied verbatim; run started 2026-11-03 about 21:40 +05:30 against local PostgreSQL 18 and the live GitHub API; all values measured. The run was stopped by the machine running low on memory while kubernetes/kubernetes (job 11) was about 30% through its PR pages; its checkpoint is kept.
+worker started; Ctrl+C to stop
+job 9: encode/starlette started
+job 9: Kludex/starlette done in 126.1 s; 37 requests, 49 points
+job 10: optuna/optuna started
+job 10: optuna/optuna done in 90.3 s; 20 requests, 31 points
+job 11: kubernetes/kubernetes started
+

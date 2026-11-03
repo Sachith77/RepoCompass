@@ -14,8 +14,9 @@ author has since merged, so adding new rows can invalidate old ones; and the rep
 is compared against moves whenever any of those change. An incremental path would have to recompute
 most of the table anyway, while carrying the risk of a half-updated snapshot that reads as valid.
 
-Trade-off: re-analysing kubernetes costs the full 16.4 minutes. Acceptable, because it is a background
-job and nothing waits on it.
+Trade-off: re-analysing kubernetes costs the full run: 16.4 minutes in Phase 0 with a flat cap, 34.7
+minutes measured in M4 with monthly sampling (`results/m4/run1/full_runs.txt`). Acceptable, because
+it is a background job and nothing waits on it.
 
 Would revisit if: the nightly-refresh stretch item is approved and runs across many repositories, where
 the aggregate cost would start to matter — and even then the cheaper fix is to refresh fewer

@@ -76,7 +76,16 @@ def test_missing_config_exits_with_code_2(
 
 @pytest.mark.parametrize(
     ("args", "code"),
-    [(["analyze"], 2), (["analyze", "a/b", "c/d"], 2), (["resume"], 2), (["resume", "abc"], 2)],
+    [
+        (["analyze"], 2),
+        (["analyze", "a/b", "c/d"], 2),
+        (["resume"], 2),
+        (["resume", "abc"], 2),
+        (["worker", "--forever"], 2),
+        (["serve", "--port"], 2),
+        (["serve", "--port", "eighty"], 2),
+        (["serve", "--host", "0.0.0.0"], 2),
+    ],
 )
 def test_analyze_and_resume_check_their_arguments(
     args: list[str], code: int, capsys: pytest.CaptureFixture[str]
@@ -93,6 +102,15 @@ def test_analyze_rejects_a_bad_slug_before_creating_a_job(
     out = capsys.readouterr()
     assert "owner/repo" in out.err
     assert "could not connect" not in out.err
+    _assert_no_secret(out.out + out.err)
+
+
+def test_worker_without_a_database_fails_cleanly(
+    fake_env: None, capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert main(["worker", "--once"]) == 1
+    out = capsys.readouterr()
+    assert "worker stopped" in out.err
     _assert_no_secret(out.out + out.err)
 
 

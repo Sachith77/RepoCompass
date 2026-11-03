@@ -1,0 +1,2497 @@
+{
+  "repo": {
+    "requested_slug": "kubernetes/kubernetes",
+    "canonical_slug": "kubernetes/kubernetes",
+    "url": "https://github.com/kubernetes/kubernetes",
+    "default_branch": "master",
+    "snapshot_at": "2026-11-03T21:04:05+05:30"
+  },
+  "where_to_start": {
+    "heading": "Based on historical contribution patterns, these areas may be better starting points.",
+    "repo_rate": 0.33646616541353386,
+    "repo_mature_newcomer_prs": 532,
+    "formal_review_coverage": 0.5691558441558442,
+    "lead_response_measure": "formal review",
+    "bands": [
+      {
+        "band": "above repo average",
+        "areas": [
+          {
+            "area": "staging/src/k8s.io/apiserver",
+            "band": "above repo average",
+            "merge_rate": 0.5454545454545454,
+            "mature_newcomer_prs": 22,
+            "merged_prs": 12,
+            "wilson_interval": [
+              0.3465979531662233,
+              0.7307970582275931
+            ],
+            "distinct_newcomer_authors": 20,
+            "top_author_pr_share": 0.09090909090909091,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 8,
+            "median_hours_first_formal_review": 79.22597222222223,
+            "formal_review_prs": 22,
+            "median_hours_first_human_response": 20.00111111111111,
+            "human_response_prs": 35,
+            "no_response_share": 0.13636363636363635,
+            "no_response_base_prs": 22,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 141449,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141449"
+              },
+              {
+                "number": 141586,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141586"
+              },
+              {
+                "number": 138564,
+                "url": "https://github.com/kubernetes/kubernetes/pull/138564"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "band": "no clear difference",
+        "areas": [
+          {
+            "area": "cmd",
+            "band": "no clear difference",
+            "merge_rate": 0.5333333333333333,
+            "mature_newcomer_prs": 15,
+            "merged_prs": 8,
+            "wilson_interval": [
+              0.30116980021030193,
+              0.7519046463822293
+            ],
+            "distinct_newcomer_authors": 15,
+            "top_author_pr_share": 0.06666666666666667,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 1,
+            "median_hours_first_formal_review": 2.8452777777777776,
+            "formal_review_prs": 11,
+            "median_hours_first_human_response": 3.8627777777777776,
+            "human_response_prs": 17,
+            "no_response_share": 0.2,
+            "no_response_base_prs": 15,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 143557,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143557"
+              },
+              {
+                "number": 141535,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141535"
+              },
+              {
+                "number": 139842,
+                "url": "https://github.com/kubernetes/kubernetes/pull/139842"
+              }
+            ]
+          },
+          {
+            "area": "hack",
+            "band": "no clear difference",
+            "merge_rate": 0.46153846153846156,
+            "mature_newcomer_prs": 13,
+            "merged_prs": 6,
+            "wilson_interval": [
+              0.2320606780553453,
+              0.7085620429013344
+            ],
+            "distinct_newcomer_authors": 12,
+            "top_author_pr_share": 0.15384615384615385,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 2,
+            "median_hours_first_formal_review": 91.14527777777778,
+            "formal_review_prs": 9,
+            "median_hours_first_human_response": 12.795555555555556,
+            "human_response_prs": 13,
+            "no_response_share": 0.3076923076923077,
+            "no_response_base_prs": 13,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 141553,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141553"
+              },
+              {
+                "number": 141536,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141536"
+              },
+              {
+                "number": 138593,
+                "url": "https://github.com/kubernetes/kubernetes/pull/138593"
+              }
+            ]
+          },
+          {
+            "area": "pkg",
+            "band": "no clear difference",
+            "merge_rate": 0.3059360730593607,
+            "mature_newcomer_prs": 219,
+            "merged_prs": 67,
+            "wilson_interval": [
+              0.24868766486708455,
+              0.36987523429385566
+            ],
+            "distinct_newcomer_authors": 177,
+            "top_author_pr_share": 0.0319634703196347,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 61,
+            "median_hours_first_formal_review": 70.64138888888888,
+            "formal_review_prs": 147,
+            "median_hours_first_human_response": 22.42,
+            "human_response_prs": 283,
+            "no_response_share": 0.2557077625570776,
+            "no_response_base_prs": 219,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 142385,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142385"
+              },
+              {
+                "number": 141459,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141459"
+              },
+              {
+                "number": 142292,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142292"
+              }
+            ]
+          },
+          {
+            "area": "staging/src/k8s.io/api",
+            "band": "no clear difference",
+            "merge_rate": 0.4782608695652174,
+            "mature_newcomer_prs": 23,
+            "merged_prs": 11,
+            "wilson_interval": [
+              0.29237157412970227,
+              0.6703726266749928
+            ],
+            "distinct_newcomer_authors": 21,
+            "top_author_pr_share": 0.08695652173913043,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 4,
+            "median_hours_first_formal_review": 154.22805555555556,
+            "formal_review_prs": 17,
+            "median_hours_first_human_response": 0.8161111111111111,
+            "human_response_prs": 31,
+            "no_response_share": 0.043478260869565216,
+            "no_response_base_prs": 23,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 139206,
+                "url": "https://github.com/kubernetes/kubernetes/pull/139206"
+              },
+              {
+                "number": 142541,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142541"
+              },
+              {
+                "number": 141677,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141677"
+              }
+            ]
+          },
+          {
+            "area": "staging/src/k8s.io/client-go",
+            "band": "no clear difference",
+            "merge_rate": 0.3333333333333333,
+            "mature_newcomer_prs": 21,
+            "merged_prs": 7,
+            "wilson_interval": [
+              0.17194752602322766,
+              0.5462654803055063
+            ],
+            "distinct_newcomer_authors": 18,
+            "top_author_pr_share": 0.09523809523809523,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 10,
+            "median_hours_first_formal_review": 39.678333333333335,
+            "formal_review_prs": 17,
+            "median_hours_first_human_response": 15.564166666666667,
+            "human_response_prs": 29,
+            "no_response_share": 0.19047619047619047,
+            "no_response_base_prs": 21,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 142307,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142307"
+              },
+              {
+                "number": 140966,
+                "url": "https://github.com/kubernetes/kubernetes/pull/140966"
+              },
+              {
+                "number": 135735,
+                "url": "https://github.com/kubernetes/kubernetes/pull/135735"
+              }
+            ]
+          },
+          {
+            "area": "staging/src/k8s.io/dynamic-resource-allocation",
+            "band": "no clear difference",
+            "merge_rate": 0.5833333333333334,
+            "mature_newcomer_prs": 12,
+            "merged_prs": 7,
+            "wilson_interval": [
+              0.3195113124987614,
+              0.8067396863776628
+            ],
+            "distinct_newcomer_authors": 10,
+            "top_author_pr_share": 0.16666666666666666,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 0,
+            "median_hours_first_formal_review": 19.01291666666667,
+            "formal_review_prs": 12,
+            "median_hours_first_human_response": 9.242777777777778,
+            "human_response_prs": 13,
+            "no_response_share": 0.0,
+            "no_response_base_prs": 12,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 143365,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143365"
+              },
+              {
+                "number": 141648,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141648"
+              },
+              {
+                "number": 141479,
+                "url": "https://github.com/kubernetes/kubernetes/pull/141479"
+              }
+            ]
+          },
+          {
+            "area": "staging/src/k8s.io/kubectl",
+            "band": "no clear difference",
+            "merge_rate": 0.3958333333333333,
+            "mature_newcomer_prs": 48,
+            "merged_prs": 19,
+            "wilson_interval": [
+              0.2702082785801977,
+              0.536895915106952
+            ],
+            "distinct_newcomer_authors": 41,
+            "top_author_pr_share": 0.041666666666666664,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 6,
+            "median_hours_first_formal_review": 122.01138888888889,
+            "formal_review_prs": 29,
+            "median_hours_first_human_response": 40.399166666666666,
+            "human_response_prs": 61,
+            "no_response_share": 0.22916666666666666,
+            "no_response_base_prs": 48,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 143698,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143698"
+              },
+              {
+                "number": 143675,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143675"
+              },
+              {
+                "number": 143381,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143381"
+              }
+            ]
+          },
+          {
+            "area": "test",
+            "band": "no clear difference",
+            "merge_rate": 0.3870967741935484,
+            "mature_newcomer_prs": 62,
+            "merged_prs": 24,
+            "wilson_interval": [
+              0.275846451647929,
+              0.5115215646388487
+            ],
+            "distinct_newcomer_authors": 56,
+            "top_author_pr_share": 0.04838709677419355,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 8,
+            "median_hours_first_formal_review": 40.92777777777778,
+            "formal_review_prs": 40,
+            "median_hours_first_human_response": 10.151666666666667,
+            "human_response_prs": 75,
+            "no_response_share": 0.1774193548387097,
+            "no_response_base_prs": 62,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 138618,
+                "url": "https://github.com/kubernetes/kubernetes/pull/138618"
+              },
+              {
+                "number": 143444,
+                "url": "https://github.com/kubernetes/kubernetes/pull/143444"
+              },
+              {
+                "number": 142558,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142558"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "band": "below repo average",
+        "areas": [
+          {
+            "area": "staging/src/k8s.io/apimachinery",
+            "band": "below repo average",
+            "merge_rate": 0.09090909090909091,
+            "mature_newcomer_prs": 22,
+            "merged_prs": 2,
+            "wilson_interval": [
+              0.02529542898419207,
+              0.2781494684714599
+            ],
+            "distinct_newcomer_authors": 19,
+            "top_author_pr_share": 0.13636363636363635,
+            "author_concentration_flag": false,
+            "stale_open_newcomer_prs": 5,
+            "median_hours_first_formal_review": 82.81805555555556,
+            "formal_review_prs": 10,
+            "median_hours_first_human_response": 109.71666666666667,
+            "human_response_prs": 25,
+            "no_response_share": 0.2727272727272727,
+            "no_response_base_prs": 22,
+            "example_merged_newcomer_prs": [
+              {
+                "number": 142575,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142575"
+              },
+              {
+                "number": 142527,
+                "url": "https://github.com/kubernetes/kubernetes/pull/142527"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "not_enough_data": [
+      {
+        "area": ".github",
+        "mature_newcomer_prs": 4
+      },
+      {
+        "area": "api",
+        "mature_newcomer_prs": 6
+      },
+      {
+        "area": "build",
+        "mature_newcomer_prs": 4
+      },
+      {
+        "area": "cluster",
+        "mature_newcomer_prs": 9
+      },
+      {
+        "area": "docs",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "logo",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "plugin",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/publishing",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/apiextensions-api",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/apiextensions-apiserver",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "staging/src/k8s.io/cli-runtime",
+        "mature_newcomer_prs": 3
+      },
+      {
+        "area": "staging/src/k8s.io/cloud-provider",
+        "mature_newcomer_prs": 5
+      },
+      {
+        "area": "staging/src/k8s.io/cluster-bootstrap",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/code-generator",
+        "mature_newcomer_prs": 9
+      },
+      {
+        "area": "staging/src/k8s.io/component-base",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/component-helpers",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/controller-manager",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/cri-api",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/cri-client",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/cri-streaming",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/csi-translation-lib",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/endpointslice",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/externaljwt",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/kms",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/ktesting",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/kube-aggregator",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/kube-controller-manager",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/kube-proxy",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/kube-scheduler",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/kubelet",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/metrics",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/mount-utils",
+        "mature_newcomer_prs": 2
+      },
+      {
+        "area": "staging/src/k8s.io/pod-security-admission",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/sample-apiserver",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/sample-cli-plugin",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/src/k8s.io/sample-controller",
+        "mature_newcomer_prs": 1
+      },
+      {
+        "area": "staging/src/k8s.io/streaming",
+        "mature_newcomer_prs": 0
+      },
+      {
+        "area": "staging/test",
+        "mature_newcomer_prs": 0
+      }
+    ]
+  },
+  "areas_map": [
+    {
+      "area": ".github",
+      "commits_90d": 2,
+      "commits_12mo": 3,
+      "commit_authors_12mo": 3,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "pohly"
+        },
+        {
+          "count": 1,
+          "login": "michelle192837"
+        }
+      ]
+    },
+    {
+      "area": "api",
+      "commits_90d": 55,
+      "commits_12mo": 194,
+      "commit_authors_12mo": 102,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "Jefftree"
+        },
+        {
+          "count": 2,
+          "login": "qflen"
+        },
+        {
+          "count": 1,
+          "login": "JoelSpeed"
+        },
+        {
+          "count": 1,
+          "login": "Kartavyasonar"
+        },
+        {
+          "count": 1,
+          "login": "bitoku"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 7,
+          "login": "liggitt"
+        },
+        {
+          "count": 5,
+          "login": "jpbetz"
+        },
+        {
+          "count": 2,
+          "login": "lmktfy"
+        },
+        {
+          "count": 2,
+          "login": "thockin"
+        },
+        {
+          "count": 2,
+          "login": "yongruilin"
+        }
+      ]
+    },
+    {
+      "area": "build",
+      "commits_90d": 13,
+      "commits_12mo": 68,
+      "commit_authors_12mo": 29,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 11,
+          "login": "cpanato"
+        },
+        {
+          "count": 3,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "addyess"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 7,
+          "login": "xmudrii"
+        },
+        {
+          "count": 5,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 5,
+          "login": "Verolop"
+        },
+        {
+          "count": 4,
+          "login": "saschagrunert"
+        },
+        {
+          "count": 2,
+          "login": "upodroid"
+        }
+      ]
+    },
+    {
+      "area": "cluster",
+      "commits_90d": 20,
+      "commits_12mo": 70,
+      "commit_authors_12mo": 30,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 4,
+          "login": "humblec"
+        },
+        {
+          "count": 4,
+          "login": "yashsingh74"
+        },
+        {
+          "count": 2,
+          "login": "bzsuni"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 2,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 9,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 9,
+          "login": "neolit123"
+        },
+        {
+          "count": 8,
+          "login": "liggitt"
+        },
+        {
+          "count": 7,
+          "login": "ahrtr"
+        },
+        {
+          "count": 3,
+          "login": "BenTheElder"
+        }
+      ]
+    },
+    {
+      "area": "cmd",
+      "commits_90d": 78,
+      "commits_12mo": 291,
+      "commit_authors_12mo": 111,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 18,
+          "login": "neolit123"
+        },
+        {
+          "count": 9,
+          "login": "ahrtr"
+        },
+        {
+          "count": 6,
+          "login": "HirazawaUi"
+        },
+        {
+          "count": 5,
+          "login": "SEPURI-SAI-KRISHNA"
+        },
+        {
+          "count": 5,
+          "login": "carlory"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 76,
+          "login": "neolit123"
+        },
+        {
+          "count": 52,
+          "login": "HirazawaUi"
+        },
+        {
+          "count": 16,
+          "login": "Verolop"
+        },
+        {
+          "count": 11,
+          "login": "liggitt"
+        },
+        {
+          "count": 11,
+          "login": "palnabarun"
+        }
+      ]
+    },
+    {
+      "area": "docs",
+      "commits_90d": 1,
+      "commits_12mo": 1,
+      "commit_authors_12mo": 1,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "allexistence"
+        }
+      ]
+    },
+    {
+      "area": "hack",
+      "commits_90d": 99,
+      "commits_12mo": 385,
+      "commit_authors_12mo": 112,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 9,
+          "login": "pohly"
+        },
+        {
+          "count": 7,
+          "login": "dims"
+        },
+        {
+          "count": 5,
+          "login": "AkihiroSuda"
+        },
+        {
+          "count": 5,
+          "login": "richabanker"
+        },
+        {
+          "count": 5,
+          "login": "tico88612"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 36,
+          "login": "liggitt"
+        },
+        {
+          "count": 28,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 22,
+          "login": "pohly"
+        },
+        {
+          "count": 6,
+          "login": "JoelSpeed"
+        },
+        {
+          "count": 6,
+          "login": "Verolop"
+        }
+      ]
+    },
+    {
+      "area": "logo",
+      "commits_90d": 0,
+      "commits_12mo": 0,
+      "commit_authors_12mo": 0,
+      "activity_band": "dormant",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "pkg",
+      "commits_90d": 547,
+      "commits_12mo": 2469,
+      "commit_authors_12mo": 421,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 25,
+          "login": "macsko"
+        },
+        {
+          "count": 18,
+          "login": "brejman"
+        },
+        {
+          "count": 17,
+          "login": "bart0sh"
+        },
+        {
+          "count": 16,
+          "login": "pohly"
+        },
+        {
+          "count": 13,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 199,
+          "login": "macsko"
+        },
+        {
+          "count": 191,
+          "login": "liggitt"
+        },
+        {
+          "count": 172,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 166,
+          "login": "pohly"
+        },
+        {
+          "count": 103,
+          "login": "bart0sh"
+        }
+      ]
+    },
+    {
+      "area": "plugin",
+      "commits_90d": 19,
+      "commits_12mo": 100,
+      "commit_authors_12mo": 41,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "ahmedtd"
+        },
+        {
+          "count": 1,
+          "login": "carlory"
+        },
+        {
+          "count": 1,
+          "login": "faganihajizada"
+        },
+        {
+          "count": 1,
+          "login": "jdzikowski"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 19,
+          "login": "liggitt"
+        },
+        {
+          "count": 5,
+          "login": "pohly"
+        },
+        {
+          "count": 3,
+          "login": "enj"
+        },
+        {
+          "count": 2,
+          "login": "helayoty"
+        },
+        {
+          "count": 2,
+          "login": "pacoxu"
+        }
+      ]
+    },
+    {
+      "area": "staging",
+      "commits_90d": 2,
+      "commits_12mo": 3,
+      "commit_authors_12mo": 3,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "staging/publishing",
+      "commits_90d": 8,
+      "commits_12mo": 30,
+      "commit_authors_12mo": 12,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 1,
+          "login": "aojea"
+        },
+        {
+          "count": 1,
+          "login": "palnabarun"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "Verolop"
+        },
+        {
+          "count": 1,
+          "login": "ameukam"
+        },
+        {
+          "count": 1,
+          "login": "cpanato"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/api",
+      "commits_90d": 103,
+      "commits_12mo": 429,
+      "commit_authors_12mo": 119,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 6,
+          "login": "krishhna24"
+        },
+        {
+          "count": 4,
+          "login": "liyuerich"
+        },
+        {
+          "count": 3,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 3,
+          "login": "lalitc375"
+        },
+        {
+          "count": 2,
+          "login": "Ignoramuss"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 65,
+          "login": "pohly"
+        },
+        {
+          "count": 62,
+          "login": "liggitt"
+        },
+        {
+          "count": 28,
+          "login": "JoelSpeed"
+        },
+        {
+          "count": 20,
+          "login": "yongruilin"
+        },
+        {
+          "count": 17,
+          "login": "jpbetz"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/apiextensions-api",
+      "commits_90d": 3,
+      "commits_12mo": 3,
+      "commit_authors_12mo": 1,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "staging/src/k8s.io/apiextensions-apiserver",
+      "commits_90d": 54,
+      "commits_12mo": 146,
+      "commit_authors_12mo": 59,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 4,
+          "login": "dims"
+        },
+        {
+          "count": 3,
+          "login": "kannon92"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 2,
+          "login": "fusida"
+        },
+        {
+          "count": 2,
+          "login": "vikasbolla"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 5,
+          "login": "saschagrunert"
+        },
+        {
+          "count": 5,
+          "login": "soltysh"
+        },
+        {
+          "count": 3,
+          "login": "Jefftree"
+        },
+        {
+          "count": 3,
+          "login": "liggitt"
+        },
+        {
+          "count": 3,
+          "login": "michaelasp"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/apimachinery",
+      "commits_90d": 121,
+      "commits_12mo": 268,
+      "commit_authors_12mo": 50,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 4,
+          "login": "pohly"
+        },
+        {
+          "count": 3,
+          "login": "Jefftree"
+        },
+        {
+          "count": 3,
+          "login": "jpbetz"
+        },
+        {
+          "count": 3,
+          "login": "kannon92"
+        },
+        {
+          "count": 1,
+          "login": "QHarshil"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 33,
+          "login": "jpbetz"
+        },
+        {
+          "count": 30,
+          "login": "liggitt"
+        },
+        {
+          "count": 18,
+          "login": "pohly"
+        },
+        {
+          "count": 6,
+          "login": "benluddy"
+        },
+        {
+          "count": 5,
+          "login": "danwinship"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/apiserver",
+      "commits_90d": 280,
+      "commits_12mo": 712,
+      "commit_authors_12mo": 96,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 75,
+          "login": "serathius"
+        },
+        {
+          "count": 13,
+          "login": "richabanker"
+        },
+        {
+          "count": 11,
+          "login": "Jefftree"
+        },
+        {
+          "count": 8,
+          "login": "p0lyn0mial"
+        },
+        {
+          "count": 7,
+          "login": "lalitc375"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 105,
+          "login": "liggitt"
+        },
+        {
+          "count": 100,
+          "login": "serathius"
+        },
+        {
+          "count": 27,
+          "login": "wojtek-t"
+        },
+        {
+          "count": 25,
+          "login": "richabanker"
+        },
+        {
+          "count": 18,
+          "login": "jpbetz"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cli-runtime",
+      "commits_90d": 8,
+      "commits_12mo": 25,
+      "commit_authors_12mo": 20,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "rawkode"
+        },
+        {
+          "count": 1,
+          "login": "Mujib-Ahasan"
+        },
+        {
+          "count": 1,
+          "login": "devreddy1015"
+        },
+        {
+          "count": 1,
+          "login": "makeittotop"
+        },
+        {
+          "count": 1,
+          "login": "pacoxu"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 11,
+          "login": "soltysh"
+        },
+        {
+          "count": 1,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/client-go",
+      "commits_90d": 89,
+      "commits_12mo": 347,
+      "commit_authors_12mo": 131,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 11,
+          "login": "michaelasp"
+        },
+        {
+          "count": 10,
+          "login": "pohly"
+        },
+        {
+          "count": 4,
+          "login": "p0lyn0mial"
+        },
+        {
+          "count": 3,
+          "login": "Jefftree"
+        },
+        {
+          "count": 3,
+          "login": "liyuerich"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 72,
+          "login": "liggitt"
+        },
+        {
+          "count": 34,
+          "login": "serathius"
+        },
+        {
+          "count": 32,
+          "login": "pohly"
+        },
+        {
+          "count": 27,
+          "login": "jpbetz"
+        },
+        {
+          "count": 27,
+          "login": "michaelasp"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cloud-provider",
+      "commits_90d": 31,
+      "commits_12mo": 91,
+      "commit_authors_12mo": 36,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "dims"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 2,
+          "login": "lukasmetzner"
+        },
+        {
+          "count": 1,
+          "login": "DockToFuture"
+        },
+        {
+          "count": 1,
+          "login": "dgrisonnet"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 11,
+          "login": "aojea"
+        },
+        {
+          "count": 6,
+          "login": "elmiko"
+        },
+        {
+          "count": 3,
+          "login": "soltysh"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 2,
+          "login": "kayrus"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cluster-bootstrap",
+      "commits_90d": 6,
+      "commits_12mo": 6,
+      "commit_authors_12mo": 3,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/code-generator",
+      "commits_90d": 77,
+      "commits_12mo": 284,
+      "commit_authors_12mo": 38,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 15,
+          "login": "dims"
+        },
+        {
+          "count": 14,
+          "login": "lalitc375"
+        },
+        {
+          "count": 7,
+          "login": "yongruilin"
+        },
+        {
+          "count": 2,
+          "login": "aaron-prindle"
+        },
+        {
+          "count": 2,
+          "login": "humblec"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 33,
+          "login": "jpbetz"
+        },
+        {
+          "count": 22,
+          "login": "thockin"
+        },
+        {
+          "count": 18,
+          "login": "aaron-prindle"
+        },
+        {
+          "count": 14,
+          "login": "liggitt"
+        },
+        {
+          "count": 9,
+          "login": "yongruilin"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/component-base",
+      "commits_90d": 19,
+      "commits_12mo": 74,
+      "commit_authors_12mo": 34,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "michaelasp"
+        },
+        {
+          "count": 1,
+          "login": "pacoxu"
+        },
+        {
+          "count": 1,
+          "login": "pohly"
+        },
+        {
+          "count": 1,
+          "login": "richabanker"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 9,
+          "login": "pohly"
+        },
+        {
+          "count": 5,
+          "login": "liggitt"
+        },
+        {
+          "count": 4,
+          "login": "dashpole"
+        },
+        {
+          "count": 2,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 2,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/component-helpers",
+      "commits_90d": 14,
+      "commits_12mo": 63,
+      "commit_authors_12mo": 29,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "HirazawaUi"
+        },
+        {
+          "count": 1,
+          "login": "kannon92"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "natasha41575"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 5,
+          "login": "tallclair"
+        },
+        {
+          "count": 3,
+          "login": "haircommander"
+        },
+        {
+          "count": 3,
+          "login": "helayoty"
+        },
+        {
+          "count": 3,
+          "login": "pravk03"
+        },
+        {
+          "count": 1,
+          "login": "SergeyKanzhelev"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/controller-manager",
+      "commits_90d": 19,
+      "commits_12mo": 51,
+      "commit_authors_12mo": 25,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "dims"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 1,
+          "login": "dgrisonnet"
+        },
+        {
+          "count": 1,
+          "login": "humblec"
+        },
+        {
+          "count": 1,
+          "login": "ivanvc"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "soltysh"
+        },
+        {
+          "count": 1,
+          "login": "Jefftree"
+        },
+        {
+          "count": 1,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cri-api",
+      "commits_90d": 10,
+      "commits_12mo": 37,
+      "commit_authors_12mo": 16,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 5,
+          "login": "liggitt"
+        },
+        {
+          "count": 3,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "chrishenzie"
+        },
+        {
+          "count": 1,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "saschagrunert"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 10,
+          "login": "liggitt"
+        },
+        {
+          "count": 8,
+          "login": "haircommander"
+        },
+        {
+          "count": 4,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 4,
+          "login": "mikebrow"
+        },
+        {
+          "count": 3,
+          "login": "Verolop"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cri-client",
+      "commits_90d": 9,
+      "commits_12mo": 34,
+      "commit_authors_12mo": 14,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "MartinForReal"
+        },
+        {
+          "count": 1,
+          "login": "bitoku"
+        },
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 4,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 4,
+          "login": "mikebrow"
+        },
+        {
+          "count": 3,
+          "login": "saschagrunert"
+        },
+        {
+          "count": 2,
+          "login": "zylxjtu"
+        },
+        {
+          "count": 1,
+          "login": "HirazawaUi"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/cri-streaming",
+      "commits_90d": 7,
+      "commits_12mo": 14,
+      "commit_authors_12mo": 7,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "thaJeztah"
+        },
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 5,
+          "login": "aojea"
+        },
+        {
+          "count": 3,
+          "login": "mikebrow"
+        },
+        {
+          "count": 2,
+          "login": "dianatofficial"
+        },
+        {
+          "count": 2,
+          "login": "thc1006"
+        },
+        {
+          "count": 1,
+          "login": "samuelkarp"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/csi-translation-lib",
+      "commits_90d": 2,
+      "commits_12mo": 2,
+      "commit_authors_12mo": 2,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/dynamic-resource-allocation",
+      "commits_90d": 68,
+      "commits_12mo": 240,
+      "commit_authors_12mo": 69,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 7,
+          "login": "pohly"
+        },
+        {
+          "count": 4,
+          "login": "dims"
+        },
+        {
+          "count": 3,
+          "login": "alaypatel07"
+        },
+        {
+          "count": 3,
+          "login": "troychiu"
+        },
+        {
+          "count": 2,
+          "login": "everpeace"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 83,
+          "login": "pohly"
+        },
+        {
+          "count": 13,
+          "login": "liggitt"
+        },
+        {
+          "count": 11,
+          "login": "troychiu"
+        },
+        {
+          "count": 5,
+          "login": "alaypatel07"
+        },
+        {
+          "count": 5,
+          "login": "harche"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/endpointslice",
+      "commits_90d": 14,
+      "commits_12mo": 32,
+      "commit_authors_12mo": 17,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "bhope"
+        },
+        {
+          "count": 1,
+          "login": "tzneal"
+        },
+        {
+          "count": 1,
+          "login": "yangjunmyfm192085"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 5,
+          "login": "danwinship"
+        },
+        {
+          "count": 3,
+          "login": "richabanker"
+        },
+        {
+          "count": 1,
+          "login": "aojea"
+        },
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/externaljwt",
+      "commits_90d": 6,
+      "commits_12mo": 14,
+      "commit_authors_12mo": 6,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "staging/src/k8s.io/kms",
+      "commits_90d": 7,
+      "commits_12mo": 19,
+      "commit_authors_12mo": 6,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 7,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "aramase"
+        },
+        {
+          "count": 1,
+          "login": "ivanvc"
+        },
+        {
+          "count": 1,
+          "login": "skitt"
+        },
+        {
+          "count": 1,
+          "login": "yue9944882"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "liggitt"
+        },
+        {
+          "count": 2,
+          "login": "soltysh"
+        },
+        {
+          "count": 1,
+          "login": "skitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/ktesting",
+      "commits_90d": 7,
+      "commits_12mo": 7,
+      "commit_authors_12mo": 2,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "staging/src/k8s.io/kube-aggregator",
+      "commits_90d": 34,
+      "commits_12mo": 94,
+      "commit_authors_12mo": 42,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "dims"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 1,
+          "login": "Jefftree"
+        },
+        {
+          "count": 1,
+          "login": "bsalamat"
+        },
+        {
+          "count": 1,
+          "login": "dgrisonnet"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 14,
+          "login": "liggitt"
+        },
+        {
+          "count": 9,
+          "login": "sttts"
+        },
+        {
+          "count": 3,
+          "login": "cheftako"
+        },
+        {
+          "count": 3,
+          "login": "soltysh"
+        },
+        {
+          "count": 1,
+          "login": "SergeyKanzhelev"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/kube-controller-manager",
+      "commits_90d": 17,
+      "commits_12mo": 48,
+      "commit_authors_12mo": 23,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "dims"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/kube-proxy",
+      "commits_90d": 10,
+      "commits_12mo": 25,
+      "commit_authors_12mo": 11,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "pacoxu"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/kube-scheduler",
+      "commits_90d": 44,
+      "commits_12mo": 137,
+      "commit_authors_12mo": 51,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "pacoxu"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "aatia-commits"
+        },
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/kubectl",
+      "commits_90d": 68,
+      "commits_12mo": 216,
+      "commit_authors_12mo": 91,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 9,
+          "login": "soltysh"
+        },
+        {
+          "count": 6,
+          "login": "Mujib-Ahasan"
+        },
+        {
+          "count": 4,
+          "login": "kfess"
+        },
+        {
+          "count": 4,
+          "login": "olamilekan000"
+        },
+        {
+          "count": 4,
+          "login": "scaliby"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 94,
+          "login": "soltysh"
+        },
+        {
+          "count": 14,
+          "login": "ardaguclu"
+        },
+        {
+          "count": 13,
+          "login": "liggitt"
+        },
+        {
+          "count": 4,
+          "login": "brianpursley"
+        },
+        {
+          "count": 3,
+          "login": "Mujib-Ahasan"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/kubelet",
+      "commits_90d": 13,
+      "commits_12mo": 63,
+      "commit_authors_12mo": 33,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "dims"
+        },
+        {
+          "count": 1,
+          "login": "pacoxu"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "haircommander"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/metrics",
+      "commits_90d": 4,
+      "commits_12mo": 20,
+      "commit_authors_12mo": 10,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "dalaoqi"
+        },
+        {
+          "count": 1,
+          "login": "tico88612"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/mount-utils",
+      "commits_90d": 0,
+      "commits_12mo": 5,
+      "commit_authors_12mo": 5,
+      "activity_band": "steady",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "jeffbearer"
+        },
+        {
+          "count": 1,
+          "login": "s3onghyun"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "andyzhangx"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/pod-security-admission",
+      "commits_90d": 20,
+      "commits_12mo": 58,
+      "commit_authors_12mo": 27,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "dims"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 1,
+          "login": "dgrisonnet"
+        },
+        {
+          "count": 1,
+          "login": "gheffern"
+        },
+        {
+          "count": 1,
+          "login": "humblec"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "liggitt"
+        },
+        {
+          "count": 3,
+          "login": "soltysh"
+        },
+        {
+          "count": 2,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "dianatofficial"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/sample-apiserver",
+      "commits_90d": 34,
+      "commits_12mo": 88,
+      "commit_authors_12mo": 37,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 3,
+          "login": "dims"
+        },
+        {
+          "count": 2,
+          "login": "cheftako"
+        },
+        {
+          "count": 1,
+          "login": "dgrisonnet"
+        },
+        {
+          "count": 1,
+          "login": "humblec"
+        },
+        {
+          "count": 1,
+          "login": "ivanvc"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 3,
+          "login": "soltysh"
+        },
+        {
+          "count": 1,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 1,
+          "login": "bwplotka"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/sample-cli-plugin",
+      "commits_90d": 3,
+      "commits_12mo": 8,
+      "commit_authors_12mo": 6,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 1,
+          "login": "pacoxu"
+        },
+        {
+          "count": 1,
+          "login": "pohly"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 1,
+          "login": "BenTheElder"
+        },
+        {
+          "count": 1,
+          "login": "soltysh"
+        }
+      ]
+    },
+    {
+      "area": "staging/src/k8s.io/sample-controller",
+      "commits_90d": 16,
+      "commits_12mo": 46,
+      "commit_authors_12mo": 22,
+      "activity_band": "active",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "staging/src/k8s.io/streaming",
+      "commits_90d": 1,
+      "commits_12mo": 3,
+      "commit_authors_12mo": 1,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 2,
+          "login": "kannon92"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 2,
+          "login": "saschagrunert"
+        },
+        {
+          "count": 1,
+          "login": "aojea"
+        },
+        {
+          "count": 1,
+          "login": "liggitt"
+        },
+        {
+          "count": 1,
+          "login": "michaelasp"
+        }
+      ]
+    },
+    {
+      "area": "staging/test",
+      "commits_90d": 0,
+      "commits_12mo": 1,
+      "commit_authors_12mo": 1,
+      "activity_band": "steady",
+      "top_contributors": [],
+      "top_reviewers": []
+    },
+    {
+      "area": "test",
+      "commits_90d": 403,
+      "commits_12mo": 1847,
+      "commit_authors_12mo": 315,
+      "activity_band": "active",
+      "top_contributors": [
+        {
+          "count": 38,
+          "login": "dims"
+        },
+        {
+          "count": 27,
+          "login": "pohly"
+        },
+        {
+          "count": 12,
+          "login": "danwinship"
+        },
+        {
+          "count": 10,
+          "login": "adrianmoisey"
+        },
+        {
+          "count": 10,
+          "login": "serathius"
+        }
+      ],
+      "top_reviewers": [
+        {
+          "count": 129,
+          "login": "pohly"
+        },
+        {
+          "count": 87,
+          "login": "SergeyKanzhelev"
+        },
+        {
+          "count": 62,
+          "login": "bart0sh"
+        },
+        {
+          "count": 60,
+          "login": "liggitt"
+        },
+        {
+          "count": 57,
+          "login": "BenTheElder"
+        }
+      ]
+    }
+  ],
+  "sample": {
+    "window_start": "2025-11-03T21:04:05+05:30",
+    "window_end": "2026-11-03T21:04:05+05:30",
+    "total_prs": 6619,
+    "bot_or_non_user_prs_dropped": 3,
+    "sampled_prs": 3082,
+    "is_sampled": true,
+    "covered_from": "2025-11-06T13:27:34+05:30",
+    "covered_to": "2026-11-03T20:19:50+05:30",
+    "per_month": {
+      "2025-11": {
+        "bots": 0,
+        "last": "2025-11-30T23:32:15+00:00",
+        "first": "2025-11-06T07:57:34+00:00",
+        "total": 332,
+        "sampled": 250
+      },
+      "2025-12": {
+        "bots": 0,
+        "last": "2025-12-31T15:27:04+00:00",
+        "first": "2025-12-06T08:04:27+00:00",
+        "total": 338,
+        "sampled": 250
+      },
+      "2026-01": {
+        "bots": 0,
+        "last": "2026-01-31T19:57:03+00:00",
+        "first": "2026-01-20T18:57:26+00:00",
+        "total": 511,
+        "sampled": 250
+      },
+      "2026-02": {
+        "bots": 0,
+        "last": "2026-02-28T23:54:27+00:00",
+        "first": "2026-02-13T15:08:38+00:00",
+        "total": 493,
+        "sampled": 250
+      },
+      "2026-03": {
+        "bots": 0,
+        "last": "2026-03-31T22:45:18+00:00",
+        "first": "2026-03-16T16:23:09+00:00",
+        "total": 594,
+        "sampled": 250
+      },
+      "2026-04": {
+        "bots": 1,
+        "last": "2026-04-30T23:13:15+00:00",
+        "first": "2026-04-15T02:45:14+00:00",
+        "total": 429,
+        "sampled": 250
+      },
+      "2026-05": {
+        "bots": 0,
+        "last": "2026-05-31T23:47:35+00:00",
+        "first": "2026-05-14T11:34:17+00:00",
+        "total": 502,
+        "sampled": 250
+      },
+      "2026-06": {
+        "bots": 0,
+        "last": "2026-06-30T22:47:34+00:00",
+        "first": "2026-06-16T22:12:56+00:00",
+        "total": 560,
+        "sampled": 250
+      },
+      "2026-07": {
+        "bots": 0,
+        "last": "2026-07-31T21:42:43+00:00",
+        "first": "2026-07-20T13:44:10+00:00",
+        "total": 739,
+        "sampled": 250
+      },
+      "2026-08": {
+        "bots": 2,
+        "last": "2026-08-31T22:25:43+00:00",
+        "first": "2026-08-17T05:35:21+00:00",
+        "total": 472,
+        "sampled": 250
+      },
+      "2026-09": {
+        "bots": 0,
+        "last": "2026-09-30T21:54:57+00:00",
+        "first": "2026-09-20T14:44:36+00:00",
+        "total": 664,
+        "sampled": 250
+      },
+      "2026-10": {
+        "bots": 0,
+        "last": "2026-10-31T20:51:53+00:00",
+        "first": "2026-10-23T17:59:04+00:00",
+        "total": 903,
+        "sampled": 250
+      },
+      "2026-11": {
+        "bots": 0,
+        "last": "2026-11-03T14:49:50+00:00",
+        "first": "2026-11-01T04:42:34+00:00",
+        "total": 82,
+        "sampled": 82
+      }
+    },
+    "note": "Sampled: at least one month had more than 250 human PRs, and only its newest 250 were kept. These figures describe the sample, not every PR."
+  },
+  "method": {
+    "area_rule": {
+      "depths": {
+        "staging": 4
+      },
+      "max_depth": 4,
+      "threshold_share": 0.25
+    },
+    "excluded_dirs": [
+      "vendor",
+      "third_party",
+      "node_modules",
+      "LICENSES",
+      "CHANGELOG"
+    ],
+    "sweep_commits_excluded": 64,
+    "maturity_days": 30,
+    "min_sample": 10,
+    "stale_open_days": 90,
+    "no_response_days": 30,
+    "author_concentration_threshold": 0.3
+  }
+}

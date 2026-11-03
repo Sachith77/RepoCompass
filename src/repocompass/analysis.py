@@ -175,7 +175,7 @@ def _insert(table: str, columns: tuple[str, ...]) -> str:
 
 REPO_COLUMNS = (
     "requested_slug", "canonical_slug", "default_branch", "snapshot_at", "window_start",
-    "window_end", "area_depths", "excluded_dirs", "sweep_commits_excluded",
+    "window_end", "area_depths", "excluded_dirs", "parameters", "sweep_commits_excluded",
     "total_prs_in_window", "bot_prs_in_window", "sampled_prs", "prs_per_month", "is_sampled",
     "sample_first_created", "sample_last_created", "repo_merge_rate", "repo_mature_newcomer_prs",
 )  # fmt: skip
@@ -206,6 +206,18 @@ ACTIVITY_COLUMNS = ("commits_90d", "commits_12mo", "commit_authors_12mo", "activ
 INSERT_AREA = _insert("area_stats", ("repo_id", *STATS_COLUMNS, *ACTIVITY_COLUMNS))
 
 
+# The settings that shape the numbers; stored with each analysis for its report.
+PARAMETER_NAMES = (
+    "window_days", "maturity_days", "monthly_sample_cap", "min_sample", "stale_open_days",
+    "no_response_days", "author_concentration_threshold", "formal_review_coverage_threshold",
+    "wilson_z", "activity_recent_days", "sweep_area_share", "sweep_min_areas",
+)  # fmt: skip
+
+
+def _parameters(settings: Settings) -> dict[str, Any]:
+    return {name: getattr(settings, name) for name in PARAMETER_NAMES}
+
+
 def _jsonb(value: Any) -> Any:
     return Jsonb(value) if isinstance(value, (dict, list)) else value
 
@@ -221,7 +233,8 @@ def save_analysis(settings: Settings, result: AnalysisResult) -> int:
     repo_values = (
         git.repo.requested_slug, git.repo.canonical_slug, git.repo.default_branch,
         git.snapshot, git.snapshot - timedelta(days=settings.window_days), git.snapshot,
-        Jsonb(rule), Jsonb(list(settings.excluded_dirs)), git.activity.sweep_commits,
+        Jsonb(rule), Jsonb(list(settings.excluded_dirs)), Jsonb(_parameters(settings)),
+        git.activity.sweep_commits,
         note.total_prs, note.bot_prs, note.sampled_prs, Jsonb(note.per_month), note.is_sampled,
         note.covered_from, note.covered_to, result.repo_rate, result.repo_mature_newcomer_prs,
     )  # fmt: skip
