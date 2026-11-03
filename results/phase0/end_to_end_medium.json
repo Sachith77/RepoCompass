@@ -1,0 +1,46 @@
+{
+  "measured_at_utc": "2026-11-03T07:08:19.186390+00:00",
+  "repo": "optuna/optuna",
+  "method": "End-to-end analysis of one medium repo against the live API, excluding the initial clone (measured separately in clone_cost.json). Every timing below is measured wall-clock on this machine and this network, single-threaded with no concurrency. The first-timer lookback batches 20 author searches into one request using GraphQL aliases.",
+  "window_cutoff_utc": "2025-11-03T00:00:00Z",
+  "timings_seconds_measured": {
+    "git_history_seconds": 0.08,
+    "pr_ingest_seconds": 45.59,
+    "files_pagination_seconds": 0.0,
+    "firsttimer_lookback_seconds": 24.5
+  },
+  "total_seconds_measured_excluding_clone": 70.68,
+  "clone_seconds_measured_separately": 5.09,
+  "total_including_clone_estimated": 75.77,
+  "volumes": {
+    "git_log_output_lines": 3144,
+    "pr_pages_fetched": 11,
+    "prs_in_window": 526,
+    "prs_bot_authored": 9,
+    "prs_human_authored": 517,
+    "prs_with_truncated_file_list": 0,
+    "extra_file_page_requests": 0,
+    "distinct_human_authors": 148,
+    "newcomer_prs": 168,
+    "mature_newcomer_prs": 141
+  },
+  "api_cost": {
+    "total_requests": 20,
+    "total_points": 31,
+    "lookback_requests_batched": 8,
+    "lookback_requests_if_unbatched": 148,
+    "rate_limit_at_end": {
+      "cost": 1,
+      "remaining": 4794,
+      "limit": 5000,
+      "resetAt": "2026-11-03T07:43:53Z",
+      "used": 206
+    }
+  },
+  "budget_estimates": {
+    "label": "estimated",
+    "basis": "measured points for this repo against the 5000 points/hour token limit",
+    "medium_repos_per_hour_by_points": 161,
+    "medium_repos_per_hour_by_wallclock": 50.9
+  }
+}

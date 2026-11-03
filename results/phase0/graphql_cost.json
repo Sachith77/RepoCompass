@@ -1,0 +1,401 @@
+{
+  "measured_at_utc": "2026-11-03T06:58:41.428705+00:00",
+  "window_cutoff_utc": "2025-11-03T00:00:00Z",
+  "method": "GitHub GraphQL API, read-only queries. points_per_page and seconds_per_page are measured from the API's rateLimit.cost field and wall-clock timing over 3 pages per variant. Projections are labelled estimated and are extrapolated linearly from those measured pages. PR signal summaries describe the sampled pages only (newest PRs first), not the whole window.",
+  "rate_limit_at_end": {
+    "cost": 1,
+    "remaining": 4897,
+    "limit": 5000,
+    "resetAt": "2026-11-03T07:43:53Z",
+    "used": 103
+  },
+  "total_requests": 44,
+  "total_points_spent": 56,
+  "repos": [
+    {
+      "size_label": "small",
+      "repo": "encode/starlette",
+      "canonical_repo": "Kludex/starlette",
+      "renamed_or_transferred": true,
+      "prs_created_last_12mo": 560,
+      "exceeds_3000_cap": false,
+      "cap_would_drop": 0,
+      "variants": [
+        {
+          "page_size": 25,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            1.56,
+            2.43,
+            2.8
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 2.26,
+          "prs_seen": 75,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            2,
+            2,
+            2
+          ],
+          "seconds_per_page": [
+            4.86,
+            5.16,
+            2.92
+          ],
+          "mean_points_per_page": 2.0,
+          "mean_seconds_per_page": 4.31,
+          "prs_seen": 150,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": false,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            3.36,
+            3.65,
+            4.46
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 3.82,
+          "prs_seen": 150,
+          "errors": []
+        }
+      ],
+      "pr_signal_summary": {
+        "prs_sampled": 375,
+        "prs_sampled_in_12mo_window": 375,
+        "bot_authored_share_of_sample": 0.04,
+        "human_prs_in_sample": 360,
+        "author_association_counts": {
+          "NONE": 258,
+          "OWNER": 70,
+          "CONTRIBUTOR": 32
+        },
+        "prs_over_100_changed_files": 0,
+        "extra_file_requests_needed": 0,
+        "files_page_truncated_count": 0,
+        "with_formal_review": 25,
+        "with_human_comment": 32,
+        "comment_only_no_formal_review": 28,
+        "no_human_response_at_all": 307,
+        "review_window_insufficient": 0,
+        "comment_window_insufficient": 0
+      },
+      "projection_estimated": {
+        "basis": "measured mean of 3 pages at first:50 with files(first:100)",
+        "prs_to_fetch_after_cap": 560,
+        "pages": 12,
+        "points_total": 24,
+        "seconds_total": 52,
+        "label": "estimated"
+      }
+    },
+    {
+      "size_label": "medium",
+      "repo": "optuna/optuna",
+      "canonical_repo": "optuna/optuna",
+      "renamed_or_transferred": false,
+      "prs_created_last_12mo": 526,
+      "exceeds_3000_cap": false,
+      "cap_would_drop": 0,
+      "variants": [
+        {
+          "page_size": 25,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            1.53,
+            1.73,
+            1.55
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 1.6,
+          "prs_seen": 75,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            2,
+            2,
+            2
+          ],
+          "seconds_per_page": [
+            2.09,
+            2.77,
+            5.62
+          ],
+          "mean_points_per_page": 2.0,
+          "mean_seconds_per_page": 3.49,
+          "prs_seen": 150,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": false,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            2.76,
+            4.03,
+            4.37
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 3.72,
+          "prs_seen": 150,
+          "errors": []
+        }
+      ],
+      "pr_signal_summary": {
+        "prs_sampled": 375,
+        "prs_sampled_in_12mo_window": 375,
+        "bot_authored_share_of_sample": 0.072,
+        "human_prs_in_sample": 348,
+        "author_association_counts": {
+          "CONTRIBUTOR": 88,
+          "NONE": 134,
+          "MEMBER": 100,
+          "COLLABORATOR": 26
+        },
+        "prs_over_100_changed_files": 0,
+        "extra_file_requests_needed": 0,
+        "files_page_truncated_count": 0,
+        "with_formal_review": 214,
+        "with_human_comment": 197,
+        "comment_only_no_formal_review": 80,
+        "no_human_response_at_all": 54,
+        "review_window_insufficient": 0,
+        "comment_window_insufficient": 0
+      },
+      "projection_estimated": {
+        "basis": "measured mean of 3 pages at first:50 with files(first:100)",
+        "prs_to_fetch_after_cap": 526,
+        "pages": 11,
+        "points_total": 22,
+        "seconds_total": 38,
+        "label": "estimated"
+      }
+    },
+    {
+      "size_label": "huge",
+      "repo": "kubernetes/kubernetes",
+      "canonical_repo": "kubernetes/kubernetes",
+      "renamed_or_transferred": false,
+      "prs_created_last_12mo": 6616,
+      "exceeds_3000_cap": true,
+      "cap_would_drop": 3616,
+      "variants": [
+        {
+          "page_size": 25,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            3.86,
+            1.92,
+            2.8
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 2.86,
+          "prs_seen": 75,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            2,
+            2,
+            2
+          ],
+          "seconds_per_page": [
+            5.5,
+            5.33,
+            4.45
+          ],
+          "mean_points_per_page": 2.0,
+          "mean_seconds_per_page": 5.09,
+          "prs_seen": 150,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": false,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            3.73,
+            4.97,
+            6.22
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 4.97,
+          "prs_seen": 150,
+          "errors": []
+        }
+      ],
+      "pr_signal_summary": {
+        "prs_sampled": 375,
+        "prs_sampled_in_12mo_window": 375,
+        "bot_authored_share_of_sample": 0.0,
+        "human_prs_in_sample": 375,
+        "author_association_counts": {
+          "CONTRIBUTOR": 138,
+          "NONE": 90,
+          "MEMBER": 147
+        },
+        "prs_over_100_changed_files": 17,
+        "extra_file_requests_needed": 24,
+        "files_page_truncated_count": 10,
+        "with_formal_review": 76,
+        "with_human_comment": 210,
+        "comment_only_no_formal_review": 150,
+        "no_human_response_at_all": 149,
+        "review_window_insufficient": 0,
+        "comment_window_insufficient": 0
+      },
+      "projection_estimated": {
+        "basis": "measured mean of 3 pages at first:50 with files(first:100)",
+        "prs_to_fetch_after_cap": 3000,
+        "pages": 60,
+        "points_total": 120,
+        "seconds_total": 305,
+        "label": "estimated"
+      }
+    },
+    {
+      "size_label": "dormant-control",
+      "repo": "encode/httpx",
+      "canonical_repo": "encode/httpx",
+      "renamed_or_transferred": false,
+      "prs_created_last_12mo": 54,
+      "exceeds_3000_cap": false,
+      "cap_would_drop": 0,
+      "variants": [
+        {
+          "page_size": 25,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            1.45,
+            3.55,
+            3.03
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 2.68,
+          "prs_seen": 75,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": true,
+          "pages_measured": 3,
+          "points_per_page": [
+            2,
+            2,
+            2
+          ],
+          "seconds_per_page": [
+            3.28,
+            2.76,
+            4.84
+          ],
+          "mean_points_per_page": 2.0,
+          "mean_seconds_per_page": 3.63,
+          "prs_seen": 150,
+          "errors": []
+        },
+        {
+          "page_size": 50,
+          "with_files": false,
+          "pages_measured": 3,
+          "points_per_page": [
+            1,
+            1,
+            1
+          ],
+          "seconds_per_page": [
+            2.38,
+            1.91,
+            2.17
+          ],
+          "mean_points_per_page": 1.0,
+          "mean_seconds_per_page": 2.15,
+          "prs_seen": 150,
+          "errors": []
+        }
+      ],
+      "pr_signal_summary": {
+        "prs_sampled": 375,
+        "prs_sampled_in_12mo_window": 162,
+        "bot_authored_share_of_sample": 0.093,
+        "human_prs_in_sample": 147,
+        "author_association_counts": {
+          "MEMBER": 9,
+          "NONE": 126,
+          "CONTRIBUTOR": 12
+        },
+        "prs_over_100_changed_files": 0,
+        "extra_file_requests_needed": 0,
+        "files_page_truncated_count": 0,
+        "with_formal_review": 57,
+        "with_human_comment": 51,
+        "comment_only_no_formal_review": 27,
+        "no_human_response_at_all": 63,
+        "review_window_insufficient": 0,
+        "comment_window_insufficient": 0
+      },
+      "projection_estimated": {
+        "basis": "measured mean of 3 pages at first:50 with files(first:100)",
+        "prs_to_fetch_after_cap": 54,
+        "pages": 2,
+        "points_total": 4,
+        "seconds_total": 7,
+        "label": "estimated"
+      }
+    }
+  ]
+}

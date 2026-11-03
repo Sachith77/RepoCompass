@@ -1,0 +1,147 @@
+{
+  "measured_at_utc": "2026-11-03T07:07:09.519527+00:00",
+  "rule": {
+    "threshold_share": 0.25,
+    "max_depth": 4,
+    "noise_dirs_excluded": [
+      "CHANGELOG",
+      "LICENSES",
+      "node_modules",
+      "third_party",
+      "vendor"
+    ],
+    "plain_english": "Group files by their top directory. If one group holds more than a quarter of the files, split that group one level deeper. Repeat until no group is oversized, up to four levels."
+  },
+  "method": "File tree from the local blobless clone via git ls-tree -r HEAD. No API calls. All counts measured. The chosen depth is a property of the repo layout and is recorded per repo so the report can state the rule it used.",
+  "repos": [
+    {
+      "size_label": "small",
+      "canonical_repo": "Kludex/starlette",
+      "files_considered": 151,
+      "chosen_depth_per_root": {
+        "(all roots)": 1
+      },
+      "fit_trace": [
+        {
+          "areas": 7,
+          "largest_area": "starlette",
+          "largest_share": 0.245
+        }
+      ],
+      "area_count": 7,
+      "largest_area": "starlette",
+      "largest_area_share": 0.245,
+      "areas_over_threshold": [],
+      "top_areas": {
+        "starlette": 37,
+        "docs": 36,
+        "tests": 36,
+        "benchmarks": 14,
+        "(root file)": 10,
+        ".github": 9,
+        "scripts": 9
+      },
+      "tiny_areas_under_1pct": 0
+    },
+    {
+      "size_label": "medium",
+      "canonical_repo": "optuna/optuna",
+      "files_considered": 484,
+      "chosen_depth_per_root": {
+        "optuna": 2,
+        "tests": 2
+      },
+      "fit_trace": [
+        {
+          "areas": 6,
+          "largest_area": "optuna",
+          "largest_share": 0.465
+        },
+        {
+          "areas": 20,
+          "largest_area": "tests",
+          "largest_share": 0.264
+        },
+        {
+          "areas": 32,
+          "largest_area": "docs",
+          "largest_share": 0.155
+        }
+      ],
+      "area_count": 32,
+      "largest_area": "docs",
+      "largest_area_share": 0.155,
+      "areas_over_threshold": [],
+      "top_areas": {
+        "docs": 75,
+        "optuna/samplers": 41,
+        "optuna/storages": 35,
+        "optuna/visualization": 30,
+        "tests/storages_tests": 26,
+        ".github": 22,
+        "tutorial": 22,
+        "optuna/integration": 20,
+        "tests/samplers_tests": 18,
+        "tests/visualization_tests": 18,
+        "optuna": 16,
+        "(root file)": 12,
+        "optuna/testing": 12,
+        "tests": 12,
+        "optuna/_gp": 10
+      },
+      "tiny_areas_under_1pct": 5
+    },
+    {
+      "size_label": "huge",
+      "canonical_repo": "kubernetes/kubernetes",
+      "files_considered": 26119,
+      "chosen_depth_per_root": {
+        "staging": 4
+      },
+      "fit_trace": [
+        {
+          "areas": 13,
+          "largest_area": "staging",
+          "largest_share": 0.649
+        },
+        {
+          "areas": 16,
+          "largest_area": "staging/src",
+          "largest_share": 0.648
+        },
+        {
+          "areas": 16,
+          "largest_area": "staging/src/k8s.io",
+          "largest_share": 0.648
+        },
+        {
+          "areas": 50,
+          "largest_area": "staging/src/k8s.io/pod-security-admission",
+          "largest_share": 0.185
+        }
+      ],
+      "area_count": 50,
+      "largest_area": "staging/src/k8s.io/pod-security-admission",
+      "largest_area_share": 0.185,
+      "areas_over_threshold": [],
+      "top_areas": {
+        "staging/src/k8s.io/pod-security-admission": 4824,
+        "test": 3981,
+        "pkg": 3633,
+        "staging/src/k8s.io/api": 3473,
+        "staging/src/k8s.io/client-go": 2566,
+        "staging/src/k8s.io/apiserver": 1355,
+        "staging/src/k8s.io/code-generator": 1083,
+        "staging/src/k8s.io/kubectl": 776,
+        "cmd": 645,
+        "staging/src/k8s.io/apimachinery": 582,
+        "staging/src/k8s.io/apiextensions-apiserver": 369,
+        "hack": 336,
+        "staging/src/k8s.io/component-base": 224,
+        "cluster": 208,
+        "staging/src/k8s.io/metrics": 176
+      },
+      "tiny_areas_under_1pct": 38
+    }
+  ]
+}

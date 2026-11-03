@@ -1,0 +1,107 @@
+{
+  "measured_at_utc": "2026-11-03T06:52:46.194404+00:00",
+  "method": "Blobless no-checkout clone, then git log --no-merges counts. Commit counts and author counts are measured from local git history; they are a proxy for activity, not a PR count.",
+  "candidates": [
+    {
+      "repo": "encode/starlette",
+      "clone_seconds": 2.0,
+      "commits_3mo": 140,
+      "commits_12mo": 261,
+      "last_commit_utc": "2026-11-01T17:39:28-03:00",
+      "distinct_top_level_entries": 14,
+      "top_level_dirs": [
+        "benchmarks",
+        "docs",
+        "scripts",
+        "starlette",
+        "tests"
+      ],
+      "authors_12mo": 63
+    },
+    {
+      "repo": "encode/uvicorn",
+      "clone_seconds": 1.92,
+      "commits_3mo": 61,
+      "commits_12mo": 187,
+      "last_commit_utc": "2026-11-01T08:08:08+01:00",
+      "distinct_top_level_entries": 12,
+      "top_level_dirs": [
+        "docs",
+        "scripts",
+        "tests",
+        "uvicorn"
+      ],
+      "authors_12mo": 30
+    },
+    {
+      "repo": "pallets/click",
+      "clone_seconds": 1.95,
+      "commits_3mo": 33,
+      "commits_12mo": 241,
+      "last_commit_utc": "2026-09-02T16:23:32+02:00",
+      "distinct_top_level_entries": 11,
+      "top_level_dirs": [
+        "docs",
+        "examples",
+        "src",
+        "tests"
+      ],
+      "authors_12mo": 48
+    },
+    {
+      "repo": "fastapi/typer",
+      "clone_seconds": 1.68,
+      "commits_3mo": 63,
+      "commits_12mo": 628,
+      "last_commit_utc": "2026-10-15T15:21:59Z",
+      "distinct_top_level_entries": 28,
+      "top_level_dirs": [
+        "data",
+        "docs",
+        "docs_src",
+        "scripts",
+        "tests",
+        "typer",
+        "typer-cli",
+        "typer-slim"
+      ],
+      "authors_12mo": 26
+    },
+    {
+      "repo": "sqlfluff/sqlfluff",
+      "clone_seconds": 4.53,
+      "commits_3mo": 350,
+      "commits_12mo": 929,
+      "last_commit_utc": "2026-11-03T03:44:37Z",
+      "distinct_top_level_entries": 25,
+      "top_level_dirs": [
+        "Dockerfile",
+        "constraints",
+        "docs",
+        "docsv",
+        "examples",
+        "plugins",
+        "sqlfluffrs",
+        "src",
+        "test",
+        "utils"
+      ],
+      "authors_12mo": 251
+    },
+    {
+      "repo": "pydantic/pydantic-settings",
+      "clone_seconds": 2.16,
+      "commits_3mo": 95,
+      "commits_12mo": 218,
+      "last_commit_utc": "2026-11-02T08:57:19+01:00",
+      "distinct_top_level_entries": 11,
+      "top_level_dirs": [
+        "Makefile",
+        "docs",
+        "pydantic_settings",
+        "tests"
+      ],
+      "authors_12mo": 76
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "measured_at_utc": "2026-11-03T07:06:19.189429+00:00",
+  "method": "File tree read from the local blobless clone with git ls-tree -r HEAD (no API cost). The hybrid area rule splits any top-level directory holding more than 30 percent of tracked files one level deeper. Vendored and generated directories are excluded before the split is chosen. CODEOWNERS fetched read-only from the standard paths. All counts measured.",
+  "noise_dirs_excluded": [
+    "CHANGELOG",
+    "LICENSES",
+    "node_modules",
+    "third_party",
+    "vendor"
+  ],
+  "repos": [
+    {
+      "size_label": "small",
+      "clone_slug": "encode/starlette",
+      "canonical_repo": "Kludex/starlette",
+      "layout": {
+        "files_tracked_total": 151,
+        "files_after_excluding_noise_dirs": 151,
+        "noise_dirs_excluded": [],
+        "one_level": {
+          "area_count": 7,
+          "largest_area_share": 0.245,
+          "top_areas": {
+            "starlette": 37,
+            "docs": 36,
+            "tests": 36,
+            "benchmarks": 14,
+            "(root file)": 10,
+            ".github": 9,
+            "scripts": 9
+          }
+        },
+        "proposed_hybrid": {
+          "two_level_roots": [],
+          "area_count": 7,
+          "largest_area_share": 0.245,
+          "top_areas": {
+            "starlette": 37,
+            "docs": 36,
+            "tests": 36,
+            "benchmarks": 14,
+            "(root file)": 10,
+            ".github": 9,
+            "scripts": 9
+          }
+        }
+      },
+      "ownership_files_in_tree": {
+        "codeowners_paths_in_tree": [],
+        "owners_file_count": 0,
+        "owners_file_examples": [],
+        "maintainers_like_files": []
+      },
+      "codeowners": {
+        "found_at": null,
+        "note": "no CODEOWNERS at any standard path"
+      }
+    },
+    {
+      "size_label": "medium",
+      "clone_slug": "optuna/optuna",
+      "canonical_repo": "optuna/optuna",
+      "layout": {
+        "files_tracked_total": 484,
+        "files_after_excluding_noise_dirs": 484,
+        "noise_dirs_excluded": [],
+        "one_level": {
+          "area_count": 6,
+          "largest_area_share": 0.465,
+          "top_areas": {
+            "optuna": 225,
+            "tests": 128,
+            "docs": 75,
+            ".github": 22,
+            "tutorial": 22,
+            "(root file)": 12
+          }
+        },
+        "proposed_hybrid": {
+          "two_level_roots": [
+            "optuna"
+          ],
+          "area_count": 20,
+          "largest_area_share": 0.264,
+          "top_areas": {
+            "tests": 128,
+            "docs": 75,
+            "optuna/samplers": 41,
+            "optuna/storages": 35,
+            "optuna/visualization": 30,
+            ".github": 22,
+            "tutorial": 22,
+            "optuna/integration": 20,
+            "optuna": 16,
+            "(root file)": 12,
+            "optuna/testing": 12,
+            "optuna/_gp": 10
+          }
+        }
+      },
+      "ownership_files_in_tree": {
+        "codeowners_paths_in_tree": [
+          ".github/CODEOWNERS"
+        ],
+        "owners_file_count": 0,
+        "owners_file_examples": [],
+        "maintainers_like_files": [
+          ".github/CODEOWNERS"
+        ]
+      },
+      "codeowners": {
+        "found_at": ".github/CODEOWNERS",
+        "byte_size": 30,
+        "rule_count": 1,
+        "distinct_owners": 1,
+        "first_rules": [
+          {
+            "pattern": ".github/",
+            "owners": [
+              "@optuna/optuna-core"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "size_label": "huge",
+      "clone_slug": "kubernetes/kubernetes",
+      "canonical_repo": "kubernetes/kubernetes",
+      "layout": {
+        "files_tracked_total": 31651,
+        "files_after_excluding_noise_dirs": 26119,
+        "noise_dirs_excluded": [
+          "CHANGELOG",
+          "LICENSES",
+          "third_party",
+          "vendor"
+        ],
+        "one_level": {
+          "area_count": 13,
+          "largest_area_share": 0.649,
+          "top_areas": {
+            "staging": 16942,
+            "test": 3981,
+            "pkg": 3633,
+            "cmd": 645,
+            "hack": 336,
+            "cluster": 208,
+            "plugin": 162,
+            "api": 135,
+            "build": 31,
+            "(root file)": 20,
+            "logo": 16,
+            ".github": 8
+          }
+        },
+        "proposed_hybrid": {
+          "two_level_roots": [
+            "staging"
+          ],
+          "area_count": 16,
+          "largest_area_share": 0.648,
+          "top_areas": {
+            "staging/src": 16935,
+            "test": 3981,
+            "pkg": 3633,
+            "cmd": 645,
+            "hack": 336,
+            "cluster": 208,
+            "plugin": 162,
+            "api": 135,
+            "build": 31,
+            "(root file)": 20,
+            "logo": 16,
+            ".github": 8
+          }
+        }
+      },
+      "ownership_files_in_tree": {
+        "codeowners_paths_in_tree": [
+          "vendor/github.com/Microsoft/go-winio/CODEOWNERS",
+          "vendor/github.com/Microsoft/hnslib/CODEOWNERS",
+          "vendor/github.com/opencontainers/cgroups/CODEOWNERS",
+          "vendor/go.opentelemetry.io/otel/CODEOWNERS"
+        ],
+        "owners_file_count": 593,
+        "owners_file_examples": [
+          ".github/OWNERS",
+          "CHANGELOG/OWNERS",
+          "LICENSES/OWNERS",
+          "OWNERS",
+          "api/OWNERS"
+        ],
+        "maintainers_like_files": [
+          "cluster/addons/dns-horizontal-autoscaler/MAINTAINERS.md",
+          "staging/src/k8s.io/kubectl/docs/maintainers/MAINTAINERS.md",
+          "vendor/cel.dev/expr/MAINTAINERS.md",
+          "vendor/github.com/Microsoft/go-winio/CODEOWNERS",
+          "vendor/github.com/Microsoft/hnslib/CODEOWNERS"
+        ]
+      },
+      "codeowners": {
+        "found_at": null,
+        "note": "no CODEOWNERS at any standard path"
+      }
+    }
+  ]
+}

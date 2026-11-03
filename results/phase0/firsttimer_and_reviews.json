@@ -1,0 +1,671 @@
+{
+  "measured_at_utc": "2026-11-03T07:02:04.669655+00:00",
+  "window": {
+    "created_from": "2025-11-03",
+    "created_to": "2026-10-04",
+    "maturity_days": 30
+  },
+  "method": "All values measured from the GitHub GraphQL API, read-only. PRs sampled via search() restricted to created:2025-11-03..2026-10-04 so every sampled PR has had at least 30 days to receive a response. Bots excluded by __typename == Bot, a [bot] login suffix, or a named list. 'Formal review' is a submitted review by a non-author non-bot; 'human response' is the earlier of that and a non-author non-bot comment. Reviews sliced at first:20 and comments at first:30; slice_maybe_short counts PRs where a human could have been hidden beyond the slice.",
+  "rate_limit_at_end": {
+    "cost": 1,
+    "remaining": 4860,
+    "limit": 5000,
+    "resetAt": "2026-11-03T07:43:53Z",
+    "used": 140
+  },
+  "total_requests": 56,
+  "total_points_spent": 56,
+  "repos": [
+    {
+      "size_label": "small",
+      "requested_repo": "encode/starlette",
+      "canonical_repo": "Kludex/starlette",
+      "reviews_item5": {
+        "mature_prs_in_window_total": 436,
+        "mature_prs_sampled": 150,
+        "bot_authored_in_sample": 7,
+        "human_prs_analysed": 143,
+        "with_formal_review": 24,
+        "with_any_human_response": 35,
+        "comment_only_no_formal_review": 11,
+        "no_human_response": 108,
+        "formal_review_share": 0.168,
+        "median_hours_to_first_formal_review": 55.16,
+        "median_hours_to_first_human_response": 71.68,
+        "review_slice_maybe_short": 0,
+        "comment_slice_maybe_short": 0
+      },
+      "first_timer_item4": {
+        "prs_compared": 20,
+        "distinct_authors_looked_up": 14,
+        "agreement_count": 18,
+        "agreement_rate": 0.9,
+        "assoc_newcomer_our_rule_not": 0,
+        "our_rule_newcomer_assoc_not": 2,
+        "lookback_cost": {
+          "requests": 14,
+          "points": 14,
+          "seconds": 8.28,
+          "requests_per_distinct_author": 1,
+          "note": "One search query per distinct author returns their earliest merged PR, so the lookback scales with distinct authors, not with PR count."
+        },
+        "detail": [
+          {
+            "number": 3621,
+            "created_at": "2026-10-04T20:00:07Z",
+            "author_association_now": "OWNER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 396
+          },
+          {
+            "number": 3620,
+            "created_at": "2026-10-04T19:36:41Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3619,
+            "created_at": "2026-10-04T18:57:22Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 3618,
+            "created_at": "2026-10-04T10:12:54Z",
+            "author_association_now": "OWNER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 396
+          },
+          {
+            "number": 3617,
+            "created_at": "2026-10-04T09:24:11Z",
+            "author_association_now": "OWNER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 396
+          },
+          {
+            "number": 3615,
+            "created_at": "2026-10-03T08:34:46Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3614,
+            "created_at": "2026-10-03T02:16:15Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3613,
+            "created_at": "2026-10-02T12:57:10Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3612,
+            "created_at": "2026-10-02T12:56:08Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3611,
+            "created_at": "2026-10-02T12:53:00Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3610,
+            "created_at": "2026-10-02T03:56:55Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3606,
+            "created_at": "2026-10-01T17:19:36Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3605,
+            "created_at": "2026-10-01T11:35:01Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3604,
+            "created_at": "2026-10-01T10:35:25Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3603,
+            "created_at": "2026-09-30T18:12:26Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3602,
+            "created_at": "2026-09-30T10:06:26Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3601,
+            "created_at": "2026-09-29T12:01:38Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3600,
+            "created_at": "2026-09-29T05:43:46Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 3599,
+            "created_at": "2026-09-29T05:35:06Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 3598,
+            "created_at": "2026-09-29T02:51:24Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          }
+        ]
+      }
+    },
+    {
+      "size_label": "medium",
+      "requested_repo": "optuna/optuna",
+      "canonical_repo": "optuna/optuna",
+      "reviews_item5": {
+        "mature_prs_in_window_total": 475,
+        "mature_prs_sampled": 150,
+        "bot_authored_in_sample": 3,
+        "human_prs_analysed": 147,
+        "with_formal_review": 108,
+        "with_any_human_response": 133,
+        "comment_only_no_formal_review": 25,
+        "no_human_response": 14,
+        "formal_review_share": 0.735,
+        "median_hours_to_first_formal_review": 58.97,
+        "median_hours_to_first_human_response": 26.98,
+        "review_slice_maybe_short": 0,
+        "comment_slice_maybe_short": 0
+      },
+      "first_timer_item4": {
+        "prs_compared": 20,
+        "distinct_authors_looked_up": 15,
+        "agreement_count": 15,
+        "agreement_rate": 0.75,
+        "assoc_newcomer_our_rule_not": 0,
+        "our_rule_newcomer_assoc_not": 5,
+        "lookback_cost": {
+          "requests": 15,
+          "points": 15,
+          "seconds": 9.22,
+          "requests_per_distinct_author": 1,
+          "note": "One search query per distinct author returns their earliest merged PR, so the lookback scales with distinct authors, not with PR count."
+        },
+        "detail": [
+          {
+            "number": 6883,
+            "created_at": "2026-10-03T06:44:33Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6882,
+            "created_at": "2026-10-03T04:37:41Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 6881,
+            "created_at": "2026-10-01T09:02:45Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 6880,
+            "created_at": "2026-10-01T08:50:57Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 6879,
+            "created_at": "2026-10-01T04:08:48Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 6878,
+            "created_at": "2026-09-30T06:32:04Z",
+            "author_association_now": "COLLABORATOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 11
+          },
+          {
+            "number": 6877,
+            "created_at": "2026-09-30T05:13:10Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 220
+          },
+          {
+            "number": 6876,
+            "created_at": "2026-09-30T04:25:00Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 233
+          },
+          {
+            "number": 6873,
+            "created_at": "2026-09-29T13:23:47Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 6871,
+            "created_at": "2026-09-28T07:38:33Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6869,
+            "created_at": "2026-09-25T03:28:26Z",
+            "author_association_now": "COLLABORATOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 11
+          },
+          {
+            "number": 6867,
+            "created_at": "2026-09-23T14:13:31Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6864,
+            "created_at": "2026-09-19T14:36:48Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6863,
+            "created_at": "2026-09-18T04:17:11Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 63
+          },
+          {
+            "number": 6862,
+            "created_at": "2026-09-17T22:54:23Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 6860,
+            "created_at": "2026-09-17T12:34:18Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 6859,
+            "created_at": "2026-09-17T03:26:46Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6858,
+            "created_at": "2026-09-16T11:05:28Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 6856,
+            "created_at": "2026-09-13T03:47:13Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 6854,
+            "created_at": "2026-09-11T13:51:08Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 2
+          }
+        ]
+      }
+    },
+    {
+      "size_label": "huge",
+      "requested_repo": "kubernetes/kubernetes",
+      "canonical_repo": "kubernetes/kubernetes",
+      "reviews_item5": {
+        "mature_prs_in_window_total": 5726,
+        "mature_prs_sampled": 150,
+        "bot_authored_in_sample": 0,
+        "human_prs_analysed": 150,
+        "with_formal_review": 63,
+        "with_any_human_response": 112,
+        "comment_only_no_formal_review": 49,
+        "no_human_response": 38,
+        "formal_review_share": 0.42,
+        "median_hours_to_first_formal_review": 56.6,
+        "median_hours_to_first_human_response": 17.63,
+        "review_slice_maybe_short": 0,
+        "comment_slice_maybe_short": 0
+      },
+      "first_timer_item4": {
+        "prs_compared": 20,
+        "distinct_authors_looked_up": 15,
+        "agreement_count": 18,
+        "agreement_rate": 0.9,
+        "assoc_newcomer_our_rule_not": 1,
+        "our_rule_newcomer_assoc_not": 1,
+        "lookback_cost": {
+          "requests": 15,
+          "points": 15,
+          "seconds": 8.94,
+          "requests_per_distinct_author": 1,
+          "note": "One search query per distinct author returns their earliest merged PR, so the lookback scales with distinct authors, not with PR count."
+        },
+        "detail": [
+          {
+            "number": 142666,
+            "created_at": "2026-10-04T22:24:12Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 911
+          },
+          {
+            "number": 142665,
+            "created_at": "2026-10-04T18:39:44Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 142664,
+            "created_at": "2026-10-04T18:13:31Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 8
+          },
+          {
+            "number": 142663,
+            "created_at": "2026-10-04T17:32:08Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": false,
+            "agree": false,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 142661,
+            "created_at": "2026-10-04T06:04:37Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142660,
+            "created_at": "2026-10-04T05:59:13Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 1
+          },
+          {
+            "number": 142659,
+            "created_at": "2026-10-04T05:19:25Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142658,
+            "created_at": "2026-10-04T05:15:26Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142657,
+            "created_at": "2026-10-04T00:49:53Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 911
+          },
+          {
+            "number": 142656,
+            "created_at": "2026-10-04T00:49:50Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 911
+          },
+          {
+            "number": 142655,
+            "created_at": "2026-10-04T00:49:48Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 911
+          },
+          {
+            "number": 142654,
+            "created_at": "2026-10-04T00:49:45Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 911
+          },
+          {
+            "number": 142653,
+            "created_at": "2026-10-03T23:41:01Z",
+            "author_association_now": "MEMBER",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 55
+          },
+          {
+            "number": 142652,
+            "created_at": "2026-10-03T22:31:43Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142650,
+            "created_at": "2026-10-03T15:40:57Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": true,
+            "agree": false,
+            "author_merged_prs_all_time": 5
+          },
+          {
+            "number": 142649,
+            "created_at": "2026-10-03T15:33:10Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 294
+          },
+          {
+            "number": 142648,
+            "created_at": "2026-10-03T13:58:28Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142647,
+            "created_at": "2026-10-03T13:05:05Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 2
+          },
+          {
+            "number": 142646,
+            "created_at": "2026-10-03T09:06:12Z",
+            "author_association_now": "NONE",
+            "association_says_newcomer": true,
+            "our_rule_says_newcomer": true,
+            "agree": true,
+            "author_merged_prs_all_time": 0
+          },
+          {
+            "number": 142645,
+            "created_at": "2026-10-03T04:42:42Z",
+            "author_association_now": "CONTRIBUTOR",
+            "association_says_newcomer": false,
+            "our_rule_says_newcomer": false,
+            "agree": true,
+            "author_merged_prs_all_time": 1
+          }
+        ]
+      }
+    }
+  ]
+}

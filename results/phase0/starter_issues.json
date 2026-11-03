@@ -1,0 +1,757 @@
+{
+  "measured_at_utc": "2026-11-03T07:04:18.126993+00:00",
+  "claim_window_days": 30,
+  "claim_patterns_tested": {
+    "prow_assign_command": "^/assign\\b",
+    "id_like_to_work_on": "\\bi'?d like to work on\\b",
+    "i_would_like_to": "\\bi would like to (work|take|try)\\b",
+    "can_i_take": "\\bcan i take\\b",
+    "can_i_work_on": "\\bcan i (work on|pick up|have)\\b",
+    "may_i_work_on": "\\bmay i work on\\b",
+    "assign_me": "\\b(assign (this )?(to )?me|please assign)\\b",
+    "working_on_this": "\\b(i'?m|i am) working on (this|it)\\b",
+    "ill_take_this": "\\bi'?ll (take|give|have a go|work on)\\b",
+    "taking_this": "\\btaking this\\b",
+    "is_this_still_open": "\\bis (this|it) still (open|available|up for grabs)\\b"
+  },
+  "method": "Read-only GraphQL. Open issues carrying discovered newcomer labels, ordered by most recently updated. Three independent signals recorded per issue: assignee, linked OPEN pull request via CrossReferenced/Connected timeline events, and a claim comment by a non-bot in the last 30 days. An issue with no signal is labelled 'potentially available', never 'unclaimed'. Counts are measured; nothing here is estimated.",
+  "total_requests": 19,
+  "total_points_spent": 19,
+  "repos": [
+    {
+      "size_label": "small",
+      "requested_repo": "encode/starlette",
+      "canonical_repo": "Kludex/starlette",
+      "labels_discovered": [
+        {
+          "label": "good first issue",
+          "open_issues": 0
+        },
+        {
+          "label": "help wanted",
+          "open_issues": 0
+        }
+      ],
+      "summary": {
+        "labels_used": [],
+        "open_issues_with_those_labels": 0,
+        "sampled": 0,
+        "with_assignee": 0,
+        "with_linked_open_pr": 0,
+        "with_recent_claim_comment": 0,
+        "likely_taken": 0,
+        "potentially_available": 0,
+        "claim_patterns_seen": {}
+      },
+      "issues": []
+    },
+    {
+      "size_label": "medium",
+      "requested_repo": "optuna/optuna",
+      "canonical_repo": "optuna/optuna",
+      "labels_discovered": [
+        {
+          "label": "good first issue",
+          "open_issues": 0
+        },
+        {
+          "label": "Hacktoberfest",
+          "open_issues": 0
+        },
+        {
+          "label": "contribution-welcome",
+          "open_issues": 0
+        }
+      ],
+      "summary": {
+        "labels_used": [],
+        "open_issues_with_those_labels": 0,
+        "sampled": 0,
+        "with_assignee": 0,
+        "with_linked_open_pr": 0,
+        "with_recent_claim_comment": 0,
+        "likely_taken": 0,
+        "potentially_available": 0,
+        "claim_patterns_seen": {}
+      },
+      "issues": []
+    },
+    {
+      "size_label": "huge",
+      "requested_repo": "kubernetes/kubernetes",
+      "canonical_repo": "kubernetes/kubernetes",
+      "labels_discovered": [
+        {
+          "label": "help wanted",
+          "open_issues": 141
+        },
+        {
+          "label": "good first issue",
+          "open_issues": 6
+        },
+        {
+          "label": "lgtm",
+          "open_issues": 0
+        }
+      ],
+      "summary": {
+        "labels_used": [
+          "help wanted",
+          "good first issue"
+        ],
+        "open_issues_with_those_labels": 141,
+        "sampled": 20,
+        "with_assignee": 20,
+        "with_linked_open_pr": 0,
+        "with_recent_claim_comment": 13,
+        "likely_taken": 20,
+        "potentially_available": 0,
+        "claim_patterns_seen": {
+          "prow_assign_command": 12,
+          "id_like_to_work_on": 1,
+          "can_i_work_on": 5,
+          "can_i_take": 1,
+          "ill_take_this": 1
+        }
+      },
+      "issues": [
+        {
+          "number": 120677,
+          "url": "https://github.com/kubernetes/kubernetes/issues/120677",
+          "created_at": "2023-09-14T17:07:29Z",
+          "labels": [
+            "sig/auth",
+            "help wanted",
+            "triage/accepted"
+          ],
+          "assignee_count": 2,
+          "assignees": [
+            "lyelgate",
+            "minleejae"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "lyelgate",
+              "created_at": "2026-11-01T09:37:35Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/120677#issuecomment-6556197936"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 135058,
+          "url": "https://github.com/kubernetes/kubernetes/issues/135058",
+          "created_at": "2025-11-03T13:09:39Z",
+          "labels": [
+            "kind/feature",
+            "help wanted",
+            "needs-triage",
+            "wg/device-management"
+          ],
+          "assignee_count": 3,
+          "assignees": [
+            "ranibharti385",
+            "vishalanarase",
+            "AD1TYA-commits"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 138149,
+          "url": "https://github.com/kubernetes/kubernetes/issues/138149",
+          "created_at": "2026-04-01T15:12:39Z",
+          "labels": [
+            "sig/network",
+            "sig/node",
+            "sig/auth",
+            "help wanted",
+            "good first issue",
+            "triage/accepted",
+            "wg/device-management"
+          ],
+          "assignee_count": 9,
+          "assignees": [
+            "praveen0raj",
+            "Rayui1225",
+            "leonardomurakami",
+            "back1ash",
+            "danishdynamic",
+            "ThyTran1402",
+            "hectar-glitches",
+            "subodhingole-alt",
+            "yunuschoudhurywork-lang"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 5,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "harshitsaxena214",
+              "created_at": "2026-10-06T21:54:42Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/138149#issuecomment-6026159987"
+            },
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "reetig",
+              "created_at": "2026-10-10T15:54:53Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/138149#issuecomment-6099369122"
+            },
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "yunuschoudhurywork-lang",
+              "created_at": "2026-10-27T16:14:09Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/138149#issuecomment-6447169860"
+            },
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "ChuDucAnh242002",
+              "created_at": "2026-10-28T09:54:05Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/138149#issuecomment-6465888913"
+            },
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "Ultronious",
+              "created_at": "2026-10-28T09:55:46Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/138149#issuecomment-6465921539"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 138679,
+          "url": "https://github.com/kubernetes/kubernetes/issues/138679",
+          "created_at": "2026-04-29T13:57:41Z",
+          "labels": [
+            "kind/flake",
+            "help wanted",
+            "sig/instrumentation",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "nicknikolakakis"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 130069,
+          "url": "https://github.com/kubernetes/kubernetes/issues/130069",
+          "created_at": "2025-02-10T15:37:37Z",
+          "labels": [
+            "area/logging",
+            "sig/node",
+            "kind/feature",
+            "help wanted",
+            "sig/instrumentation",
+            "priority/important-longterm",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "zhifei92"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 136304,
+          "url": "https://github.com/kubernetes/kubernetes/issues/136304",
+          "created_at": "2026-01-18T21:35:31Z",
+          "labels": [
+            "sig/api-machinery",
+            "help wanted",
+            "sig/instrumentation",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "vinayakray19"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "id_like_to_work_on",
+              "quoted_line": "I'd like to work on `staging/src/k8s.io/kube-aggregator/pkg/apiserver/metrics.go` if there is no existing PR/ assignees for it :)",
+              "author": "Easonliuuuuu",
+              "created_at": "2026-10-23T18:09:31Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/136304#issuecomment-6371578145"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 141200,
+          "url": "https://github.com/kubernetes/kubernetes/issues/141200",
+          "created_at": "2026-08-05T15:54:52Z",
+          "labels": [
+            "sig/node",
+            "kind/flake",
+            "help wanted",
+            "priority/important-longterm",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "sAchin-680"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "sAchin-680",
+              "created_at": "2026-10-07T19:07:08Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/141200#issuecomment-6044892151"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 133877,
+          "url": "https://github.com/kubernetes/kubernetes/issues/133877",
+          "created_at": "2025-09-03T15:53:33Z",
+          "labels": [
+            "kind/bug",
+            "sig/api-machinery",
+            "help wanted",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "kei01234kei"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 110905,
+          "url": "https://github.com/kubernetes/kubernetes/issues/110905",
+          "created_at": "2022-07-01T07:34:29Z",
+          "labels": [
+            "kind/bug",
+            "help wanted",
+            "sig/cli",
+            "triage/accepted"
+          ],
+          "assignee_count": 4,
+          "assignees": [
+            "x-color",
+            "manav014",
+            "vaibhav2107",
+            "priyansh3006"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 2,
+          "claims": [
+            {
+              "pattern": "can_i_work_on",
+              "quoted_line": "Can I work on this issue if it's not resolved yet?",
+              "author": "ThyTran1402",
+              "created_at": "2026-10-23T05:42:58Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/110905#issuecomment-6358309502"
+            },
+            {
+              "pattern": "can_i_work_on",
+              "quoted_line": ">      Can I work on this issue if it's not resolved yet?",
+              "author": "pacoxu",
+              "created_at": "2026-10-23T06:40:15Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/110905#issuecomment-6359098344"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 80289,
+          "url": "https://github.com/kubernetes/kubernetes/issues/80289",
+          "created_at": "2019-07-18T08:26:32Z",
+          "labels": [
+            "kind/cleanup",
+            "sig/scalability",
+            "help wanted",
+            "priority/important-longterm",
+            "lifecycle/frozen"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "ricky1993"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "can_i_work_on",
+              "quoted_line": "Can I work on this issue if it's not resolved yet?",
+              "author": "ThyTran1402",
+              "created_at": "2026-10-23T05:43:59Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/80289#issuecomment-6358322664"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 136107,
+          "url": "https://github.com/kubernetes/kubernetes/issues/136107",
+          "created_at": "2026-01-08T13:55:34Z",
+          "labels": [
+            "kind/feature",
+            "help wanted",
+            "sig/instrumentation",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "bhope"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "can_i_take",
+              "quoted_line": "I wonder can I take a look and work on one of the available subtasks if it's not resolved yet?",
+              "author": "ThyTran1402",
+              "created_at": "2026-10-23T05:37:03Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/136107#issuecomment-6358235091"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 115823,
+          "url": "https://github.com/kubernetes/kubernetes/issues/115823",
+          "created_at": "2023-02-16T09:02:13Z",
+          "labels": [
+            "priority/backlog",
+            "kind/documentation",
+            "kind/cleanup",
+            "sig/node",
+            "help wanted",
+            "good first issue",
+            "triage/accepted"
+          ],
+          "assignee_count": 10,
+          "assignees": [
+            "intUnderflow",
+            "sali2801",
+            "tenzindayoe",
+            "saiaunghlyanhtet",
+            "ashutosh887",
+            "Maxim-Durand",
+            "shubham-singh-748",
+            "g4ze",
+            "TessaIO",
+            "reetig"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "can_i_work_on",
+              "quoted_line": "Can I work on this issue if it's not resolved yet?",
+              "author": "ThyTran1402",
+              "created_at": "2026-10-23T05:30:34Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/115823#issuecomment-6358152373"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 115782,
+          "url": "https://github.com/kubernetes/kubernetes/issues/115782",
+          "created_at": "2023-02-15T00:07:14Z",
+          "labels": [
+            "priority/backlog",
+            "kind/cleanup",
+            "sig/node",
+            "help wanted",
+            "good first issue",
+            "needs-triage"
+          ],
+          "assignee_count": 10,
+          "assignees": [
+            "lanycrost",
+            "prateekaryyan",
+            "hrishikeshdkakkad",
+            "zhengkezhou1",
+            "codeserra",
+            "alok1929",
+            "clementbolin",
+            "Octopusjust",
+            "ashutosh887",
+            "whitebeard10"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 2,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "Piyush2005-code",
+              "created_at": "2026-10-20T14:00:05Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/115782#issuecomment-6292635923"
+            },
+            {
+              "pattern": "can_i_work_on",
+              "quoted_line": "Can I work on this issue if it's not resolved yet?",
+              "author": "ThyTran1402",
+              "created_at": "2026-10-23T05:28:29Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/115782#issuecomment-6358125761"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 74551,
+          "url": "https://github.com/kubernetes/kubernetes/issues/74551",
+          "created_at": "2019-02-25T23:56:02Z",
+          "labels": [
+            "kind/bug",
+            "sig/api-machinery",
+            "help wanted",
+            "sig/cli",
+            "triage/unresolved"
+          ],
+          "assignee_count": 2,
+          "assignees": [
+            "sxllwx",
+            "sanchayanghosh"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 134172,
+          "url": "https://github.com/kubernetes/kubernetes/issues/134172",
+          "created_at": "2025-09-19T21:06:37Z",
+          "labels": [
+            "area/test",
+            "kind/cleanup",
+            "sig/node",
+            "help wanted",
+            "priority/important-longterm",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "arjunksofficial"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 2,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "arjunksofficial",
+              "created_at": "2026-10-09T18:13:44Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/134172#issuecomment-6086644652"
+            },
+            {
+              "pattern": "ill_take_this",
+              "quoted_line": "OOMScoreAdj is merged (#142888). I'll take SeccompDefault next (test/e2e_node/seccompdefault_test.go).",
+              "author": "arjunksofficial",
+              "created_at": "2026-10-20T14:32:19Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/134172#issuecomment-6293312613"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 136120,
+          "url": "https://github.com/kubernetes/kubernetes/issues/136120",
+          "created_at": "2026-01-09T01:02:16Z",
+          "labels": [
+            "kind/bug",
+            "sig/node",
+            "help wanted",
+            "triage/accepted"
+          ],
+          "assignee_count": 7,
+          "assignees": [
+            "ndixita",
+            "harishankarr7",
+            "Gourav2580",
+            "Vallabh2909",
+            "Abhijais4896",
+            "OchukoWH",
+            "wathmal96"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 142957,
+          "url": "https://github.com/kubernetes/kubernetes/issues/142957",
+          "created_at": "2026-10-13T04:10:47Z",
+          "labels": [
+            "kind/bug",
+            "help wanted",
+            "sig/testing",
+            "needs-triage"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "divyanshuprakas-h"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "divyanshuprakas-h",
+              "created_at": "2026-10-13T06:05:53Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/142957#issuecomment-6139385994"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 140978,
+          "url": "https://github.com/kubernetes/kubernetes/issues/140978",
+          "created_at": "2026-07-27T22:22:50Z",
+          "labels": [
+            "kind/bug",
+            "area/test",
+            "priority/backlog",
+            "area/kubelet",
+            "sig/node",
+            "help wanted",
+            "sig/testing",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "OdedShimoni"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "OdedShimoni",
+              "created_at": "2026-10-07T18:09:31Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/140978#issuecomment-6043923622"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        },
+        {
+          "number": 86080,
+          "url": "https://github.com/kubernetes/kubernetes/issues/86080",
+          "created_at": "2019-12-09T16:23:58Z",
+          "labels": [
+            "area/test",
+            "priority/backlog",
+            "kind/cleanup",
+            "sig/storage",
+            "sig/node",
+            "help wanted",
+            "lifecycle/frozen",
+            "needs-triage"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "lohitkolluri"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 0,
+          "claims": [],
+          "signals_present": 1,
+          "classification": "likely taken"
+        },
+        {
+          "number": 143046,
+          "url": "https://github.com/kubernetes/kubernetes/issues/143046",
+          "created_at": "2026-10-15T01:26:04Z",
+          "labels": [
+            "sig/node",
+            "kind/flake",
+            "help wanted",
+            "priority/important-longterm",
+            "triage/accepted"
+          ],
+          "assignee_count": 1,
+          "assignees": [
+            "nicknikolakakis"
+          ],
+          "linked_open_pr_count": 0,
+          "linked_open_prs": [],
+          "recent_claim_count": 1,
+          "claims": [
+            {
+              "pattern": "prow_assign_command",
+              "quoted_line": "/assign",
+              "author": "nicknikolakakis",
+              "created_at": "2026-10-15T17:38:18Z",
+              "url": "https://github.com/kubernetes/kubernetes/issues/143046#issuecomment-6198382540"
+            }
+          ],
+          "signals_present": 2,
+          "classification": "likely taken"
+        }
+      ]
+    }
+  ]
+}

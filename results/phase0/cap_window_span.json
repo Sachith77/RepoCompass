@@ -1,0 +1,37 @@
+{
+  "measured_at_utc": "2026-11-03T07:36:46.601236+00:00",
+  "method": "Binary search over search() issueCount to find the earliest creation date retained once the window is capped at the most recent 3000 PRs. Dates and counts are measured from the API; day counts are derived arithmetic on those measured dates.",
+  "cap": 3000,
+  "maturity_days": 30,
+  "repos": [
+    {
+      "repo": "Kludex/starlette",
+      "prs_in_12mo_window": 560,
+      "capped": false,
+      "effective_start": "2025-11-03",
+      "effective_days_of_history": 365,
+      "usable_days_after_maturity_rule": 335,
+      "search_queries_used": 1
+    },
+    {
+      "repo": "optuna/optuna",
+      "prs_in_12mo_window": 526,
+      "capped": false,
+      "effective_start": "2025-11-03",
+      "effective_days_of_history": 365,
+      "usable_days_after_maturity_rule": 335,
+      "search_queries_used": 1
+    },
+    {
+      "repo": "kubernetes/kubernetes",
+      "prs_in_12mo_window": 6616,
+      "capped": true,
+      "prs_dropped_by_cap": 3616,
+      "effective_start": "2026-06-22",
+      "effective_days_of_history": 134,
+      "usable_days_after_maturity_rule": 104,
+      "share_of_12mo_window_retained": 0.367,
+      "search_queries_used": 10
+    }
+  ]
+}

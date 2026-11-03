@@ -1,0 +1,704 @@
+{
+  "measured_at_utc": "2026-11-03T07:35:16.948801+00:00",
+  "method": "Full 12-month PR window per repo (capped at the most recent 3000), live read-only GraphQL. Bots excluded. Newcomer = no merged PR in this repo created before this one, checked over all repo history. Mature = created at least 30 days before the snapshot and no longer open. Merge rate = merged / (merged + closed unmerged). Areas from the adaptive directory rule fitted to the repo's own file tree. A PR counts toward the area holding most of its changed files; ties count for each tied area. Wilson bounds are the 95 percent score interval. All values measured; none estimated.",
+  "parameters": {
+    "window_days": 365,
+    "maturity_days": 30,
+    "cap": 3000,
+    "min_sample": 10,
+    "area_threshold_share": 0.25,
+    "area_max_depth": 4,
+    "noise_dirs_excluded": [
+      "CHANGELOG",
+      "LICENSES",
+      "node_modules",
+      "third_party",
+      "vendor"
+    ]
+  },
+  "rate_limit_at_end": {
+    "cost": 1,
+    "remaining": 4762,
+    "limit": 5000,
+    "resetAt": "2026-11-03T07:43:55Z",
+    "used": 238
+  },
+  "total_requests": 478,
+  "total_points": 478,
+  "transport_retries": 0,
+  "repos": [
+    {
+      "size_label": "small",
+      "requested_repo": "encode/starlette",
+      "canonical_repo": "Kludex/starlette",
+      "area_rule_depths": {
+        "(all roots)": 1
+      },
+      "timings_seconds_measured": {
+        "pr_ingest": 35.8,
+        "files_pagination": 8.66,
+        "firsttimer_lookback": 34.85,
+        "total_excluding_clone": 79.31
+      },
+      "api_cost": {
+        "requests": 37,
+        "points": 37,
+        "lookback_requests_batched": 13,
+        "lookback_requests_if_unbatched": 254,
+        "extra_file_page_requests": 11
+      },
+      "funnel": {
+        "prs_in_window": 560,
+        "capped_at_3000": false,
+        "file_list_truncated_at_100": 3,
+        "still_incomplete_excluded": 0,
+        "human_authored": 510,
+        "distinct_human_authors": 254,
+        "newcomer_prs": 302,
+        "mature_newcomer_prs_closed_or_merged": 207,
+        "unassignable_to_any_area": 0
+      },
+      "areas": {
+        "areas_with_any_mature_newcomer_pr": 5,
+        "areas_meeting_min_sample_10": 4,
+        "min_sample": 10,
+        "ranked_qualifying": [
+          {
+            "area": "docs",
+            "mature_newcomer_prs": 44,
+            "merged": 20,
+            "merge_rate": 0.4545,
+            "wilson_lower": 0.3171,
+            "wilson_upper": 0.5993,
+            "meets_min_sample": true
+          },
+          {
+            "area": "starlette",
+            "mature_newcomer_prs": 157,
+            "merged": 28,
+            "merge_rate": 0.1783,
+            "wilson_lower": 0.1264,
+            "wilson_upper": 0.2457,
+            "meets_min_sample": true
+          },
+          {
+            "area": "(root file)",
+            "mature_newcomer_prs": 14,
+            "merged": 4,
+            "merge_rate": 0.2857,
+            "wilson_lower": 0.1172,
+            "wilson_upper": 0.5465,
+            "meets_min_sample": true
+          },
+          {
+            "area": "tests",
+            "mature_newcomer_prs": 142,
+            "merged": 24,
+            "merge_rate": 0.169,
+            "wilson_lower": 0.1163,
+            "wilson_upper": 0.2392,
+            "meets_min_sample": true
+          }
+        ],
+        "below_min_sample": [
+          {
+            "area": "pytest-of-nobody",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          }
+        ]
+      }
+    },
+    {
+      "size_label": "medium",
+      "requested_repo": "optuna/optuna",
+      "canonical_repo": "optuna/optuna",
+      "area_rule_depths": {
+        "optuna": 2,
+        "tests": 2
+      },
+      "timings_seconds_measured": {
+        "pr_ingest": 27.66,
+        "files_pagination": 0.0,
+        "firsttimer_lookback": 20.35,
+        "total_excluding_clone": 48.01
+      },
+      "api_cost": {
+        "requests": 20,
+        "points": 20,
+        "lookback_requests_batched": 8,
+        "lookback_requests_if_unbatched": 148,
+        "extra_file_page_requests": 0
+      },
+      "funnel": {
+        "prs_in_window": 526,
+        "capped_at_3000": false,
+        "file_list_truncated_at_100": 0,
+        "still_incomplete_excluded": 0,
+        "human_authored": 517,
+        "distinct_human_authors": 148,
+        "newcomer_prs": 168,
+        "mature_newcomer_prs_closed_or_merged": 141,
+        "unassignable_to_any_area": 0
+      },
+      "areas": {
+        "areas_with_any_mature_newcomer_pr": 28,
+        "areas_meeting_min_sample_10": 7,
+        "min_sample": 10,
+        "ranked_qualifying": [
+          {
+            "area": "optuna/visualization",
+            "mature_newcomer_prs": 15,
+            "merged": 9,
+            "merge_rate": 0.6,
+            "wilson_lower": 0.3575,
+            "wilson_upper": 0.8018,
+            "meets_min_sample": true
+          },
+          {
+            "area": "optuna/samplers",
+            "mature_newcomer_prs": 20,
+            "merged": 11,
+            "merge_rate": 0.55,
+            "wilson_lower": 0.3421,
+            "wilson_upper": 0.7418,
+            "meets_min_sample": true
+          },
+          {
+            "area": "optuna/pruners",
+            "mature_newcomer_prs": 13,
+            "merged": 7,
+            "merge_rate": 0.5385,
+            "wilson_lower": 0.2914,
+            "wilson_upper": 0.7679,
+            "meets_min_sample": true
+          },
+          {
+            "area": "optuna/storages",
+            "mature_newcomer_prs": 12,
+            "merged": 5,
+            "merge_rate": 0.4167,
+            "wilson_lower": 0.1933,
+            "wilson_upper": 0.6805,
+            "meets_min_sample": true
+          },
+          {
+            "area": "optuna/trial",
+            "mature_newcomer_prs": 15,
+            "merged": 5,
+            "merge_rate": 0.3333,
+            "wilson_lower": 0.1518,
+            "wilson_upper": 0.5829,
+            "meets_min_sample": true
+          },
+          {
+            "area": "tests/study_tests",
+            "mature_newcomer_prs": 12,
+            "merged": 4,
+            "merge_rate": 0.3333,
+            "wilson_lower": 0.1381,
+            "wilson_upper": 0.6094,
+            "meets_min_sample": true
+          },
+          {
+            "area": "optuna/study",
+            "mature_newcomer_prs": 26,
+            "merged": 4,
+            "merge_rate": 0.1538,
+            "wilson_lower": 0.0615,
+            "wilson_upper": 0.3353,
+            "meets_min_sample": true
+          }
+        ],
+        "below_min_sample": [
+          {
+            "area": "optuna/artifacts",
+            "mature_newcomer_prs": 4,
+            "merged": 3,
+            "merge_rate": 0.75,
+            "wilson_lower": 0.3006,
+            "wilson_upper": 0.9544,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tutorial",
+            "mature_newcomer_prs": 4,
+            "merged": 3,
+            "merge_rate": 0.75,
+            "wilson_lower": 0.3006,
+            "wilson_upper": 0.9544,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/visualization_tests",
+            "mature_newcomer_prs": 4,
+            "merged": 3,
+            "merge_rate": 0.75,
+            "wilson_lower": 0.3006,
+            "wilson_upper": 0.9544,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna",
+            "mature_newcomer_prs": 5,
+            "merged": 3,
+            "merge_rate": 0.6,
+            "wilson_lower": 0.2307,
+            "wilson_upper": 0.8824,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/artifacts_tests",
+            "mature_newcomer_prs": 3,
+            "merged": 2,
+            "merge_rate": 0.6667,
+            "wilson_lower": 0.2077,
+            "wilson_upper": 0.9385,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/pruners_tests",
+            "mature_newcomer_prs": 3,
+            "merged": 2,
+            "merge_rate": 0.6667,
+            "wilson_lower": 0.2077,
+            "wilson_upper": 0.9385,
+            "meets_min_sample": false
+          },
+          {
+            "area": ".github",
+            "mature_newcomer_prs": 1,
+            "merged": 1,
+            "merge_rate": 1.0,
+            "wilson_lower": 0.2065,
+            "wilson_upper": 1.0,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna/_gp",
+            "mature_newcomer_prs": 6,
+            "merged": 3,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.1876,
+            "wilson_upper": 0.8124,
+            "meets_min_sample": false
+          },
+          {
+            "area": "docs",
+            "mature_newcomer_prs": 4,
+            "merged": 2,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.15,
+            "wilson_upper": 0.85,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna/importance",
+            "mature_newcomer_prs": 9,
+            "merged": 3,
+            "merge_rate": 0.3333,
+            "wilson_lower": 0.1206,
+            "wilson_upper": 0.6458,
+            "meets_min_sample": false
+          },
+          {
+            "area": "(root file)",
+            "mature_newcomer_prs": 4,
+            "merged": 1,
+            "merge_rate": 0.25,
+            "wilson_lower": 0.0456,
+            "wilson_upper": 0.6994,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/samplers_tests",
+            "mature_newcomer_prs": 8,
+            "merged": 1,
+            "merge_rate": 0.125,
+            "wilson_lower": 0.0224,
+            "wilson_upper": 0.4709,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/importance_tests",
+            "mature_newcomer_prs": 2,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.6576,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/trial_tests",
+            "mature_newcomer_prs": 3,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.5615,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna/terminator",
+            "mature_newcomer_prs": 3,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.5615,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna/testing",
+            "mature_newcomer_prs": 2,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.6576,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/storages_tests",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests",
+            "mature_newcomer_prs": 2,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.6576,
+            "meets_min_sample": false
+          },
+          {
+            "area": "optuna/integration",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          },
+          {
+            "area": "tests/gp_tests",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          }
+        ]
+      }
+    },
+    {
+      "size_label": "huge",
+      "requested_repo": "kubernetes/kubernetes",
+      "canonical_repo": "kubernetes/kubernetes",
+      "area_rule_depths": {
+        "staging": 4
+      },
+      "timings_seconds_measured": {
+        "pr_ingest": 260.02,
+        "files_pagination": 313.44,
+        "firsttimer_lookback": 109.22,
+        "total_excluding_clone": 682.7
+      },
+      "api_cost": {
+        "requests": 421,
+        "points": 421,
+        "lookback_requests_batched": 38,
+        "lookback_requests_if_unbatched": 746,
+        "extra_file_page_requests": 322
+      },
+      "funnel": {
+        "prs_in_window": 3000,
+        "capped_at_3000": true,
+        "file_list_truncated_at_100": 83,
+        "still_incomplete_excluded": 0,
+        "human_authored": 2998,
+        "distinct_human_authors": 746,
+        "newcomer_prs": 735,
+        "mature_newcomer_prs_closed_or_merged": 313,
+        "unassignable_to_any_area": 2
+      },
+      "areas": {
+        "areas_with_any_mature_newcomer_pr": 38,
+        "areas_meeting_min_sample_10": 9,
+        "min_sample": 10,
+        "ranked_qualifying": [
+          {
+            "area": "test",
+            "mature_newcomer_prs": 35,
+            "merged": 20,
+            "merge_rate": 0.5714,
+            "wilson_lower": 0.4086,
+            "wilson_upper": 0.7202,
+            "meets_min_sample": true
+          },
+          {
+            "area": "pkg",
+            "mature_newcomer_prs": 117,
+            "merged": 50,
+            "merge_rate": 0.4274,
+            "wilson_lower": 0.3414,
+            "wilson_upper": 0.5179,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/api",
+            "mature_newcomer_prs": 12,
+            "merged": 7,
+            "merge_rate": 0.5833,
+            "wilson_lower": 0.3195,
+            "wilson_upper": 0.8067,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/dynamic-resource-allocation",
+            "mature_newcomer_prs": 19,
+            "merged": 7,
+            "merge_rate": 0.3684,
+            "wilson_lower": 0.1915,
+            "wilson_upper": 0.5896,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/kubectl",
+            "mature_newcomer_prs": 31,
+            "merged": 10,
+            "merge_rate": 0.3226,
+            "wilson_lower": 0.1857,
+            "wilson_upper": 0.4986,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/client-go",
+            "mature_newcomer_prs": 16,
+            "merged": 6,
+            "merge_rate": 0.375,
+            "wilson_lower": 0.1848,
+            "wilson_upper": 0.6136,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/apiserver",
+            "mature_newcomer_prs": 17,
+            "merged": 5,
+            "merge_rate": 0.2941,
+            "wilson_lower": 0.1328,
+            "wilson_upper": 0.5313,
+            "meets_min_sample": true
+          },
+          {
+            "area": "staging/src/k8s.io/apimachinery",
+            "mature_newcomer_prs": 13,
+            "merged": 4,
+            "merge_rate": 0.3077,
+            "wilson_lower": 0.1268,
+            "wilson_upper": 0.5763,
+            "meets_min_sample": true
+          },
+          {
+            "area": "(root file)",
+            "mature_newcomer_prs": 12,
+            "merged": 2,
+            "merge_rate": 0.1667,
+            "wilson_lower": 0.047,
+            "wilson_upper": 0.448,
+            "meets_min_sample": true
+          }
+        ],
+        "below_min_sample": [
+          {
+            "area": "staging/src/k8s.io/endpointslice",
+            "mature_newcomer_prs": 3,
+            "merged": 2,
+            "merge_rate": 0.6667,
+            "wilson_lower": 0.2077,
+            "wilson_upper": 0.9385,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/cri-api",
+            "mature_newcomer_prs": 1,
+            "merged": 1,
+            "merge_rate": 1.0,
+            "wilson_lower": 0.2065,
+            "wilson_upper": 1.0,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/mount-utils",
+            "mature_newcomer_prs": 1,
+            "merged": 1,
+            "merge_rate": 1.0,
+            "wilson_lower": 0.2065,
+            "wilson_upper": 1.0,
+            "meets_min_sample": false
+          },
+          {
+            "area": "hack",
+            "mature_newcomer_prs": 6,
+            "merged": 3,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.1876,
+            "wilson_upper": 0.8124,
+            "meets_min_sample": false
+          },
+          {
+            "area": "api",
+            "mature_newcomer_prs": 4,
+            "merged": 2,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.15,
+            "wilson_upper": 0.85,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/kms",
+            "mature_newcomer_prs": 4,
+            "merged": 2,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.15,
+            "wilson_upper": 0.85,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/cli-runtime",
+            "mature_newcomer_prs": 2,
+            "merged": 1,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.0945,
+            "wilson_upper": 0.9055,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/cloud-provider",
+            "mature_newcomer_prs": 2,
+            "merged": 1,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.0945,
+            "wilson_upper": 0.9055,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/metrics",
+            "mature_newcomer_prs": 2,
+            "merged": 1,
+            "merge_rate": 0.5,
+            "wilson_lower": 0.0945,
+            "wilson_upper": 0.9055,
+            "meets_min_sample": false
+          },
+          {
+            "area": "cmd",
+            "mature_newcomer_prs": 7,
+            "merged": 2,
+            "merge_rate": 0.2857,
+            "wilson_lower": 0.0822,
+            "wilson_upper": 0.6411,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/component-helpers",
+            "mature_newcomer_prs": 3,
+            "merged": 1,
+            "merge_rate": 0.3333,
+            "wilson_lower": 0.0615,
+            "wilson_upper": 0.7923,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/code-generator",
+            "mature_newcomer_prs": 3,
+            "merged": 1,
+            "merge_rate": 0.3333,
+            "wilson_lower": 0.0615,
+            "wilson_upper": 0.7923,
+            "meets_min_sample": false
+          },
+          {
+            "area": "cluster",
+            "mature_newcomer_prs": 5,
+            "merged": 1,
+            "merge_rate": 0.2,
+            "wilson_lower": 0.0362,
+            "wilson_upper": 0.6245,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/apiextensions-apiserver",
+            "mature_newcomer_prs": 3,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.5615,
+            "meets_min_sample": false
+          },
+          {
+            "area": "build",
+            "mature_newcomer_prs": 3,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.5615,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/component-base",
+            "mature_newcomer_prs": 2,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.6576,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/sample-cli-plugin",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          },
+          {
+            "area": "plugin",
+            "mature_newcomer_prs": 3,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.5615,
+            "meets_min_sample": false
+          },
+          {
+            "area": "staging/src/k8s.io/externaljwt",
+            "mature_newcomer_prs": 2,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.6576,
+            "meets_min_sample": false
+          },
+          {
+            "area": "packages",
+            "mature_newcomer_prs": 1,
+            "merged": 0,
+            "merge_rate": 0.0,
+            "wilson_lower": 0.0,
+            "wilson_upper": 0.7935,
+            "meets_min_sample": false
+          }
+        ]
+      }
+    }
+  ]
+}

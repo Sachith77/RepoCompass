@@ -1,0 +1,58 @@
+{
+  "measured_at_utc": "2026-11-03T06:58:05.810697+00:00",
+  "method": "Compares repository(owner,name) lookup against search() counts for the same slug. repository() follows renames and transfers; the search index is keyed on the current name. All counts measured from the API.",
+  "repos": [
+    {
+      "requested_slug": "encode/starlette",
+      "canonical_name_with_owner": "Kludex/starlette",
+      "renamed_or_transferred": true,
+      "is_archived": false,
+      "pull_requests_total_all_time": 2301,
+      "search_counts": {
+        "requested_slug_12mo": 0,
+        "requested_slug_all": 0,
+        "canonical_slug_12mo": 560,
+        "canonical_slug_all": 2299
+      }
+    },
+    {
+      "requested_slug": "encode/httpx",
+      "canonical_name_with_owner": "encode/httpx",
+      "renamed_or_transferred": false,
+      "is_archived": false,
+      "pull_requests_total_all_time": 1806,
+      "search_counts": {
+        "requested_slug_12mo": 54,
+        "requested_slug_all": 1803,
+        "canonical_slug_12mo": 54,
+        "canonical_slug_all": 1803
+      }
+    },
+    {
+      "requested_slug": "optuna/optuna",
+      "canonical_name_with_owner": "optuna/optuna",
+      "renamed_or_transferred": false,
+      "is_archived": false,
+      "pull_requests_total_all_time": 4633,
+      "search_counts": {
+        "requested_slug_12mo": 526,
+        "requested_slug_all": 4631,
+        "canonical_slug_12mo": 526,
+        "canonical_slug_all": 4631
+      }
+    },
+    {
+      "requested_slug": "kubernetes/kubernetes",
+      "canonical_name_with_owner": "kubernetes/kubernetes",
+      "renamed_or_transferred": false,
+      "is_archived": false,
+      "pull_requests_total_all_time": 93009,
+      "search_counts": {
+        "requested_slug_12mo": 6616,
+        "requested_slug_all": 92763,
+        "canonical_slug_12mo": 6616,
+        "canonical_slug_all": 92763
+      }
+    }
+  ]
+}

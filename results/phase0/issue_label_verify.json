@@ -1,0 +1,59 @@
+{
+  "measured_at_utc": "2026-11-03T07:05:18.682287+00:00",
+  "method": "Independent search() counts for each newcomer label, used to confirm the Label.issues(states: OPEN) totals read in the starter-issue spike. 'closed' counts show whether a label is used at all historically. All counts measured.",
+  "repos": [
+    {
+      "repo": "Kludex/starlette",
+      "open_issues_total": 4,
+      "labels": {
+        "good first issue": {
+          "open": 0,
+          "open_unassigned": 0,
+          "closed": 26
+        },
+        "help wanted": {
+          "open": 0,
+          "open_unassigned": 0,
+          "closed": 13
+        }
+      }
+    },
+    {
+      "repo": "optuna/optuna",
+      "open_issues_total": 15,
+      "labels": {
+        "good first issue": {
+          "open": 0,
+          "open_unassigned": 0,
+          "closed": 103
+        },
+        "contribution-welcome": {
+          "open": 0,
+          "open_unassigned": 0,
+          "closed": 299
+        },
+        "Hacktoberfest": {
+          "open": 0,
+          "open_unassigned": 0,
+          "closed": 9
+        }
+      }
+    },
+    {
+      "repo": "kubernetes/kubernetes",
+      "open_issues_total": 1901,
+      "labels": {
+        "good first issue": {
+          "open": 6,
+          "open_unassigned": 0,
+          "closed": 192
+        },
+        "help wanted": {
+          "open": 141,
+          "open_unassigned": 23,
+          "closed": 754
+        }
+      }
+    }
+  ]
+}
