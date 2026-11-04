@@ -13,3 +13,5 @@ CLAUDE.md
 .claude/
 notes/
 spikes/
+next-env.d.ts
+*.tsbuildinfo

@@ -33,7 +33,9 @@ requested name (an advisory lock on the name) — and re-queues a failed job who
 hours old so it resumes from its checkpoint. The worker claims the oldest queued job with `FOR UPDATE
 SKIP LOCKED`. At start and whenever idle it re-queues running jobs with no checkpoint for 10 minutes:
 a live job checkpoints every few seconds, minutes at most, so such a job was abandoned. `resume`
-refuses a job that is running.
+refuses a job that is running. The pages call the API from the browser (`NEXT_PUBLIC_API_URL`), and
+CORS admits only the local web origins (`REPOCOMPASS_WEB_ORIGINS`). A job's page polls `GET
+/jobs/{id}` every 2 s and shows the areas map early.
 
 ## 3. Pipeline
 
@@ -41,10 +43,9 @@ The worker runs four stages in order, checkpointing as it goes. `GET /jobs/{id}`
 as soon as stage 2 is done; the full report appears when the final transaction commits.
 
 **Stage 1 — resolve and clone.** Resolve the repository's canonical `nameWithOwner` *before* anything
-else, and store both the requested and canonical slug. This is not a nicety: GitHub's search index is
-keyed on a repository's current name while `repository(owner, name)` follows renames, so a renamed
-repository otherwise reports zero PRs and looks successful. Phase 0 hit this on
-`encode/starlette` → `Kludex/starlette`. Then clone with `--filter=blob:none --no-checkout`
+else, and store both slugs: search is keyed on the current name while `repository(owner, name)`
+follows renames, so a renamed repository otherwise reports zero PRs (Phase 0: `encode/starlette` →
+`Kludex/starlette`). Then clone with `--filter=blob:none --no-checkout`
 (measured: 2.0 s / 5.1 s / 79.3 s for small / medium / huge; 1.9 / 14.7 / 254.8 MiB).
 
 **Stage 2 — areas and activity, from the clone only.** Fit the area rule to the file tree, then read
@@ -81,12 +82,12 @@ changed files needs its own follow-up requests; on kubernetes that was 83 PRs an
 costing 313 s, the largest single stage in the whole analysis. A PR whose file list cannot be completed
 — including one longer than GitHub's 3,000-file listing — is marked and excluded, never truncated.
 
-**Stage 4 — first-timer lookback and metrics.** For each distinct non-bot author, one `search` query
-returns their earliest merged PR in the repository; a PR is a newcomer PR when no merged PR by that
-author was created before it (ADR-0002). Twenty author searches are batched into one request using
+**Stage 4 — first-timer lookback and metrics.** One `search` per distinct non-bot author returns their
+earliest merged PR; a PR is a newcomer PR when no merged PR by that author was created before it
+(ADR-0002). Twenty author searches are batched into one request using
 GraphQL aliases, which took `optuna/optuna` from 148 requests to 8. Metrics are then pure functions
-over the PR records. Only then are all of the repository's rows replaced, in one transaction
-(ADR-0008); until that point the job checkpoint holds everything, including the areas map.
+over the PR records. Then all of the repository's rows are replaced in one transaction
+(ADR-0008).
 
 Measured in M4 through the API and worker, clones already on disk (`results/m4/run1/`): the areas map
 within 6 s, full analysis **120 s** small, **96 s** medium, **2,080 s** (34.7 min) huge, using 49, 31

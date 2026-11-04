@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+body {
+  background: #f7f7f8;
+  color: #171717;
+}
+
+/* one marker for every Details toggle: hide the browser's own, draw a small arrow */
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker,
+details > summary::marker {
+  display: none;
+  content: "";
+}
+
+details > summary::before {
+  content: "▸ ";
+}
+
+details[open] > summary::before {
+  content: "▾ ";
+}

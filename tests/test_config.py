@@ -76,11 +76,19 @@ def test_metric_defaults_match_the_brief() -> None:
     assert s.sweep_area_share == pytest.approx(0.50)
     assert s.sweep_min_areas == 5
     assert s.clone_dir == "data/repos"
+    assert s.web_origins == ("http://localhost:3000", "http://127.0.0.1:3000")
 
 
 def test_no_response_window_longer_than_maturity_is_rejected() -> None:
     with pytest.raises(ConfigError, match="NO_RESPONSE_DAYS"):
         load_settings({**ENV, "REPOCOMPASS_NO_RESPONSE_DAYS": "60"})
+
+
+def test_web_origins_can_be_set_but_never_to_a_wildcard() -> None:
+    s = load_settings({**ENV, "REPOCOMPASS_WEB_ORIGINS": "http://localhost:4000"})
+    assert s.web_origins == ("http://localhost:4000",)
+    with pytest.raises(ConfigError, match="WEB_ORIGINS"):
+        load_settings({**ENV, "REPOCOMPASS_WEB_ORIGINS": "*"})
 
 
 def test_sweep_minimum_below_two_is_rejected() -> None:

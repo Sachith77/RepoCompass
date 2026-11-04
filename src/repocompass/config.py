@@ -32,6 +32,7 @@ DEFAULT_BOT_LOGINS: Final[tuple[str, ...]] = (
     "codecov",
 )
 ALLOWED_DB_SCHEMES: Final = ("postgresql://", "postgres://")
+DEFAULT_WEB_ORIGINS: Final[tuple[str, ...]] = ("http://localhost:3000", "http://127.0.0.1:3000")
 
 
 class ConfigError(ValueError):
@@ -73,6 +74,9 @@ class Settings:
 
     # Where blobless clones are kept, relative to the working directory.
     clone_dir: str = "data/repos"
+
+    # Browser origins allowed to call the API (CORS): the local Next.js server only.
+    web_origins: tuple[str, ...] = DEFAULT_WEB_ORIGINS
 
     def is_bot_login(self, login: str | None) -> bool:
         """A missing login means a deleted or unknown actor: exclude rather than guess."""
@@ -156,6 +160,11 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
 
         env = {**load_env_file(), **os.environ}
 
+    web_origins = _tuple(env, "WEB_ORIGINS", DEFAULT_WEB_ORIGINS)
+    if "*" in web_origins:
+        # a wildcard would let any website's pages read the API from a visitor's browser
+        raise ConfigError(f"{PREFIX}WEB_ORIGINS must list origins; '*' is not allowed")
+
     github_token = _required(env, "GITHUB_TOKEN")
     database_url = _required(env, "DATABASE_URL")
     if not database_url.startswith(ALLOWED_DB_SCHEMES):
@@ -187,4 +196,5 @@ def load_settings(env: Mapping[str, str] | None = None) -> Settings:
         excluded_dirs=_tuple(env, "EXCLUDED_DIRS", DEFAULT_EXCLUDED_DIRS),
         bot_logins=_tuple(env, "BOT_LOGINS", DEFAULT_BOT_LOGINS),
         clone_dir=(env.get(PREFIX + "CLONE_DIR") or "").strip() or "data/repos",
+        web_origins=web_origins,
     )

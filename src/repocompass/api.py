@@ -16,6 +16,7 @@ from __future__ import annotations
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
@@ -55,6 +56,13 @@ def _areas_preview(rows: list[dict[str, Any]] | None) -> list[dict[str, Any]] | 
 
 def create_app(settings: Settings) -> FastAPI:
     app = FastAPI(title="RepoCompass", version=__version__)
+    # only the local web pages may call the API from a browser
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=list(settings.web_origins),
+        allow_methods=["GET", "POST"],
+        allow_headers=["Content-Type"],
+    )
 
     @app.exception_handler(DatabaseError)
     def database_down(request: Request, exc: DatabaseError) -> JSONResponse:
@@ -74,9 +82,15 @@ def create_app(settings: Settings) -> FastAPI:
         if stored is not None:
             slug = stored["repo"]["canonical_slug"]
             return {"status": "cached", "report_url": _report_url(slug), "report": stored}
-        job_id, state = enqueue_job(settings.database_url, f"{owner}/{name}")
+        slug = f"{owner}/{name}"
+        job_id, state = enqueue_job(settings.database_url, slug)
         response.status_code = 202
-        return {"status": state, "job_id": job_id, "job_url": f"/jobs/{job_id}"}
+        return {
+            "status": state,
+            "requested_slug": slug,
+            "job_id": job_id,
+            "job_url": f"/jobs/{job_id}",
+        }
 
     @app.get("/repos")
     def repos() -> dict[str, Any]:

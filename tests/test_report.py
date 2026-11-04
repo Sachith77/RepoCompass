@@ -174,6 +174,21 @@ def test_lead_response_measure_falls_back_when_formal_review_coverage_is_low() -
     assert low["formal_review_coverage"] == 0.17
 
 
+def test_repo_wide_response_figures_are_passed_through_with_their_sizes() -> None:
+    figures = {
+        "repo_median_hours_first_formal_review": 20.5,
+        "repo_formal_review_prs": 40,
+        "repo_median_hours_first_human_response": 6.0,
+        "repo_human_response_prs": 90,
+        "repo_no_response_share": 0.25,
+        "repo_no_response_base_prs": 80,
+    }
+    where = _report(repo_responses=figures)["where_to_start"]
+    assert {k: where[k] for k in figures} == figures
+    empty = _report()["where_to_start"]
+    assert (empty["repo_formal_review_prs"], empty["repo_no_response_share"]) == (0, None)
+
+
 def test_a_stored_analysis_without_parameters_fails_clearly() -> None:
     import pytest
 

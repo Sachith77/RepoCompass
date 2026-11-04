@@ -50,20 +50,55 @@ SELECT area, number FROM (
 ) ranked WHERE n <= {EXAMPLES_PER_AREA} ORDER BY area, n
 """
 # Coverage uses mature PRs only (old enough to have been reviewed), as Phase 0 measured it.
+# The last two counts are the repo-wide no-response share, by the rule in metrics.py:
+# mature newcomer PRs with complete files and known response times, and of those the
+# ones with no human response within no_response_days.
 PR_COUNTS = """
-SELECT count(*) FILTER (WHERE mature AND response_times_complete
+SELECT count(*) FILTER (WHERE old AND response_times_complete
                           AND first_formal_review_at IS NOT NULL),
-       count(*) FILTER (WHERE mature AND response_times_complete),
+       count(*) FILTER (WHERE old AND response_times_complete),
        count(*) FILTER (WHERE NOT files_complete),
-       count(*) FILTER (WHERE NOT response_times_complete)
-  FROM (SELECT p.*, p.created_at <= r.snapshot_at
-                   - make_interval(days => (r.parameters ->> 'maturity_days')::int) AS mature
-          FROM prs p JOIN repos r ON r.id = p.repo_id WHERE p.repo_id = %s) counted
+       count(*) FILTER (WHERE NOT response_times_complete),
+       count(*) FILTER (WHERE base AND (first_human_response_at IS NULL OR late)),
+       count(*) FILTER (WHERE base)
+  FROM (SELECT *, old AND state <> 'OPEN' AND is_newcomer AND files_complete
+                  AND response_times_complete AS base
+          FROM (SELECT p.*,
+                       p.created_at <= r.snapshot_at
+                         - make_interval(days => (r.parameters ->> 'maturity_days')::int) AS old,
+                       p.first_human_response_at - p.created_at
+                         > make_interval(days => (r.parameters ->> 'no_response_days')::int) AS late
+                  FROM prs p JOIN repos r ON r.id = p.repo_id
+                 WHERE p.repo_id = %s) aged) counted
 """
 
 
 class OutdatedReport(ValueError):
     """A stored analysis from an older schema, without the parameters it ran with."""
+
+
+# Repo-wide medians over the same PRs as the per-area ones in metrics.py: newcomer PRs
+# with complete files and known response times that got that response.
+REPO_MEDIANS = """
+SELECT percentile_cont(0.5) WITHIN GROUP (ORDER BY review_h)
+           FILTER (WHERE review_h IS NOT NULL),
+       count(review_h),
+       percentile_cont(0.5) WITHIN GROUP (ORDER BY response_h)
+           FILTER (WHERE response_h IS NOT NULL),
+       count(response_h)
+  FROM (SELECT extract(epoch FROM first_formal_review_at - created_at) / 3600 AS review_h,
+               extract(epoch FROM first_human_response_at - created_at) / 3600 AS response_h
+          FROM prs
+         WHERE repo_id = %s AND is_newcomer AND files_complete AND response_times_complete) hours
+"""
+EMPTY_RESPONSES: dict[str, Any] = {
+    "repo_median_hours_first_formal_review": None,
+    "repo_formal_review_prs": 0,
+    "repo_median_hours_first_human_response": None,
+    "repo_human_response_prs": 0,
+    "repo_no_response_share": None,
+    "repo_no_response_base_prs": 0,
+}
 
 
 def lead_response_measure(reviewed: int, total: int, threshold: float) -> str:
@@ -127,8 +162,12 @@ def build_report(
     areas: list[dict[str, Any]],
     examples: dict[str, list[int]],
     pr_counts: tuple[int, int, int, int],
+    repo_responses: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """`pr_counts`: (mature PRs with a formal review, mature PRs, incomplete, unknown)."""
+    """`pr_counts`: (mature PRs with a formal review, mature PRs, incomplete, unknown).
+
+    `repo_responses`: the repo-wide response fields named in EMPTY_RESPONSES.
+    """
     slug = repo["canonical_slug"]
     params = repo["parameters"]
     if not params:
@@ -140,6 +179,7 @@ def build_report(
             entry = _area_entry(row, slug, examples.get(row["area"], []), threshold)
             grouped[row["band"]].append(entry)
     reviewed, mature, incomplete, unknown = pr_counts
+    responses = {**EMPTY_RESPONSES, **(repo_responses or {})}
     return {
         "repo": {
             "requested_slug": repo["requested_slug"],
@@ -156,6 +196,7 @@ def build_report(
             "lead_response_measure": lead_response_measure(
                 reviewed, mature, params["formal_review_coverage_threshold"]
             ),
+            **responses,
             "bands": [{"band": b, "areas": grouped[b]} for b in BAND_ORDER if grouped[b]],
             "not_enough_data": [
                 {"area": r["area"], "mature_newcomer_prs": r["mature_newcomer_prs"]}
@@ -223,8 +264,25 @@ def load_report(settings: Settings, owner: str, name: str) -> dict[str, Any] | N
             examples[area].append(number)
         cur.execute(PR_COUNTS, (repo["id"],))
         row = cur.fetchone()
-    counts = (int(row[0]), int(row[1]), int(row[2]), int(row[3])) if row else (0, 0, 0, 0)
-    return build_report(repo, areas, dict(examples), counts)
+        cur.execute(REPO_MEDIANS, (repo["id"],))
+        med = cur.fetchone()
+    row = tuple(int(v) for v in row) if row else (0, 0, 0, 0, 0, 0)
+    counts = (row[0], row[1], row[2], row[3])
+    responses = dict(EMPTY_RESPONSES)
+    if med:
+        responses.update(
+            repo_median_hours_first_formal_review=_float(med[0]),
+            repo_formal_review_prs=int(med[1]),
+            repo_median_hours_first_human_response=_float(med[2]),
+            repo_human_response_prs=int(med[3]),
+        )
+    if row[5]:
+        responses.update(repo_no_response_share=row[4] / row[5], repo_no_response_base_prs=row[5])
+    return build_report(repo, areas, dict(examples), counts, responses)
+
+
+def _float(value: Any) -> float | None:
+    return None if value is None else float(value)
 
 
 def list_repos(settings: Settings) -> list[dict[str, Any]]:

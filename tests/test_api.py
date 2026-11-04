@@ -66,7 +66,12 @@ def test_analyze_returns_the_stored_report_when_there_is_one(
 def test_analyze_queues_a_job_otherwise(client: TestClient, calls: dict[str, Any]) -> None:
     response = client.post("/analyze", json={"repo_url": "https://github.com/optuna/optuna"})
     assert response.status_code == 202
-    assert response.json() == {"status": "queued", "job_id": 7, "job_url": "/jobs/7"}
+    assert response.json() == {
+        "status": "queued",
+        "requested_slug": "optuna/optuna",
+        "job_id": 7,
+        "job_url": "/jobs/7",
+    }
     assert calls["enqueued"] == ["optuna/optuna"]
 
 
@@ -205,3 +210,20 @@ def test_a_database_failure_is_503_and_leaks_nothing(
     assert response.status_code == 503
     assert "sup3r-s3cret" not in response.text
     assert "db.example.invalid" not in response.text
+
+
+def test_cors_allows_only_the_local_web_origin(client: TestClient, calls: dict[str, Any]) -> None:
+    allowed = client.get("/repos", headers={"Origin": "http://localhost:3000"})
+    assert allowed.headers["access-control-allow-origin"] == "http://localhost:3000"
+    other = client.get("/repos", headers={"Origin": "https://evil.example"})
+    assert "access-control-allow-origin" not in other.headers
+    preflight = client.options(
+        "/analyze",
+        headers={
+            "Origin": "http://127.0.0.1:3000",
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "Content-Type",
+        },
+    )
+    assert preflight.status_code == 200
+    assert preflight.headers["access-control-allow-origin"] == "http://127.0.0.1:3000"
