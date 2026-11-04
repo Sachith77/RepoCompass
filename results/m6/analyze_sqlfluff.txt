@@ -1,0 +1,33 @@
+﻿# python -m repocompass analyze sqlfluff/sqlfluff, started 2026-11-04T06:02:28Z on this machine, local PostgreSQL 18, live GitHub API; all values measured
+job 39 started for sqlfluff/sqlfluff
+job 39 done
+repository        sqlfluff/sqlfluff (requested sqlfluff/sqlfluff)
+snapshot          2026-11-04T06:02:31+00:00
+files considered  6377
+area depths       {'test': 4}
+areas             115  (active 55, steady 9, dormant 51)
+commits           940 in window; 34 bot, 0 sweep, 885 counted toward an area
+seconds           resolve 0.5, clone_or_fetch 1.6, tree_and_areas 0.1, git_log 0.2
+PRs in window     1179 human (139 bot or non-user PRs dropped first); kept 1161; sampled (at least one month capped)
+dates covered     2025-11-04T15:45:20+00:00 to 2026-11-04T05:55:14+00:00
+response times    unknown for 2 PRs (no human answer in the fetched slice)
+file lists        0 PRs could not be fetched in full and are excluded
+repo rate         0.567 over 289 mature newcomer PRs
+bands             above repo average 2, below repo average 1, no clear difference 4, not enough data 108
+  src                                      n=150  rate 0.473 [0.395, 0.553]  below repo average; 117 authors, 0 stale open
+                                           median hours to review 47.1 (n=122), to human response 35.2 (n=143); no response in 30 days 29% (n=150)
+  test/fixtures/dialects/clickhouse        n=10   rate 0.900 [0.596, 0.982]  above repo average; 10 authors, 0 stale open
+                                           median hours to review 22.4 (n=10), to human response 22.4 (n=11); no response in 30 days 0% (n=10)
+  test/fixtures/dialects/duckdb            n=10   rate 0.500 [0.237, 0.763]  no clear difference; 9 authors, 0 stale open
+                                           median hours to review 21.6 (n=9), to human response 35.9 (n=10); no response in 30 days 20% (n=10)
+  test/fixtures/dialects/oracle            n=12   rate 0.667 [0.391, 0.862]  no clear difference; 11 authors, 0 stale open
+                                           median hours to review 37.8 (n=8), to human response 17.9 (n=10); no response in 30 days 17% (n=12)
+  test/fixtures/dialects/snowflake         n=26   rate 0.769 [0.579, 0.890]  above repo average; 26 authors, 0 stale open
+                                           median hours to review 29.6 (n=28), to human response 25.4 (n=30); no response in 30 days 4% (n=26)
+  test/fixtures/dialects/tsql              n=14   rate 0.786 [0.524, 0.924]  no clear difference; 12 authors, 0 stale open
+                                           median hours to review 34.7 (n=20), to human response 29.3 (n=23); no response in 30 days 7% (n=14)
+  test/fixtures/rules/std_rule_cases       n=57   rate 0.544 [0.416, 0.666]  no clear difference; 46 authors, 0 stale open
+                                           median hours to review 49.3 (n=44), to human response 34.4 (n=51); no response in 30 days 32% (n=57)
+stage seconds     git_stage 2.5, pr_pages 162.5, lookback 52.3
+API               48 requests, 75 points
+wall_seconds 219.2

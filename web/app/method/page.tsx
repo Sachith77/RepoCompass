@@ -54,7 +54,7 @@ const limitations = [
   "The newcomer rule sees only pull requests. Someone who contributed by direct push, or before the repository moved to GitHub, counts as a newcomer.",
   "Only the first 20 reviews and 30 comments of each PR are read. When none of them is a human answer and more exist, that PR's response times are marked unknown and left out of the response figures. Reviewer counts are capped at 20 reviews per PR.",
   "Commit authors are counted by email, and no mailmap is applied, so one person with two email addresses counts twice. Commits are dated by committer date.",
-  "The report is a snapshot. Whether bands predict what happens later is checked by the cutoff validation, which has not been run yet.",
+  "The report is a snapshot. A cutoff validation on Kludex/starlette, optuna/optuna and sqlfluff/sqlfluff (measured; bands made from PRs mature six months before the snapshot, checked against the months after) could not test the \"above repo average\" band: no such area had at least 10 mature newcomer PRs in both periods. Both \"below repo average\" areas that qualified stayed below (optuna/study, 10 PRs before and 18 after; sqlfluff src, 28 and 113). Two areas are too few for any conclusion, so the bands are not shown to predict anything.",
 ];
 
 export default async function MethodPage({ searchParams }: Props) {

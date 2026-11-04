@@ -1,0 +1,21 @@
+{
+  "above": {
+    "areas": 0,
+    "held": 0,
+    "proportion": null,
+    "bootstrap_95": null
+  },
+  "below": {
+    "areas": 2,
+    "held": 2,
+    "proportion": 1.0,
+    "bootstrap_95": [
+      1.0,
+      1.0
+    ]
+  },
+  "no_clear_difference_above_after": {
+    "areas": 2,
+    "above": 0
+  }
+}

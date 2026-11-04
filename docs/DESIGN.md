@@ -1,7 +1,7 @@
 # RepoCompass design
 
-Scope: v0 as defined in `docs/BRIEF.md` after the Phase 0 decisions. Every timing quoted here was
-measured on 2026-11-03 and is recorded in `results/phase0/`.
+Scope: v0 as defined in `docs/BRIEF.md` after the Phase 0 decisions. Every timing quoted here is
+measured and cites its file in `results/`; `results/performance.md` collects them.
 
 ## 1. The question and the shape of the answer
 
@@ -143,9 +143,7 @@ a repository's coverage is below a configurable share.
   nobody answered; the share alone hides how slow answers are. Only the first 20 reviews and 30
   comments per PR are read; a PR whose slice holds no human answer but has more is marked unknown.
 
-On the reference set this yielded 4, 7 and 9 qualifying areas. Bands separate the extremes cleanly
-(`optuna/visualization` 0.357–0.802 against `optuna/study` 0.062–0.335) and correctly refuse to
-separate neighbours.
+On the reference set Phase 0 found 4, 7 and 9 qualifying areas, and bands separated only the extremes.
 
 ## 6. Failures
 
@@ -171,13 +169,14 @@ areas. Nobody is called a maintainer or owner, because v0 ships no ownership dat
 
 ## 8. Open risks
 
-- **The bands' predictive value is unproven** until the M6 cutoff validation. With intervals this wide
-  a null result is realistic and will be reported as such.
+- **The bands' predictive value is unproven.** `validate` re-bands areas as of six months back and
+  checks the months after: "above repo average" could not be tested, 2 of 2 "below" areas held
+  (`results/validation/`).
 - **Sampling**: a capped month keeps its newest 250 PRs, so per-month counts matter on the report.
-- **Worker memory is unmeasured.** A run was stopped by the machine running low on memory.
-  TODO: measure the worker's peak memory on kubernetes before relying on it.
+- **Worker memory**: peak 72 MB on kubernetes, resumed from a 30% checkpoint (`results/m4/resume_test.md`).
+  What filled memory when an earlier run was stopped was not measured.
 - **Huge repositories are slow**: 34.7 min for kubernetes, almost all PR pages, plus 71.7 s for a cold
-  clone. M6 re-measures cold totals.
+  clone; no cold end-to-end total was measured (`results/performance.md`).
 - **The first-timer lookback sees only PRs**: someone who contributed by direct push counts as a
   newcomer (ADR-0002).
 

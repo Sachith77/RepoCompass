@@ -7,6 +7,7 @@ Usage:
     python -m repocompass resume JOB_ID         continue a failed or interrupted job
     python -m repocompass worker [--once]       run queued jobs (--once: until the queue is empty)
     python -m repocompass serve [--port N]      run the API on 127.0.0.1 (default port 8000)
+    python -m repocompass validate OWNER/REPO.. cutoff validation, written to results/validation
     python -m repocompass ingest-git OWNER/REPO developer command: print the git stage only
 """
 
@@ -16,6 +17,7 @@ import contextlib
 import sys
 from collections import Counter
 from collections.abc import Callable
+from datetime import timedelta
 
 from repocompass.analysis import AnalysisResult
 from repocompass.config import ConfigError, Settings, load_settings
@@ -234,6 +236,44 @@ def cmd_serve(args: list[str]) -> int:
     return 0
 
 
+VALIDATION_CUTOFF_DAYS = 182  # about six months before each snapshot (docs/BRIEF.md example)
+
+
+def cmd_validate(args: list[str]) -> int:
+    if not args:
+        print("usage: python -m repocompass validate OWNER/REPO [OWNER/REPO ...]", file=sys.stderr)
+        return 2
+    from pathlib import Path
+
+    from repocompass.validation import check_repo, load_repo, pool
+    from repocompass.validation_report import RESAMPLES, SEED, write_results
+
+    settings = _load()
+    checks, params = [], None
+    try:
+        for text in args:
+            owner, name = parse_repo_slug(text)
+            slug, snapshot, repo_params, prs = load_repo(settings, owner, name)
+            if params is not None and repo_params != params:
+                print("cannot pool analyses made with different parameters", file=sys.stderr)
+                return 1
+            params = repo_params
+            cutoff = snapshot - timedelta(days=VALIDATION_CUTOFF_DAYS)
+            checks.append(check_repo(slug, prs, snapshot, cutoff, repo_params))
+    # load_repo's "not analysed" LookupError arrives as a DatabaseError from db.connect
+    except (GitHubError, DatabaseError) as exc:
+        print(f"validation failed: {exc}", file=sys.stderr)
+        return 1
+    if params is None:  # pragma: no cover - args is non-empty, so one repo was loaded
+        return 1
+    pooled = pool(checks, resamples=RESAMPLES, seed=SEED)
+    summary = write_results(
+        checks, pooled, params, VALIDATION_CUTOFF_DAYS, Path("results/validation")
+    )
+    print(summary.read_text(encoding="utf-8"))
+    return 0
+
+
 COMMANDS: dict[str, Callable[[list[str]], int]] = {
     "check": cmd_check,
     "init-db": cmd_init_db,
@@ -241,6 +281,7 @@ COMMANDS: dict[str, Callable[[list[str]], int]] = {
     "resume": cmd_resume,
     "worker": cmd_worker,
     "serve": cmd_serve,
+    "validate": cmd_validate,
     "ingest-git": cmd_ingest_git,
 }
 

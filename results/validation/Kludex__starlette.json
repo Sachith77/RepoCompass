@@ -1,0 +1,69 @@
+{
+  "slug": "Kludex/starlette",
+  "snapshot": "2026-11-03T21:40:38+05:30",
+  "cutoff": "2026-05-05T21:40:38+05:30",
+  "n_before": 38,
+  "repo_rate_before": 0.13157894736842105,
+  "n_after": 145,
+  "repo_rate_after": 0.23448275862068965,
+  "areas": [
+    {
+      "area": "docs",
+      "n_before": 7,
+      "merged_before": 3,
+      "wilson_before": [
+        0.15821985521401266,
+        0.7495416355251392
+      ],
+      "band_before": "not enough data",
+      "n_after": 32,
+      "merged_after": 15,
+      "rate_after": 0.46875,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "scripts",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "starlette",
+      "n_before": 32,
+      "merged_before": 3,
+      "wilson_before": [
+        0.03240155129084829,
+        0.24218154732788763
+      ],
+      "band_before": "no clear difference",
+      "n_after": 108,
+      "merged_after": 19,
+      "rate_after": 0.17592592592592593,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "tests",
+      "n_before": 22,
+      "merged_before": 1,
+      "wilson_before": [
+        0.008069427618603395,
+        0.21798045844323216
+      ],
+      "band_before": "no clear difference",
+      "n_after": 104,
+      "merged_after": 16,
+      "rate_after": 0.15384615384615385,
+      "qualifies": true,
+      "held": null
+    }
+  ],
+  "possible_newcomer_leaks": 3
+}

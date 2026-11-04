@@ -121,3 +121,35 @@ def test_resume_failure_prints_no_secret(
     out = capsys.readouterr()
     assert "cannot resume" in out.err
     _assert_no_secret(out.out + out.err)
+
+
+def test_validate_needs_a_repository(capsys: pytest.CaptureFixture[str]) -> None:
+    assert main(["validate"]) == 2
+    assert "usage" in capsys.readouterr().err
+
+
+def test_validate_refuses_to_pool_analyses_with_different_parameters(
+    fake_env: None, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    import repocompass.validation as validation
+
+    base = {"maturity_days": 30, "min_sample": 10, "wilson_z": 1.96}
+    runs = iter([base, {**base, "min_sample": 5}])
+
+    def fake_load(settings: object, owner: str, name: str) -> tuple:
+        from datetime import UTC, datetime
+
+        return f"{owner}/{name}", datetime(2026, 11, 3, tzinfo=UTC), next(runs), []
+
+    monkeypatch.setattr(validation, "load_repo", fake_load)
+    assert main(["validate", "a/b", "c/d"]) == 1
+    assert "different parameters" in capsys.readouterr().err
+
+
+def test_validate_database_failure_prints_no_secret(
+    fake_env: None, capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert main(["validate", "a/b"]) == 1
+    out = capsys.readouterr()
+    assert "validation failed" in out.err
+    _assert_no_secret(out.out + out.err)
