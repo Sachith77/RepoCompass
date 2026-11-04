@@ -65,5 +65,6 @@
       "held": null
     }
   ],
-  "possible_newcomer_leaks": 3
+  "possible_newcomer_leaks": 3,
+  "capped_months": []
 }

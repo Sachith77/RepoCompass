@@ -1,0 +1,41 @@
+﻿# python -m repocompass analyze optuna/optuna with REPOCOMPASS_WINDOW_DAYS=730 into the window24 schema, started 2026-11-04T07:44:10Z on this machine, local PostgreSQL 18, live GitHub API; all values measured
+job 1 started for optuna/optuna
+job 1 done
+repository        optuna/optuna (requested optuna/optuna)
+snapshot          2026-11-04T07:44:14+00:00
+files considered  484
+area depths       {'optuna': 2, 'tests': 2}
+areas             31  (active 22, steady 9, dormant 0)
+commits           2512 in window; 11 bot, 0 sweep, 2385 counted toward an area
+seconds           resolve 0.5, clone_or_fetch 1.6, tree_and_areas 0.0, git_log 0.2
+PRs in window     935 human (10 bot or non-user PRs dropped first); kept 935; complete
+dates covered     2024-11-04T12:49:25+00:00 to 2026-11-02T16:53:33+00:00
+response times    unknown for 0 PRs (no human answer in the fetched slice)
+file lists        0 PRs could not be fetched in full and are excluded
+repo rate         0.551 over 198 mature newcomer PRs
+bands             above repo average 1, below repo average 1, no clear difference 9, not enough data 20
+  optuna                                   n=12   rate 0.833 [0.552, 0.953]  above repo average; 12 authors, 0 stale open
+                                           median hours to review 15.6 (n=11), to human response 9.9 (n=13); no response in 30 days 0% (n=12)
+  optuna/_gp                               n=11   rate 0.636 [0.354, 0.848]  no clear difference; 10 authors, 0 stale open
+                                           median hours to review 10.0 (n=7), to human response 9.9 (n=10); no response in 30 days 9% (n=11)
+  optuna/importance                        n=10   rate 0.400 [0.168, 0.687]  no clear difference; 9 authors, 0 stale open
+                                           median hours to review 12.5 (n=6), to human response 14.8 (n=11); no response in 30 days 10% (n=10)
+  optuna/pruners                           n=16   rate 0.625 [0.386, 0.815]  no clear difference; 12 authors, 0 stale open; one author >30%
+                                           median hours to review 17.9 (n=12), to human response 17.4 (n=15); no response in 30 days 31% (n=16)
+  optuna/samplers                          n=24   rate 0.583 [0.388, 0.755]  no clear difference; 21 authors, 0 stale open
+                                           median hours to review 26.3 (n=16), to human response 19.1 (n=23); no response in 30 days 8% (n=24)
+  optuna/storages                          n=21   rate 0.619 [0.409, 0.792]  no clear difference; 20 authors, 0 stale open
+                                           median hours to review 19.4 (n=14), to human response 13.2 (n=21); no response in 30 days 10% (n=21)
+  optuna/study                             n=31   rate 0.226 [0.114, 0.398]  below repo average; 23 authors, 0 stale open
+                                           median hours to review 13.9 (n=12), to human response 19.2 (n=25); no response in 30 days 42% (n=31)
+  optuna/trial                             n=16   rate 0.312 [0.142, 0.556]  no clear difference; 12 authors, 0 stale open
+                                           median hours to review 10.1 (n=5), to human response 21.4 (n=12); no response in 30 days 25% (n=16)
+  optuna/visualization                     n=22   rate 0.545 [0.347, 0.731]  no clear difference; 20 authors, 0 stale open
+                                           median hours to review 44.0 (n=20), to human response 22.1 (n=23); no response in 30 days 18% (n=22)
+  tests/samplers_tests                     n=10   rate 0.300 [0.108, 0.603]  no clear difference; 10 authors, 0 stale open
+                                           median hours to review 110.1 (n=5), to human response 23.9 (n=11); no response in 30 days 0% (n=10)
+  tests/study_tests                        n=15   rate 0.400 [0.198, 0.643]  no clear difference; 13 authors, 0 stale open
+                                           median hours to review 11.8 (n=9), to human response 15.9 (n=17); no response in 30 days 27% (n=15)
+stage seconds     git_stage 2.4, pr_pages 99.2, lookback 33.0
+API               31 requests, 50 points
+wall_seconds 136.8

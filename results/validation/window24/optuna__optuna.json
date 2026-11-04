@@ -1,0 +1,427 @@
+{
+  "slug": "optuna/optuna",
+  "snapshot": "2026-11-04T13:14:14+05:30",
+  "cutoff": "2025-11-04T13:14:14+05:30",
+  "n_before": 48,
+  "repo_rate_before": 0.7916666666666666,
+  "n_after": 141,
+  "repo_rate_after": 0.46099290780141844,
+  "areas": [
+    {
+      "area": ".github",
+      "n_before": 4,
+      "merged_before": 1,
+      "wilson_before": [
+        0.04558726079439873,
+        0.6993581574915435
+      ],
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 2,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna",
+      "n_before": 7,
+      "merged_before": 7,
+      "wilson_before": [
+        0.6456695648259365,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 3,
+      "rate_after": 0.6,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/_gp",
+      "n_before": 5,
+      "merged_before": 4,
+      "wilson_before": [
+        0.3755346296812303,
+        0.9637758913796723
+      ],
+      "band_before": "not enough data",
+      "n_after": 6,
+      "merged_after": 3,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/_hypervolume",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/artifacts",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 3,
+      "rate_after": 0.75,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/importance",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 9,
+      "merged_after": 3,
+      "rate_after": 0.3333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/integration",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/pruners",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 13,
+      "merged_after": 7,
+      "rate_after": 0.5384615384615384,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/samplers",
+      "n_before": 4,
+      "merged_before": 3,
+      "wilson_before": [
+        0.30064184250845644,
+        0.9544127392056012
+      ],
+      "band_before": "not enough data",
+      "n_after": 20,
+      "merged_after": 11,
+      "rate_after": 0.55,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/search_space",
+      "n_before": 2,
+      "merged_before": 1,
+      "wilson_before": [
+        0.09453120570165269,
+        0.9054687942983473
+      ],
+      "band_before": "not enough data",
+      "n_after": 0,
+      "merged_after": 0,
+      "rate_after": null,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/storages",
+      "n_before": 9,
+      "merged_before": 8,
+      "wilson_before": [
+        0.5650002943402161,
+        0.980109112368049
+      ],
+      "band_before": "not enough data",
+      "n_after": 12,
+      "merged_after": 5,
+      "rate_after": 0.4166666666666667,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/study",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 28,
+      "merged_after": 4,
+      "rate_after": 0.14285714285714285,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/terminator",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/testing",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/trial",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 15,
+      "merged_after": 5,
+      "rate_after": 0.3333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "optuna/visualization",
+      "n_before": 4,
+      "merged_before": 2,
+      "wilson_before": [
+        0.15003898911025654,
+        0.8499610108897435
+      ],
+      "band_before": "not enough data",
+      "n_after": 15,
+      "merged_after": 9,
+      "rate_after": 0.6,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/artifacts_tests",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/gp_tests",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/hypervolume_tests",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 0,
+      "merged_after": 0,
+      "rate_after": null,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/importance_tests",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/pruners_tests",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/samplers_tests",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 8,
+      "merged_after": 1,
+      "rate_after": 0.125,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/storages_tests",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/study_tests",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 13,
+      "merged_after": 4,
+      "rate_after": 0.3076923076923077,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/trial_tests",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/visualization_tests",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 3,
+      "rate_after": 0.75,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tutorial",
+      "n_before": 1,
+      "merged_before": 0,
+      "wilson_before": [
+        0.0,
+        0.7934506856996815
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 3,
+      "rate_after": 0.75,
+      "qualifies": false,
+      "held": null
+    }
+  ],
+  "possible_newcomer_leaks": 15,
+  "capped_months": []
+}

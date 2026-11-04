@@ -545,5 +545,8 @@
       "held": null
     }
   ],
-  "possible_newcomer_leaks": 21
+  "possible_newcomer_leaks": 21,
+  "capped_months": [
+    "2026-10"
+  ]
 }

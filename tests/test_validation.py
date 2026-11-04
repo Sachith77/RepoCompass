@@ -20,7 +20,13 @@ from repocompass.validation import (
 
 SNAPSHOT = datetime(2026, 11, 3, tzinfo=UTC)
 CUTOFF = SNAPSHOT - timedelta(days=182)
-PARAMS = {"maturity_days": 30, "min_sample": 10, "wilson_z": 1.959963985}
+PARAMS = {
+    "maturity_days": 30,
+    "min_sample": 10,
+    "wilson_z": 1.959963985,
+    "window_days": 365,
+    "monthly_sample_cap": 250,
+}
 
 
 def _pr(
@@ -194,7 +200,9 @@ def test_the_summary_is_written_from_the_same_numbers(tmp_path) -> None:
     prs = _period(before_start, "docs", 18, 2, 0) + _period(after_start, "docs", 8, 4, 200)
     prs += _period(before_start, "src", 4, 16, 100) + _period(after_start, "src", 3, 9, 300)
     checks = [check_repo("o/r", prs, SNAPSHOT, CUTOFF, PARAMS)]
-    summary = write_results(checks, pool(checks, resamples=200, seed=0), PARAMS, 182, tmp_path)
+    summary = write_results(
+        checks, pool(checks, resamples=200, seed=0), PARAMS, 182, tmp_path, "validate o/r"
+    )
     text = summary.read_text(encoding="utf-8")
     assert "Cutoff: 182 days before" in text
     assert "| `docs` | above repo average | 20 | 0.900" in text
@@ -274,3 +282,28 @@ def test_possible_newcomer_leaks_counts_non_newcomers_without_an_earlier_merge_b
     )
     result = check_repo("o/r", [later_merge, suspect, clean_first, clean], SNAPSHOT, CUTOFF, PARAMS)
     assert result.possible_newcomer_leaks == 1
+
+
+def test_the_summary_states_the_period_lengths_of_the_24_month_mode(tmp_path) -> None:
+    from repocompass.validation_report import write_results
+
+    params = {**PARAMS, "window_days": 730}
+    checks = [check_repo("o/r", [], SNAPSHOT, SNAPSHOT - timedelta(days=365), params)]
+    pooled = pool(checks, resamples=10, seed=0)
+    summary = write_results(checks, pooled, params, 365, tmp_path, "validate --months 24 o/r")
+    text = summary.read_text(encoding="utf-8")
+    assert "covers 730 days (24 months)" in text
+    assert "Cutoff: 365 days before" in text
+    assert "before period holds about 11 months of PRs and the after period about 11" in text
+
+
+def test_capped_months_are_those_that_kept_fewer_prs_than_existed() -> None:
+    from repocompass.validation import capped_months
+
+    per_month = {
+        "2026-10": {"total": 268, "sampled": 250},
+        "2026-09": {"total": 40, "sampled": 40},
+        "2026-01": {"total": 300, "sampled": 250},
+    }
+    assert capped_months(per_month) == ("2026-01", "2026-10")
+    assert capped_months({}) == ()

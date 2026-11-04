@@ -169,8 +169,8 @@ areas. Nobody is called a maintainer or owner, because v0 ships no ownership dat
 
 ## 8. Open risks
 
-- **The bands' predictive value is unproven.** `validate` re-bands areas as of six months back and
-  checks the months after: "above repo average" could not be tested, 2 of 2 "below" areas held
+- **The bands' predictive value is unproven.** `validate` re-bands areas as of a cutoff and checks the
+  months after; over 12- and 24-month runs only 4 directional areas qualified, and all held
   (`results/validation/`).
 - **Sampling**: a capped month keeps its newest 250 PRs, so per-month counts matter on the report.
 - **Worker memory**: peak 72 MB on kubernetes, resumed from a 30% checkpoint (`results/m4/resume_test.md`).

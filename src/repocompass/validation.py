@@ -37,6 +37,7 @@ __all__ = [
     "after_sample",
     "before_sample",
     "bootstrap_ci",
+    "capped_months",
     "check_repo",
     "load_repo",
     "outcome_at",
@@ -84,8 +85,10 @@ class RepoCheck:
     areas: list[AreaCheck]
     # before-sample candidates stored as non-newcomer with no earlier PR by the same author in
     # the stored data that merged before the cutoff. An upper bound on newcomer-status leaks:
-    # the earlier merged PR may simply be older than the stored 12 months.
+    # the earlier merged PR may simply be older than the stored window.
     possible_newcomer_leaks: int
+    # months of the stored analysis whose PRs were capped (sampled), as 'YYYY-MM'
+    capped_months: tuple[str, ...] = ()
 
 
 def outcome_at(pr: StoredPr, when: datetime) -> str | None:
@@ -142,7 +145,12 @@ def _rate(sample: list[tuple[StoredPr, bool]]) -> float | None:
 
 
 def check_repo(
-    slug: str, prs: list[StoredPr], snapshot: datetime, cutoff: datetime, params: dict[str, Any]
+    slug: str,
+    prs: list[StoredPr],
+    snapshot: datetime,
+    cutoff: datetime,
+    params: dict[str, Any],
+    capped_months: tuple[str, ...] = (),
 ) -> RepoCheck:
     before = before_sample(prs, cutoff, maturity_days=params["maturity_days"])
     after = after_sample(prs, cutoff, snapshot, maturity_days=params["maturity_days"])
@@ -166,7 +174,16 @@ def check_repo(
         areas.append(AreaCheck(area, n_b, m_b, interval, banded, n_a, m_a, rate_a, qualifies, held))
     leaks = _possible_newcomer_leaks(prs, cutoff, params["maturity_days"])
     return RepoCheck(
-        slug, snapshot, cutoff, len(before), rate_before, len(after), rate_after, areas, leaks
+        slug,
+        snapshot,
+        cutoff,
+        len(before),
+        rate_before,
+        len(after),
+        rate_after,
+        areas,
+        leaks,
+        capped_months,
     )
 
 
@@ -225,18 +242,18 @@ def pool(checks: list[RepoCheck], *, resamples: int, seed: int) -> dict[str, Any
 
 def load_repo(
     settings: Settings, owner: str, name: str
-) -> tuple[str, datetime, dict[str, Any], list[StoredPr]]:
+) -> tuple[str, datetime, dict[str, Any], list[StoredPr], tuple[str, ...]]:
     """A stored analysis: canonical slug, snapshot, parameters, and its PRs with their areas."""
     with connect(settings.database_url) as conn, conn.cursor() as cur:
         cur.execute(
-            "SELECT id, canonical_slug, snapshot_at, parameters FROM repos"
+            "SELECT id, canonical_slug, snapshot_at, parameters, prs_per_month FROM repos"
             " WHERE lower(canonical_slug) = %s OR lower(requested_slug) = %s",
             (f"{owner}/{name}".lower(),) * 2,
         )
         row = cur.fetchone()
         if row is None:
             raise LookupError(f"{owner}/{name} has not been analysed")
-        repo_id, slug, snapshot, params = row
+        repo_id, slug, snapshot, params, per_month = row
         cur.execute(
             "SELECT p.number, p.author_login, p.created_at, p.merged_at, p.closed_at, p.state,"
             " p.is_merged, p.files_complete, p.is_newcomer,"
@@ -246,7 +263,12 @@ def load_repo(
             (repo_id,),
         )
         prs = [StoredPr(*r[:9], areas=tuple(r[9])) for r in cur.fetchall()]
-    return slug, snapshot, params, prs
+    return slug, snapshot, params, prs, capped_months(per_month)
+
+
+def capped_months(per_month: dict[str, dict[str, Any]]) -> tuple[str, ...]:
+    """Months where fewer PRs were kept than existed, the same rule as the report's "sampled"."""
+    return tuple(sorted(m for m, v in per_month.items() if v.get("sampled", 0) < v.get("total", 0)))
 
 
 def to_json(check: RepoCheck) -> dict[str, Any]:

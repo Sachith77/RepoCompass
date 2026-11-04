@@ -1,0 +1,618 @@
+{
+  "slug": "sqlfluff/sqlfluff",
+  "snapshot": "2026-11-04T13:16:30+05:30",
+  "cutoff": "2025-11-04T13:16:30+05:30",
+  "n_before": 75,
+  "repo_rate_before": 0.92,
+  "n_after": 289,
+  "repo_rate_after": 0.5674740484429066,
+  "areas": [
+    {
+      "area": ".github",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 1,
+      "rate_after": 0.3333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docsv",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 3,
+      "rate_after": 0.75,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "plugins",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 7,
+      "merged_after": 5,
+      "rate_after": 0.7142857142857143,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "sqlfluffrs",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "src",
+      "n_before": 31,
+      "merged_before": 28,
+      "wilson_before": [
+        0.7510006155211754,
+        0.9665353558445683
+      ],
+      "band_before": "no clear difference",
+      "n_after": 150,
+      "merged_after": 71,
+      "rate_after": 0.47333333333333333,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "test/api",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 1,
+      "rate_after": 0.3333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/cli",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 2,
+      "rate_after": 0.4,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/core/config",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 4,
+      "rate_after": 0.8,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/core/linter",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/core/parser/grammar",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/core/templaters",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 4,
+      "rate_after": 0.8,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/dialects",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/cli",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 0,
+      "merged_after": 0,
+      "rate_after": null,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/ansi",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/athena",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/bigquery",
+      "n_before": 4,
+      "merged_before": 4,
+      "wilson_before": [
+        0.5101091634281154,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 1,
+      "rate_after": 0.3333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/clickhouse",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 10,
+      "merged_after": 9,
+      "rate_after": 0.9,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/databricks",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 6,
+      "merged_after": 4,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/db2",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/doris",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 0,
+      "merged_after": 0,
+      "rate_after": null,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/duckdb",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 10,
+      "merged_after": 5,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/flink",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 0,
+      "merged_after": 0,
+      "rate_after": null,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/hive",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/impala",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 2,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/mariadb",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/mysql",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 7,
+      "merged_after": 3,
+      "rate_after": 0.42857142857142855,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/oracle",
+      "n_before": 3,
+      "merged_before": 2,
+      "wilson_before": [
+        0.20765960074271794,
+        0.9385080553004134
+      ],
+      "band_before": "not enough data",
+      "n_after": 12,
+      "merged_after": 8,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/postgres",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 9,
+      "merged_after": 8,
+      "rate_after": 0.8888888888888888,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/redshift",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 2,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/snowflake",
+      "n_before": 14,
+      "merged_before": 12,
+      "wilson_before": [
+        0.6005862049628325,
+        0.9599060787393587
+      ],
+      "band_before": "no clear difference",
+      "n_after": 26,
+      "merged_after": 20,
+      "rate_after": 0.7692307692307693,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/sparksql",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/sqlite",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/starrocks",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/teradata",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 3,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/trino",
+      "n_before": 2,
+      "merged_before": 2,
+      "wilson_before": [
+        0.3423802274009781,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/tsql",
+      "n_before": 8,
+      "merged_before": 7,
+      "wilson_before": [
+        0.5291118177025582,
+        0.9775825085573837
+      ],
+      "band_before": "not enough data",
+      "n_after": 14,
+      "merged_after": 11,
+      "rate_after": 0.7857142857142857,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/dialects/vertica",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/linter",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/linter/autofix",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 2,
+      "rate_after": 0.6666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/rules/std_rule_cases",
+      "n_before": 3,
+      "merged_before": 3,
+      "wilson_before": [
+        0.4385029681293942,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 57,
+      "merged_after": 31,
+      "rate_after": 0.543859649122807,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/fixtures/templater/jinja_c_dbt",
+      "n_before": 1,
+      "merged_before": 1,
+      "wilson_before": [
+        0.20654931430031864,
+        1.0
+      ],
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/rules",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 6,
+      "merged_after": 1,
+      "rate_after": 0.16666666666666666,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/utils/analysis",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "test/utils/reflow",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 3,
+      "merged_after": 3,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    }
+  ],
+  "possible_newcomer_leaks": 22,
+  "capped_months": [
+    "2026-10"
+  ]
+}

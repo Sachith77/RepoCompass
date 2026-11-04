@@ -1,0 +1,295 @@
+{
+  "slug": "fastapi/fastapi",
+  "snapshot": "2026-11-04T13:26:54+05:30",
+  "cutoff": "2025-11-04T13:26:54+05:30",
+  "n_before": 273,
+  "repo_rate_before": 0.27472527472527475,
+  "n_after": 699,
+  "repo_rate_after": 0.05436337625178827,
+  "areas": [
+    {
+      "area": ".github",
+      "n_before": 5,
+      "merged_before": 1,
+      "wilson_before": [
+        0.036224108620327655,
+        0.6244653703187697
+      ],
+      "band_before": "not enough data",
+      "n_after": 16,
+      "merged_after": 1,
+      "rate_after": 0.0625,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs",
+      "n_before": 1,
+      "merged_before": 0,
+      "wilson_before": [
+        0.0,
+        0.7934506856996815
+      ],
+      "band_before": "not enough data",
+      "n_after": 6,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/de",
+      "n_before": 8,
+      "merged_before": 1,
+      "wilson_before": [
+        0.022417491442616455,
+        0.4708881822974419
+      ],
+      "band_before": "not enough data",
+      "n_after": 9,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/en",
+      "n_before": 56,
+      "merged_before": 19,
+      "wilson_before": [
+        0.22919972399381505,
+        0.47000546996056447
+      ],
+      "band_before": "no clear difference",
+      "n_after": 171,
+      "merged_after": 10,
+      "rate_after": 0.05847953216374269,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "docs/es",
+      "n_before": 11,
+      "merged_before": 1,
+      "wilson_before": [
+        0.016232172880513096,
+        0.3773584365306346
+      ],
+      "band_before": "no clear difference",
+      "n_after": 14,
+      "merged_after": 1,
+      "rate_after": 0.07142857142857142,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "docs/fr",
+      "n_before": 4,
+      "merged_before": 1,
+      "wilson_before": [
+        0.04558726079439873,
+        0.6993581574915435
+      ],
+      "band_before": "not enough data",
+      "n_after": 8,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/hi",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 7,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/ja",
+      "n_before": 7,
+      "merged_before": 4,
+      "wilson_before": [
+        0.25045836447486075,
+        0.8417801447859872
+      ],
+      "band_before": "not enough data",
+      "n_after": 6,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/ko",
+      "n_before": 14,
+      "merged_before": 9,
+      "wilson_before": [
+        0.387644230985638,
+        0.8365526824952385
+      ],
+      "band_before": "above repo average",
+      "n_after": 7,
+      "merged_after": 2,
+      "rate_after": 0.2857142857142857,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/pt",
+      "n_before": 15,
+      "merged_before": 5,
+      "wilson_before": [
+        0.15176324436857305,
+        0.5828645226687702
+      ],
+      "band_before": "no clear difference",
+      "n_after": 11,
+      "merged_after": 1,
+      "rate_after": 0.09090909090909091,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "docs/ru",
+      "n_before": 13,
+      "merged_before": 9,
+      "wilson_before": [
+        0.4236934317473361,
+        0.873192963469266
+      ],
+      "band_before": "above repo average",
+      "n_after": 8,
+      "merged_after": 1,
+      "rate_after": 0.125,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/tr",
+      "n_before": 5,
+      "merged_before": 1,
+      "wilson_before": [
+        0.036224108620327655,
+        0.6244653703187697
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/uk",
+      "n_before": 3,
+      "merged_before": 2,
+      "wilson_before": [
+        0.20765960074271794,
+        0.9385080553004134
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 1,
+      "rate_after": 0.2,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/zh",
+      "n_before": 24,
+      "merged_before": 7,
+      "wilson_before": [
+        0.149146481945617,
+        0.4916769366922177
+      ],
+      "band_before": "no clear difference",
+      "n_after": 9,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs/zh-hant",
+      "n_before": 5,
+      "merged_before": 2,
+      "wilson_before": [
+        0.11762077420017036,
+        0.7692757187795287
+      ],
+      "band_before": "not enough data",
+      "n_after": 4,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs_src",
+      "n_before": 18,
+      "merged_before": 3,
+      "wilson_before": [
+        0.05836576804502552,
+        0.3922203810980989
+      ],
+      "band_before": "no clear difference",
+      "n_after": 45,
+      "merged_after": 4,
+      "rate_after": 0.08888888888888889,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "fastapi",
+      "n_before": 46,
+      "merged_before": 9,
+      "wilson_before": [
+        0.10650610132869992,
+        0.33171258926545344
+      ],
+      "band_before": "no clear difference",
+      "n_after": 321,
+      "merged_after": 12,
+      "rate_after": 0.037383177570093455,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "scripts",
+      "n_before": 3,
+      "merged_before": 1,
+      "wilson_before": [
+        0.061491944699586576,
+        0.792340399257282
+      ],
+      "band_before": "not enough data",
+      "n_after": 12,
+      "merged_after": 1,
+      "rate_after": 0.08333333333333333,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests",
+      "n_before": 32,
+      "merged_before": 9,
+      "wilson_before": [
+        0.1556458049552508,
+        0.45374509430099164
+      ],
+      "band_before": "no clear difference",
+      "n_after": 228,
+      "merged_after": 12,
+      "rate_after": 0.05263157894736842,
+      "qualifies": true,
+      "held": null
+    }
+  ],
+  "possible_newcomer_leaks": 32,
+  "capped_months": []
+}

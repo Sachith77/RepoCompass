@@ -1,0 +1,29 @@
+﻿# python -m repocompass analyze pydantic/pydantic with REPOCOMPASS_WINDOW_DAYS=730 into the window24 schema, started 2026-11-04T07:51:16Z on this machine, local PostgreSQL 18, live GitHub API; all values measured
+job 3 started for pydantic/pydantic
+job 3 done
+repository        pydantic/pydantic (requested pydantic/pydantic)
+snapshot          2026-11-04T07:51:22+00:00
+files considered  3579
+area depths       {'tests': 4}
+areas             32  (active 26, steady 6, dormant 0)
+commits           1406 in window; 177 bot, 0 sweep, 1029 counted toward an area
+seconds           resolve 0.7, clone_or_fetch 3.4, tree_and_areas 0.1, git_log 0.2
+PRs in window     1705 human (148 bot or non-user PRs dropped first); kept 1705; complete
+dates covered     2024-11-04T08:46:40+00:00 to 2026-11-04T07:30:17+00:00
+response times    unknown for 0 PRs (no human answer in the fetched slice)
+file lists        0 PRs could not be fetched in full and are excluded
+repo rate         0.287 over 586 mature newcomer PRs
+bands             above repo average 2, below repo average 2, no clear difference 1, not enough data 27
+  .github                                  n=12   rate 0.583 [0.320, 0.807]  above repo average; 11 authors, 0 stale open
+                                           median hours to review 27.5 (n=8), to human response 7.8 (n=11); no response in 30 days 8% (n=12)
+  docs                                     n=101  rate 0.584 [0.487, 0.675]  above repo average; 96 authors, 3 stale open
+                                           median hours to review 12.3 (n=64), to human response 13.0 (n=79); no response in 30 days 30% (n=101)
+  pydantic                                 n=364  rate 0.198 [0.160, 0.242]  below repo average; 304 authors, 0 stale open
+                                           median hours to review 26.7 (n=96), to human response 17.4 (n=181); no response in 30 days 59% (n=364)
+  pydantic-core                            n=62   rate 0.177 [0.102, 0.290]  no clear difference; 50 authors, 2 stale open
+                                           median hours to review 39.1 (n=15), to human response 12.7 (n=29); no response in 30 days 61% (n=62)
+  tests                                    n=240  rate 0.175 [0.132, 0.228]  below repo average; 196 authors, 0 stale open
+                                           median hours to review 28.0 (n=62), to human response 22.6 (n=114); no response in 30 days 62% (n=240)
+stage seconds     git_stage 4.4, pr_pages 239.8, lookback 87.1
+API               115 requests, 153 points
+wall_seconds 333

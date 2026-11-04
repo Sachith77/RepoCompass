@@ -1,0 +1,232 @@
+{
+  "slug": "pydantic/pydantic",
+  "snapshot": "2026-11-04T13:21:22+05:30",
+  "cutoff": "2025-11-04T13:21:22+05:30",
+  "n_before": 118,
+  "repo_rate_before": 0.4830508474576271,
+  "n_after": 453,
+  "repo_rate_after": 0.2229580573951435,
+  "areas": [
+    {
+      "area": ".agents",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": ".github",
+      "n_before": 5,
+      "merged_before": 4,
+      "wilson_before": [
+        0.3755346296812303,
+        0.9637758913796723
+      ],
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 1,
+      "rate_after": 0.2,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "docs",
+      "n_before": 30,
+      "merged_before": 22,
+      "wilson_before": [
+        0.5555203830046458,
+        0.8581733668254619
+      ],
+      "band_before": "above repo average",
+      "n_after": 67,
+      "merged_after": 33,
+      "rate_after": 0.4925373134328358,
+      "qualifies": true,
+      "held": true
+    },
+    {
+      "area": "pydantic",
+      "n_before": 71,
+      "merged_before": 26,
+      "wilson_before": [
+        0.2637022133183601,
+        0.4824278020643884
+      ],
+      "band_before": "below repo average",
+      "n_after": 287,
+      "merged_after": 45,
+      "rate_after": 0.156794425087108,
+      "qualifies": true,
+      "held": true
+    },
+    {
+      "area": "pydantic-core",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 62,
+      "merged_after": 11,
+      "rate_after": 0.1774193548387097,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests",
+      "n_before": 39,
+      "merged_before": 16,
+      "wilson_before": [
+        0.27079309997908363,
+        0.5658137712060747
+      ],
+      "band_before": "no clear difference",
+      "n_after": 198,
+      "merged_after": 25,
+      "rate_after": 0.12626262626262627,
+      "qualifies": true,
+      "held": null
+    },
+    {
+      "area": "tests/benchmarks",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/configs",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 1,
+      "rate_after": 1.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/modules",
+      "n_before": 1,
+      "merged_before": 0,
+      "wilson_before": [
+        0.0,
+        0.7934506856996815
+      ],
+      "band_before": "not enough data",
+      "n_after": 7,
+      "merged_after": 3,
+      "rate_after": 0.42857142857142855,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/outputs/mypy-default_ini",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/outputs/mypy-plugin-strict-no-any_ini",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 1,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/outputs/mypy-plugin_ini",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 3,
+      "rate_after": 0.6,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/mypy/outputs/pyproject-default_toml",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/typechecking",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 5,
+      "merged_after": 1,
+      "rate_after": 0.2,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/types",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 8,
+      "merged_after": 0,
+      "rate_after": 0.0,
+      "qualifies": false,
+      "held": null
+    },
+    {
+      "area": "tests/types/unions",
+      "n_before": 0,
+      "merged_before": 0,
+      "wilson_before": null,
+      "band_before": "not enough data",
+      "n_after": 2,
+      "merged_after": 1,
+      "rate_after": 0.5,
+      "qualifies": false,
+      "held": null
+    }
+  ],
+  "possible_newcomer_leaks": 30,
+  "capped_months": []
+}

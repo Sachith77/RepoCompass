@@ -133,13 +133,13 @@ def test_validate_refuses_to_pool_analyses_with_different_parameters(
 ) -> None:
     import repocompass.validation as validation
 
-    base = {"maturity_days": 30, "min_sample": 10, "wilson_z": 1.96}
+    base = {"maturity_days": 30, "min_sample": 10, "wilson_z": 1.96, "window_days": 365}
     runs = iter([base, {**base, "min_sample": 5}])
 
     def fake_load(settings: object, owner: str, name: str) -> tuple:
         from datetime import UTC, datetime
 
-        return f"{owner}/{name}", datetime(2026, 11, 3, tzinfo=UTC), next(runs), []
+        return f"{owner}/{name}", datetime(2026, 11, 3, tzinfo=UTC), next(runs), [], ()
 
     monkeypatch.setattr(validation, "load_repo", fake_load)
     assert main(["validate", "a/b", "c/d"]) == 1
@@ -153,3 +153,88 @@ def test_validate_database_failure_prints_no_secret(
     out = capsys.readouterr()
     assert "validation failed" in out.err
     _assert_no_secret(out.out + out.err)
+
+
+@pytest.mark.parametrize(
+    "args",
+    [
+        ["validate", "--months"],
+        ["validate", "--months", "18", "a/b"],
+        ["validate", "--months", "24"],
+        ["validate", "a/b", "--months", "24"],
+    ],
+)
+def test_validate_months_must_be_12_or_24_with_repositories(
+    args: list[str], capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert main(args) == 2
+    assert "usage" in capsys.readouterr().err
+
+
+def test_validate_refuses_an_analysis_made_with_another_window(
+    fake_env: None, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    from datetime import UTC, datetime
+
+    import repocompass.validation as validation
+
+    twelve = {"maturity_days": 30, "min_sample": 10, "wilson_z": 1.96, "window_days": 365}
+    monkeypatch.setattr(
+        validation,
+        "load_repo",
+        lambda settings, owner, name: (
+            f"{owner}/{name}",
+            datetime(2026, 11, 4, tzinfo=UTC),
+            twelve,
+            [],
+            (),
+        ),
+    )
+    assert main(["validate", "--months", "24", "a/b"]) == 1
+    assert "365-day window; --months 24 needs 730 days" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize(
+    ("months", "window", "cutoff_days", "out", "other"),
+    [
+        ([], 365, 182, "results/validation", "results/validation/window24"),
+        (["--months", "24"], 730, 365, "results/validation/window24", "results/validation"),
+    ],
+)
+def test_each_validate_mode_uses_its_cutoff_and_output_folder(
+    fake_env: None,
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    months: list[str],
+    window: int,
+    cutoff_days: int,
+    out: str,
+    other: str,
+) -> None:
+    import json
+    from datetime import UTC, datetime, timedelta
+
+    import repocompass.validation as validation
+
+    snapshot = datetime(2026, 11, 4, tzinfo=UTC)
+    params = {
+        "maturity_days": 30,
+        "min_sample": 10,
+        "wilson_z": 1.96,
+        "window_days": window,
+        "monthly_sample_cap": 250,
+    }
+    monkeypatch.setattr(
+        validation,
+        "load_repo",
+        lambda settings, owner, name: (f"{owner}/{name}", snapshot, params, [], ("2026-10",)),
+    )
+    assert main(["validate", *months, "a/b"]) == 0
+    written = json.loads((tmp_path / out / "a__b.json").read_text(encoding="utf-8"))
+    assert written["cutoff"] == (snapshot - timedelta(days=cutoff_days)).isoformat()
+    assert written["capped_months"] == ["2026-10"]
+    summary = (tmp_path / out / "summary.md").read_text(encoding="utf-8")
+    assert f"python -m repocompass validate{' --months 24' if months else ''} a/b" in summary
+    assert "these months were capped at 250 human PRs: 2026-10" in summary
+    assert not (tmp_path / other / "a__b.json").exists()

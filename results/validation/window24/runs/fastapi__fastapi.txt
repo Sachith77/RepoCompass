@@ -1,0 +1,51 @@
+﻿# python -m repocompass analyze fastapi/fastapi with REPOCOMPASS_WINDOW_DAYS=730 into the window24 schema, started 2026-11-04T07:56:50Z on this machine, local PostgreSQL 18, live GitHub API; all values measured
+job 4 started for fastapi/fastapi
+job 4 done
+repository        fastapi/fastapi (requested fastapi/fastapi)
+snapshot          2026-11-04T07:56:54+00:00
+files considered  3235
+area depths       {'docs': 2}
+areas             19  (active 7, steady 12, dormant 0)
+commits           2967 in window; 1713 bot, 9 sweep, 1189 counted toward an area
+seconds           resolve 0.5, clone_or_fetch 3.0, tree_and_areas 0.1, git_log 0.2
+PRs in window     2302 human (371 bot or non-user PRs dropped first); kept 2302; complete
+dates covered     2024-11-04T18:15:58+00:00 to 2026-11-04T00:03:48+00:00
+response times    unknown for 0 PRs (no human answer in the fetched slice)
+file lists        0 PRs could not be fetched in full and are excluded
+repo rate         0.117 over 1049 mature newcomer PRs
+bands             above repo average 2, below repo average 1, no clear difference 13, not enough data 3
+  .github                                  n=21   rate 0.095 [0.027, 0.289]  no clear difference; 18 authors, 0 stale open
+                                           median hours to review 29.6 (n=4), to human response 6.8 (n=11); no response in 30 days 52% (n=21)
+  docs/de                                  n=18   rate 0.056 [0.010, 0.258]  no clear difference; 15 authors, 0 stale open
+                                           median hours to review 894.0 (n=2), to human response 8.3 (n=14); no response in 30 days 33% (n=18)
+  docs/en                                  n=243  rate 0.136 [0.098, 0.185]  no clear difference; 196 authors, 7 stale open
+                                           median hours to review 32.4 (n=95), to human response 13.7 (n=222); no response in 30 days 20% (n=243)
+  docs/es                                  n=26   rate 0.077 [0.021, 0.241]  no clear difference; 16 authors, 0 stale open
+                                           median hours to review 16.4 (n=6), to human response 16.0 (n=18); no response in 30 days 38% (n=26)
+  docs/fr                                  n=13   rate 0.077 [0.014, 0.333]  no clear difference; 11 authors, 0 stale open
+                                           median hours to review 64.6 (n=3), to human response 5.4 (n=12); no response in 30 days 15% (n=13)
+  docs/ja                                  n=14   rate 0.286 [0.117, 0.546]  no clear difference; 14 authors, 0 stale open
+                                           median hours to review 16.5 (n=6), to human response 8.4 (n=13); no response in 30 days 14% (n=14)
+  docs/ko                                  n=23   rate 0.478 [0.292, 0.670]  above repo average; 22 authors, 0 stale open
+                                           median hours to review 87.0 (n=12), to human response 18.0 (n=22); no response in 30 days 13% (n=23)
+  docs/pt                                  n=27   rate 0.222 [0.106, 0.408]  no clear difference; 21 authors, 0 stale open
+                                           median hours to review 63.1 (n=10), to human response 16.2 (n=23); no response in 30 days 19% (n=27)
+  docs/ru                                  n=24   rate 0.417 [0.245, 0.612]  above repo average; 21 authors, 0 stale open
+                                           median hours to review 21.9 (n=12), to human response 12.5 (n=19); no response in 30 days 25% (n=24)
+  docs/tr                                  n=10   rate 0.100 [0.018, 0.404]  no clear difference; 10 authors, 0 stale open
+                                           median hours to review 19.6 (n=1), to human response 2.4 (n=9); no response in 30 days 10% (n=10)
+  docs/zh                                  n=36   rate 0.194 [0.098, 0.350]  no clear difference; 23 authors, 0 stale open; one author >30%
+                                           median hours to review 31.4 (n=7), to human response 19.6 (n=23); no response in 30 days 42% (n=36)
+  docs/zh-hant                             n=10   rate 0.200 [0.057, 0.510]  no clear difference; 10 authors, 0 stale open
+                                           median hours to review 48.8 (n=4), to human response 9.6 (n=10); no response in 30 days 20% (n=10)
+  docs_src                                 n=71   rate 0.099 [0.049, 0.190]  no clear difference; 68 authors, 3 stale open
+                                           median hours to review 71.9 (n=31), to human response 21.9 (n=65); no response in 30 days 27% (n=71)
+  fastapi                                  n=404  rate 0.064 [0.044, 0.093]  below repo average; 309 authors, 10 stale open
+                                           median hours to review 62.1 (n=118), to human response 11.9 (n=341); no response in 30 days 29% (n=404)
+  scripts                                  n=16   rate 0.125 [0.035, 0.360]  no clear difference; 15 authors, 0 stale open
+                                           median hours to review 19.7 (n=5), to human response 7.9 (n=13); no response in 30 days 38% (n=16)
+  tests                                    n=283  rate 0.092 [0.063, 0.131]  no clear difference; 223 authors, 14 stale open
+                                           median hours to review 67.1 (n=103), to human response 19.4 (n=265); no response in 30 days 28% (n=283)
+stage seconds     git_stage 3.8, pr_pages 409.1, lookback 126.0
+API               219 requests, 273 points
+wall_seconds 540.5

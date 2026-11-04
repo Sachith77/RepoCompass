@@ -67,11 +67,11 @@ An interrupted kubernetes analysis resumed from its checkpoint with the same tot
 uninterrupted run (so, reasoned from that, no page was fetched twice), with a
 peak worker memory of 72 MB (`results/m4/resume_test.md`).
 
-**Validation** (`results/validation/`): bands were made from data before a cutoff six months back and
-checked against what happened after it, on starlette, optuna and sqlfluff. No area banded "above repo
-average" had enough data in both periods, so the headline band could not be tested; the two "below repo
-average" areas that qualified both stayed below. Two areas are far too few for a conclusion: this is a
-null result.
+**Validation** (`results/validation/`): bands were made from data before a cutoff and checked against
+what happened after it, in two runs: 12-month analyses with a cutoff six months back (starlette, optuna,
+sqlfluff) and 24-month analyses with a cutoff a year back (optuna, sqlfluff, pydantic, fastapi). Every
+directional band that could be tested held: 2 of 2 "below" areas in the first run, 1 "above" and 1
+"below" area in the second. Four areas are far too few for a conclusion: this is a null result.
 
 ## Limitations
 

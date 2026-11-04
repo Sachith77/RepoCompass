@@ -407,5 +407,6 @@
       "held": null
     }
   ],
-  "possible_newcomer_leaks": 13
+  "possible_newcomer_leaks": 13,
+  "capped_months": []
 }
