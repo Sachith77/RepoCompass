@@ -1,0 +1,16 @@
+﻿05:37:22 running prs 30 2 1085 152
+05:38:32 running prs 35 2 1170 165
+05:39:42 running prs 36 2 1335 179
+05:40:51 running prs 41 2 1460 188
+05:42:01 running prs 43 2 1585 229
+05:43:11 running prs 47 2 1708 274
+05:44:21 running prs 52 2 1928 296
+05:45:30 running prs 54 2 2085 312
+05:46:35 running prs 59 2 2234 320
+05:47:44 running prs 60 2 2335 334
+05:48:54 running prs 64 2 2491 341
+05:50:04 running prs 65 2 2585 379
+05:51:13 running prs 72 2 2780 390
+05:52:23 running prs 79 2 3085 427
+05:53:32 running lookback 86 2 3085 447
+05:54:41 running lookback 93 2 3085 469
