@@ -31,16 +31,15 @@ and enqueues jobs, so every slow or failure-prone thing lives in the worker (ADR
 /analyze` returns the stored report if there is one; otherwise it queues a job — never two for one
 requested name (an advisory lock on the name) — and re-queues a failed job whose snapshot is under 24
 hours old so it resumes from its checkpoint. The worker claims the oldest queued job with `FOR UPDATE
-SKIP LOCKED`. At start and whenever idle it re-queues running jobs with no checkpoint for 10 minutes:
-a live job checkpoints every few seconds, minutes at most, so such a job was abandoned. `resume`
-refuses a job that is running. The pages call the API from the browser (`NEXT_PUBLIC_API_URL`), and
+SKIP LOCKED`, and re-queues running jobs with no checkpoint for 10 minutes (abandoned: a live job
+checkpoints every few seconds); `resume` refuses a running job. The pages call the API from the browser (`NEXT_PUBLIC_API_URL`), and
 CORS admits only the local web origins (`REPOCOMPASS_WEB_ORIGINS`). A job's page polls `GET
 /jobs/{id}` every 2 s and shows the areas map early.
 
 ## 3. Pipeline
 
-The worker runs four stages in order, checkpointing as it goes. `GET /jobs/{id}` shows the areas map
-as soon as stage 2 is done; the full report appears when the final transaction commits.
+The worker runs four stages in order, checkpointing as it goes; the report appears when the final
+transaction commits.
 
 **Stage 1 — resolve and clone.** Resolve the repository's canonical `nameWithOwner` *before* anything
 else, and store both slugs: search is keyed on the current name while `repository(owner, name)`
@@ -50,14 +49,10 @@ follows renames, so a renamed repository otherwise reports zero PRs (Phase 0: `e
 
 **Stage 2 — areas and activity, from the clone only.** Fit the area rule to the file tree, then read
 commit history for area activity and contributor counts. No API calls at all, so this is the
-progressive first result. Phase 0 measured `git log --name-only` at 0.09 s, 3.2 s and **224 s on
-kubernetes**, most likely (estimated, not re-measured on kubernetes) because of git's rename
-detection, which compares file contents and so makes a blobless clone download blobs on demand. On a
-fresh blobless clone of `pallets/click` it did exactly that: 25 objects downloaded and under 0.1 s →
-5.1 s (measured, `results/m2/rename_probe_click.txt`). With `--no-renames` (measured in
-`results/m2/`), the same twelve months of kubernetes history reads in **0.6 s** on a fresh clone, and
-no objects are downloaded. A rename then counts as a delete plus an add. On huge repositories
-the slow part of stage 2 is the clone itself (71.7 s for kubernetes).
+progressive first result. `git log` runs with `--no-renames`: rename detection compares file
+contents, which makes a blobless clone download them (on `pallets/click`, 25 objects and under 0.1 s →
+5.1 s, measured, `results/m2/rename_probe_click.txt`). With `--no-renames`, twelve months of kubernetes history read in **0.6 s** with nothing downloaded
+(measured, `results/m2/`); a rename counts as a delete plus an add.
 
 Activity counts only non-merge, non-bot commits from the last 12 months by committer date, and a
 commit counts once per area it touches. Root files and excluded directories (top-level names only)
@@ -65,11 +60,9 @@ count toward no area. **Sweep commits** — formatting, licence headers or mass 
 because they say nothing about where work happens. A sweep touches more than half of all areas *and*
 at least five areas (both configurable); the minimum stops an ordinary "code + tests" commit in a
 two- or three-area repository from counting as one. The number ignored is stored on the repo and
-explained on the method page. The band uses only the brief's two windows, so it adds no thresholds:
-**active** has a commit in the last 90 days, **steady** has commits in the last 12 months
-but none in 90 days, **dormant** has none in 12 months. This stage stores counts only: commits and
-distinct commit authors per area. Authors are identified by email to be counted and are never stored;
-no mailmap is applied, so one person with two emails counts twice.
+explained on the method page. **Active** has a commit in the last 90 days, **steady** commits in
+12 months but none in 90 days, **dormant** none in 12 months. Commit authors are counted by email and
+never stored; with no mailmap, one person with two emails counts twice.
 Named contributors and reviewers come from PR data in stage 4 (merged PRs authored and reviews
 submitted, counts only), because git names do not map reliably to GitHub logins.
 
@@ -78,7 +71,7 @@ submitted, counts only), because git names do not map reliably to GitHub logins.
 calendar month are kept (ADR-0004); paging is newest-first, so a capped month keeps its newest 250.
 Pages cost 1–2 points, so files are fetched inline. Each kept PR is reduced to per-area file counts,
 response times and reviewers — no paths are kept. Any PR with more than 100
-changed files needs its own follow-up requests; on kubernetes that was 83 PRs and 322 extra requests,
+changed files needs its own follow-up requests; on kubernetes in Phase 0 (newest 3,000 PRs) that was 83 PRs and 322 extra requests,
 costing 313 s, the largest single stage in the whole analysis. A PR whose file list cannot be completed
 — including one longer than GitHub's 3,000-file listing — is marked and excluded, never truncated.
 
@@ -167,7 +160,25 @@ local-only (Spaces now needs a paid plan). Starter issues and ownership are stre
 starter-issue backlog was empty on two of three reference repositories and CODEOWNERS covered zero
 areas. Nobody is called a maintainer or owner, because v0 ships no ownership data.
 
-## 8. Open risks
+## 8. Visual design
+
+An analyst's brief with a developer tool's restraint: one clear answer in editorial form, not a
+dashboard. Tokens live in `web/app/globals.css`.
+
+- **Type** (next/font): Newsreader for headings, Inter for body, JetBrains Mono for repository and
+  area names. Scale 44 / 32 / 22 / 17 / 15 / 13 px; tabular figures for every number; section labels
+  in letter-spaced capitals.
+- **Colour**: warm paper `#FAF8F3`, ink `#1C1B19`, muted `#6B6760`, hairlines `#E7E3DA`, wash `#F2EFE7` for hover, form borders
+  `#8A847A`, one teal
+  accent `#0F5E5A` for links, buttons and focus. Band colours are used only for bands: muted green
+  (above), warm grey (no clear difference), rust (below). Each band also has a shape (▲ ● ▼) and its
+  words on cards and in the chart legend, so colour is never the only cue. Text meets AA contrast.
+- **Components and states**: chart rows take keyboard focus and announce n and authors, with a
+  hidden table repeating the figures; a running job lists its steps and shows the areas map early.
+- **Layout**: 1100 px page, 680 px prose, 8 px spacing steps; hairline dividers instead of boxes; cards
+  only for area units, with a hairline border and no shadow. No gradients, emoji or shadows.
+
+## 9. Open risks
 
 - **The bands' predictive value is unproven.** `validate` re-bands areas as of a cutoff and checks the
   months after; over 12- and 24-month runs only 4 directional areas qualified, and all held

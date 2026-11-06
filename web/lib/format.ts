@@ -24,6 +24,9 @@ export function durationWords(h: number): string {
   return `about ${Math.round(h / (24 * 7))} weeks`;
 }
 
+/** "1 author", "40 authors" */
+export const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+
 /** "a", "a and b", "a, b and c" */
 export function listWords(items: string[]): string {
   if (items.length <= 1) return items.join("");

@@ -1,3 +1,5 @@
+import { Label } from "@/components/ui";
+
 import Parameters from "./parameters";
 
 type Props = { searchParams: Promise<{ repo?: string }> };
@@ -5,7 +7,7 @@ type Props = { searchParams: Promise<{ repo?: string }> };
 const definitions: [string, string][] = [
   [
     "Bots",
-    "Excluded everywhere: as PR authors, reviewers, commenters and commit authors. A bot is a GitHub account of type Bot, a login ending in [bot], or one on a configurable list (for commits: the author name, or the login in a GitHub noreply email address) (by default dependabot, renovate, github-actions, k8s-ci-robot and codecov). Deleted accounts and other non-user authors are excluded the same way, rather than guessed at.",
+    "Excluded everywhere: as PR authors, reviewers, commenters and commit authors. A bot is a GitHub account of type Bot, a login ending in [bot], or a login on a configurable list (by default dependabot, renovate, github-actions, k8s-ci-robot and codecov). For commits, the author name and the part of the email address before the @ (the login, for a GitHub noreply address) are checked the same way. Deleted accounts and other non-user authors are excluded too, rather than guessed at.",
   ],
   [
     "Window and sample",
@@ -25,7 +27,7 @@ const definitions: [string, string][] = [
   ],
   [
     "Mature and merge rate",
-    "A PR is mature when it was created at least 30 days before the snapshot and is no longer open. Merge rate = merged / (merged + closed without merging), over mature newcomer PRs only. Open PRs never enter it.",
+    "A PR is mature when it was created at least 30 days before the snapshot and is no longer open; the report calls these finished PRs. Merge rate = merged / (merged + closed without merging), over mature newcomer PRs only. Open PRs never enter it.",
   ],
   [
     "Repo rate and bands",
@@ -52,40 +54,78 @@ const definitions: [string, string][] = [
 const limitations = [
   "Many things affect merge rates besides the area: contributor experience, PR size and complexity, maintainer availability, release cycles and contribution guidelines. A band describes what happened, not how easy an area is, and no area is called objectively easiest.",
   "The newcomer rule sees only pull requests. Someone who contributed by direct push, or before the repository moved to GitHub, counts as a newcomer.",
-  "Only the first 20 reviews and 30 comments of each PR are read. When none of them is a human answer and more exist, that PR's response times are marked unknown and left out of the response figures. Reviewer counts are capped at 20 reviews per PR.",
+  "Only the first 20 reviews and 30 comments of each PR are read. When either list was cut short with no human answer in it, that PR's response times are marked unknown and left out of the response figures. Reviewer counts are capped at 20 reviews per PR.",
   "Commit authors are counted by email, and no mailmap is applied, so one person with two email addresses counts twice. Commits are dated by committer date.",
   "The report is a snapshot. A cutoff validation (measured) re-made the bands from data before a cutoff and checked them against what happened after it: with 12-month analyses and a cutoff six months back on Kludex/starlette, optuna/optuna and sqlfluff/sqlfluff, no \"above repo average\" area had at least 10 mature newcomer PRs in both periods, and both \"below repo average\" areas stayed below (optuna/study, 10 PRs before and 18 after; sqlfluff src, 28 and 113); with 24-month analyses and a cutoff a year back on optuna/optuna, sqlfluff/sqlfluff, pydantic/pydantic and fastapi/fastapi, one \"above\" area (pydantic docs, 30 and 67) and one \"below\" area (the pydantic package, 71 and 287) qualified, and both held. Four areas are too few for any conclusion, so the bands are not shown to predict anything.",
 ];
 
+const slug = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 export default async function MethodPage({ searchParams }: Props) {
   const { repo } = await searchParams;
+  const contents = [
+    ...definitions.map(([term]) => ({ id: slug(term), title: term })),
+    { id: "parameters", title: "Parameters used" },
+    { id: "limitations", title: "Limitations" },
+  ];
   return (
-    <div className="space-y-8">
-      <h1 className="text-2xl font-semibold">Method</h1>
-      <dl className="space-y-4">
-        {definitions.map(([term, text]) => (
-          <div key={term}>
-            <dt className="font-semibold">{term}</dt>
-            <dd className="text-neutral-700">{text}</dd>
-          </div>
-        ))}
-      </dl>
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">Parameters used</h2>
-        <p className="text-sm text-neutral-600">
-          The numbers above are the defaults. Each analysis stores the parameters it actually ran
-          with; pick a repository to see them.
-        </p>
-        <Parameters repo={repo ?? null} />
-      </section>
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">Limitations</h2>
-        <ul className="list-disc space-y-1 pl-5 text-neutral-700">
-          {limitations.map((text) => (
-            <li key={text}>{text}</li>
+    <div className="lg:grid lg:grid-cols-[13rem_minmax(0,680px)] lg:gap-16">
+      <nav aria-label="On this page" className="hidden lg:block">
+        <div className="sticky top-8 space-y-3">
+          <Label>On this page</Label>
+          <ol className="space-y-1.5 border-l border-line text-small">
+            {contents.map((c) => (
+              <li key={c.id}>
+                <a href={`#${c.id}`} className="-ml-px block border-l border-transparent pl-3 text-muted hover:border-ink hover:text-ink">
+                  {c.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+
+      <article className="space-y-12">
+        <header className="space-y-3">
+          <Label>Method</Label>
+          <h1 className="font-serif text-display font-semibold">How the numbers are made</h1>
+          <p className="text-lead text-muted">
+            Every figure in a report comes from the repository&apos;s public git history and pull
+            requests. These are the definitions, the parameters each analysis used, and what the
+            numbers cannot tell you.
+          </p>
+        </header>
+
+        <section className="space-y-8">
+          <h2 className="border-b border-line pb-2 font-serif text-title font-semibold">Definitions</h2>
+          {definitions.map(([term, text]) => (
+            <div key={term} id={slug(term)} className="scroll-mt-8 space-y-1.5">
+              <h3 className="font-serif text-heading font-semibold">{term}</h3>
+              <p className="leading-relaxed">{text}</p>
+            </div>
           ))}
-        </ul>
-      </section>
+        </section>
+
+        <section id="parameters" className="scroll-mt-8 space-y-3">
+          <h2 className="border-b border-line pb-2 font-serif text-title font-semibold">Parameters used</h2>
+          <p className="text-muted">
+            The numbers above are the defaults. Each analysis stores the parameters it actually ran
+            with; pick a repository to see them.
+          </p>
+          <Parameters repo={repo ?? null} />
+        </section>
+
+        <section id="limitations" className="scroll-mt-8 space-y-3">
+          <h2 className="border-b border-line pb-2 font-serif text-title font-semibold">Limitations</h2>
+          <ul className="space-y-3">
+            {limitations.map((text) => (
+              <li key={text} className="border-l-2 border-line pl-4 leading-relaxed">
+                {text}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </article>
     </div>
   );
 }

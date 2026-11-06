@@ -1,6 +1,6 @@
+import { BandMarker } from "@/components/ui";
 import type { BandedArea, Person } from "@/lib/api";
-import { bandStyle, sentenceCase } from "@/lib/bands";
-import { hours, percent, shortDuration } from "@/lib/format";
+import { hours, percent, plural, shortDuration } from "@/lib/format";
 
 type Props = {
   area: BandedArea;
@@ -11,106 +11,101 @@ type Props = {
   staleDays: number;
 };
 
-const names = (people: Person[]) =>
-  people.length === 0 ? "–" : people.map((p) => `${p.login} (${p.count})`).join(", ");
+function people(list: Person[], unit: string): string {
+  if (list.length === 0) return "none recorded";
+  return list.map((p) => `${p.login} (${p.count} ${unit}${p.count === 1 ? "" : "s"})`).join(", ");
+}
 
-export default function AreaCard({
-  area,
-  lead,
-  reviewers,
-  contributors,
-  noResponseDays,
-  staleDays,
-}: Props) {
-  const formal = lead === "formal review";
-  const leadMedian = formal ? area.median_hours_first_formal_review : area.median_hours_first_human_response;
-  const [low, high] = area.wilson_interval;
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <article className="flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
-      <header className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-mono text-sm font-semibold break-all">{area.area}</h3>
-        <div className="flex items-center gap-1.5">
-          {area.concentration_note && (
-            <span
-              title={area.concentration_note}
-              className="cursor-help rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-800 ring-1 ring-amber-600/20 ring-inset"
-            >
-              Dominated by one contributor
-            </span>
-          )}
-          <span className={`rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${bandStyle(area.band).pill}`}>
-            {sentenceCase(area.band)}
-          </span>
-        </div>
+    <div className="grid gap-x-3 sm:grid-cols-[13rem_1fr] md:grid-cols-1 lg:grid-cols-[13rem_1fr]">
+      <dt className="text-muted">{label}</dt>
+      <dd>{children}</dd>
+    </div>
+  );
+}
+
+export default function AreaCard(props: Props) {
+  const { area, lead, reviewers, contributors, noResponseDays, staleDays } = props;
+  const formal = lead === "formal review";
+  const leadMedian = formal
+    ? area.median_hours_first_formal_review
+    : area.median_hours_first_human_response;
+  const [low, high] = area.wilson_interval;
+  const stale = area.stale_open_newcomer_prs;
+  return (
+    <article className="flex flex-col gap-4 rounded-md border border-line p-5">
+      <header className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="font-mono text-body font-semibold break-all">{area.area}</h3>
+        <BandMarker band={area.band} />
       </header>
 
-      <p>
-        <span className="text-3xl font-semibold tracking-tight">{percent(area.merge_rate)}</span>{" "}
-        <span className="text-neutral-600">
-          merged ({area.merged_prs} of {area.mature_newcomer_prs}, from{" "}
-          {area.distinct_newcomer_authors} authors)
+      <p className="flex flex-wrap items-baseline gap-x-2">
+        <span className="font-serif text-title font-semibold">{percent(area.merge_rate)}</span>
+        <span className="text-muted">
+          merged · {area.merged_prs} of {area.mature_newcomer_prs} ·{" "}
+          {plural(area.distinct_newcomer_authors, "author")}
         </span>
       </p>
 
-      <p className="text-sm text-neutral-700">
-        {formal ? "first review" : "first response"} {shortDuration(leadMedian)} ·{" "}
-        {percent(area.no_response_share)} got no human response in {noResponseDays} days
+      <p>
+        {formal ? "first review" : "first reply"} {shortDuration(leadMedian)} ·{" "}
+        {percent(area.no_response_share)} got no reply in {noResponseDays} days
       </p>
-      {area.stale_open_newcomer_prs > 0 && (
-        <p className="text-sm text-neutral-700">
-          {area.stale_open_newcomer_prs} newcomer PR{area.stale_open_newcomer_prs === 1 ? "" : "s"}{" "}
-          still open after more than {staleDays} days
-        </p>
-      )}
 
-      <dl className="space-y-1 text-sm">
-        <div>
-          <dt className="inline text-neutral-500">Frequent reviewers (reviews): </dt>
-          <dd className="inline">{names(reviewers.slice(0, 3))}</dd>
-        </div>
+      <dl className="space-y-1.5 text-small">
+        <Row label="Reviewers to tag">{people(reviewers.slice(0, 3), "review")}</Row>
         {area.example_merged_newcomer_prs.length > 0 && (
-          <div>
-            <dt className="inline text-neutral-500">Merged newcomer PRs to read: </dt>
-            <dd className="inline">
-              {area.example_merged_newcomer_prs.map((pr, i) => (
-                <span key={pr.number}>
-                  {i > 0 && ", "}
-                  <a href={pr.url} className="text-blue-700 hover:underline">
-                    #{pr.number}
-                  </a>
-                </span>
-              ))}
-            </dd>
-          </div>
+          <Row label="Merged newcomer PRs to read">
+            {area.example_merged_newcomer_prs.map((pr, i) => (
+              <span key={pr.number}>
+                {i > 0 && ", "}
+                <a href={pr.url} className="hover:underline">
+                  #{pr.number}
+                </a>
+              </span>
+            ))}
+          </Row>
         )}
       </dl>
 
-      <details className="text-sm text-neutral-700">
-        <summary className="cursor-pointer text-neutral-500 select-none">Details</summary>
-        <ul className="mt-2 space-y-1">
-          <li>
-            95% interval {percent(low)}–{percent(high)}; {area.mature_newcomer_prs} mature newcomer PRs
-            from {area.distinct_newcomer_authors} distinct authors
-          </li>
-          {area.concentration_note && <li>{area.concentration_note}</li>}
-          <li>
-            {area.stale_open_newcomer_prs} stale open (newcomer PRs open more than {staleDays} days)
-          </li>
-          <li>
-            Median {hours(area.median_hours_first_formal_review)} to first formal review (n=
-            {area.formal_review_prs})
-          </li>
-          <li>
-            Median {hours(area.median_hours_first_human_response)} to first human response (n=
-            {area.human_response_prs})
-          </li>
-          <li>
-            No human response within {noResponseDays} days: {percent(area.no_response_share)} (n=
-            {area.no_response_base_prs})
-          </li>
-          <li>Key contributors (merged PRs): {names(contributors)}</li>
-          <li>Reviewers (reviews): {names(reviewers)}</li>
-        </ul>
+      {(area.concentration_note || stale > 0) && (
+        <div className="space-y-1 text-small text-muted">
+          {area.concentration_note && <p>Note: {area.concentration_note}</p>}
+          {stale > 0 && (
+            <p>
+              Note: {stale} newcomer PR{stale === 1 ? "" : "s"} still open after more than{" "}
+              {staleDays} days.
+            </p>
+          )}
+        </div>
+      )}
+
+      <details className="border-t border-line pt-3 text-small">
+        <summary className="text-muted hover:text-ink">Details</summary>
+        <dl className="mt-3 space-y-1.5">
+          <Row label="95% interval">
+            {percent(low)} to {percent(high)}
+          </Row>
+          <Row label="Sample">
+            {area.mature_newcomer_prs} finished newcomer PRs from{" "}
+            {plural(area.distinct_newcomer_authors, "author")}
+          </Row>
+          <Row label="First formal review">
+            median {hours(area.median_hours_first_formal_review)} (n={area.formal_review_prs})
+          </Row>
+          <Row label="First human reply">
+            median {hours(area.median_hours_first_human_response)} (n={area.human_response_prs})
+          </Row>
+          <Row label={`No reply in ${noResponseDays} days`}>
+            {percent(area.no_response_share)} (n={area.no_response_base_prs})
+          </Row>
+          <Row label="Stale open">
+            {stale} (open more than {staleDays} days)
+          </Row>
+          <Row label="Key contributors">{people(contributors, "merged PR")}</Row>
+          <Row label="All reviewers">{people(reviewers, "review")}</Row>
+        </dl>
       </details>
     </article>
   );

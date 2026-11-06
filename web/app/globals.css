@@ -1,25 +1,83 @@
 @import "tailwindcss";
 
-body {
-  background: #f7f7f8;
-  color: #171717;
+/* Design tokens (docs/DESIGN.md, "Visual design"). Colours are checked for AA contrast on paper. */
+@theme {
+  --color-paper: #faf8f3;
+  --color-ink: #1c1b19;
+  --color-muted: #6b6760;
+  --color-line: #e7e3da;
+  --color-wash: #f2efe7;
+  --color-accent: #0f5e5a;
+  --color-accent-strong: #0a4542;
+  --color-control: #8a847a; /* form borders: 3.7:1 on white */
+
+  /* bands only: a strong shade for marks and a soft shade for interval bars */
+  --color-above: #3f7140;
+  --color-above-soft: #cfdfc9;
+  --color-flat: #807a70;
+  --color-flat-soft: #ddd8ce;
+  --color-below: #a3462a;
+  --color-below-soft: #ecd0c4;
+
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", monospace;
+
+  /* type scale: 44 / 32 / 22 / 17 / 15 / 13 px */
+  --text-display: 2.75rem;
+  --text-display--line-height: 1.1;
+  --text-title: 2rem;
+  --text-title--line-height: 1.15;
+  --text-heading: 1.375rem;
+  --text-heading--line-height: 1.3;
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.6;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.55;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.45;
 }
 
-/* one marker for every Details toggle: hide the browser's own, draw a small arrow */
-details > summary {
-  list-style: none;
-}
+/* base rules sit in a layer, so utility classes such as text-ink can override them */
+@layer base {
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    font-variant-numeric: tabular-nums;
+  }
 
-details > summary::-webkit-details-marker,
-details > summary::marker {
-  display: none;
-  content: "";
-}
+  a {
+    color: var(--color-accent);
+  }
 
-details > summary::before {
-  content: "▸ ";
-}
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 
-details[open] > summary::before {
-  content: "▾ ";
+  /* one marker for every disclosure: hide the browser's own, draw a small arrow */
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details > summary::-webkit-details-marker,
+  details > summary::marker {
+    display: none;
+    content: "";
+  }
+
+  details > summary::before {
+    content: "▸";
+    display: inline-block;
+    width: 1em;
+    color: var(--color-muted);
+  }
+
+  details[open] > summary::before {
+    content: "▾";
+  }
 }

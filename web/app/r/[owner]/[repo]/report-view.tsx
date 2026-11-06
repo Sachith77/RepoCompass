@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 
 import AreaCard from "@/components/area-card";
 import RateChart from "@/components/rate-chart";
-import { AreasMap, DataAndSample, EmptyState, SummaryCard } from "@/components/report";
+import { JobFailed, JobProgress, ReportSkeleton } from "@/components/job-progress";
+import { AreasMap, DataAndSample, EmptyState, Lead, NotEnoughData } from "@/components/report";
+import { Label } from "@/components/ui";
 import { analyze, ApiError, getJob, getReport, type Job, type Report } from "@/lib/api";
 import { date } from "@/lib/format";
 
@@ -85,21 +87,32 @@ export default function ReportView({ owner, repo, initialJobId }: Props) {
     }
   }
 
-  if (error) return <p className="text-red-700">{error}</p>;
+  if (error) {
+    return (
+      <div className="max-w-[680px] space-y-2">
+        <h1 className="font-serif text-title font-semibold">
+          {owner}/{repo}
+        </h1>
+        <p>{error}</p>
+      </div>
+    );
+  }
 
   if (jobId !== null) {
     return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-semibold">
+      <div className="space-y-10">
+        <h1 className="font-serif text-display font-semibold break-all">
           {owner}/{repo}
         </h1>
-        {pollError && (
-          <p className="text-red-700">Could not check the job ({pollError}); trying again.</p>
-        )}
-        <JobProgress job={job} onRetry={start} />
+        {pollError && <p role="alert" className="font-medium">Could not check the job ({pollError}); trying again.</p>}
+        {job?.state === "failed" ? <JobFailed job={job} onRetry={start} /> : <JobProgress job={job} />}
+        {job?.state !== "failed" && <ReportSkeleton />}
         {job?.areas_map && (
-          <section className="space-y-2">
-            <h2 className="text-lg font-semibold">Areas map (ready early, from git history)</h2>
+          <section className="space-y-4">
+            <div>
+              <Label>Areas map</Label>
+              <h2 className="font-serif text-heading font-semibold">Ready early, from git history</h2>
+            </div>
             <AreasMap areas={job.areas_map} />
           </section>
         )}
@@ -107,16 +120,22 @@ export default function ReportView({ owner, repo, initialJobId }: Props) {
     );
   }
 
-  if (report === undefined) return <p className="text-neutral-500">Loading…</p>;
+  if (report === undefined) return <p className="text-muted">Loading…</p>;
 
   if (report === null) {
     return (
-      <div className="space-y-3">
-        <h1 className="text-2xl font-semibold">
+      <div className="max-w-[680px] space-y-4">
+        <h1 className="font-serif text-display font-semibold break-all">
           {owner}/{repo}
         </h1>
-        <p>This repository has not been analysed yet.</p>
-        <button onClick={start} className="rounded bg-neutral-900 px-4 py-2 text-white">
+        <p className="text-lead">
+          This repository has not been analysed yet. An analysis reads its git history and pull
+          requests; in a measured run, Kludex/starlette took about two minutes.
+        </p>
+        <button
+          onClick={start}
+          className="rounded-md bg-accent px-4 py-2 font-medium text-white hover:bg-accent-strong"
+        >
           Analyse it
         </button>
       </div>
@@ -131,46 +150,43 @@ function ReportBody({ report }: { report: Report }) {
   const w = report.where_to_start;
   const params = report.method.parameters;
   const people = new Map(report.areas_map.map((a) => [a.area, a]));
+  const renamed = report.repo.requested_slug.toLowerCase() !== slug.toLowerCase();
   return (
-    <div className="space-y-10">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight break-all">
-          <a href={report.repo.url} className="hover:underline">
+    <article className="space-y-14">
+      <header className="space-y-3">
+        <h1 className="font-serif text-display font-semibold break-all">
+          <a href={report.repo.url} className="text-ink hover:underline">
             {slug}
           </a>
         </h1>
-        <p className="text-sm text-neutral-500">
+        <p className="text-small text-muted">
           Snapshot {date(report.repo.snapshot_at)}
-          {report.repo.requested_slug.toLowerCase() !== slug.toLowerCase() &&
-            ` · requested as ${report.repo.requested_slug}`}
+          {renamed && (
+            <>
+              {" · previously "}
+              <span className="font-mono">{report.repo.requested_slug}</span>
+            </>
+          )}
+          {report.sample.is_sampled &&
+            ` · sampled, covers ${date(report.sample.covered_from)} to ${date(report.sample.covered_to)}`}
           {" · "}
-          <Link href={`/method?repo=${slug}`} className="text-blue-700 hover:underline">
-            How these numbers are made
-          </Link>
+          <Link href={`/method?repo=${slug}`}>How these numbers are made</Link>
         </p>
-        {report.sample.is_sampled && (
-          <p className="inline-block rounded-lg bg-amber-50 px-3 py-1.5 text-sm text-amber-900 ring-1 ring-amber-600/20">
-            Sampled: covers {date(report.sample.covered_from)} to {date(report.sample.covered_to)}.
-            Details under Data and sample.
-          </p>
-        )}
+        <Lead report={report} />
       </header>
 
-      <SummaryCard report={report} />
-
-      <section className="space-y-4">
-        <div>
-          <h2 className="text-xl font-semibold">Where to start</h2>
-          <p className="text-neutral-600">{w.heading}</p>
+      <section className="space-y-6">
+        <div className="max-w-[680px] space-y-1">
+          <Label>Where to start</Label>
+          <h2 className="font-serif text-title font-semibold">How each area compares with the repo</h2>
+          <p className="text-muted">{w.heading}</p>
         </div>
         {w.bands.length === 0 ? (
           <EmptyState report={report} />
         ) : (
           <>
-            <div className="rounded-xl border border-neutral-200 bg-white p-4">
-              <RateChart groups={w.bands} repoRate={w.repo_rate} />
-            </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <RateChart groups={w.bands} repoRate={w.repo_rate} />
+            <div className="grid gap-5 md:grid-cols-2">
               {w.bands.flatMap((group) =>
                 group.areas.map((area) => (
                   <AreaCard
@@ -185,21 +201,17 @@ function ReportBody({ report }: { report: Report }) {
                 )),
               )}
             </div>
-            {w.not_enough_data.length > 0 && (
-              <p className="text-sm text-neutral-500">
-                Not enough data (fewer than {params.min_sample} mature newcomer PRs):{" "}
-                {w.not_enough_data.map((a) => `${a.area} (${a.mature_newcomer_prs})`).join(" · ")}
-              </p>
-            )}
+            {w.not_enough_data.length > 0 && <NotEnoughData report={report} />}
           </>
         )}
       </section>
 
-      <section className="space-y-3">
-        <div>
-          <h2 className="text-xl font-semibold">Areas map</h2>
-          <p className="text-sm text-neutral-600">
-            Commit activity from git history. Excluded directories:{" "}
+      <section className="space-y-4">
+        <div className="max-w-[680px] space-y-1">
+          <Label>Areas map</Label>
+          <h2 className="font-serif text-title font-semibold">Where work happens</h2>
+          <p className="text-muted">
+            Commits from git history, most active first. Excluded directories:{" "}
             {report.method.excluded_dirs.join(", ") || "none"}.
           </p>
         </div>
@@ -207,38 +219,11 @@ function ReportBody({ report }: { report: Report }) {
       </section>
 
       <DataAndSample report={report} />
-    </div>
-  );
-}
 
-function JobProgress({ job, onRetry }: { job: Job | null; onRetry: () => void }) {
-  if (job === null) return <p className="text-neutral-500">Checking the job…</p>;
-  if (job.state === "failed") {
-    return (
-      <div className="space-y-2 rounded border border-red-200 bg-red-50 p-4">
-        <p>The analysis failed: {job.last_error}</p>
-        <button onClick={onRetry} className="rounded bg-neutral-900 px-4 py-2 text-white">
-          Try again
-        </button>
-        <p className="text-sm text-neutral-600">
-          A job whose snapshot is less than 24 hours old continues from its checkpoint; an older
-          one starts again.
-        </p>
-      </div>
-    );
-  }
-  return (
-    <div className="space-y-2">
-      <p>
-        Job {job.id}: {job.state}
-        {job.stage ? `, stage ${job.stage}` : ""} — {job.progress}%
+      <p className="text-small text-muted">
+        Snapshot {date(report.repo.snapshot_at)} ·{" "}
+        <Link href={`/method?repo=${slug}`}>Method and parameters</Link>
       </p>
-      <div className="h-2 w-full rounded bg-neutral-200">
-        <div className="h-2 rounded bg-neutral-800" style={{ width: `${job.progress}%` }} />
-      </div>
-      <p className="text-sm text-neutral-500">
-        Large repositories take a long time. This page updates by itself.
-      </p>
-    </div>
+    </article>
   );
 }
