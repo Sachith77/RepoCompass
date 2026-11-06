@@ -9,9 +9,5 @@ __pycache__/
 .venv/
 node_modules/
 .next/
-CLAUDE.md
-.claude/
-notes/
-spikes/
 next-env.d.ts
 *.tsbuildinfo
